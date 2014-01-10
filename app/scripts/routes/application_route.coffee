@@ -1,2 +1,1 @@
-Frontend.ApplicationRoute = Ember.Route.extend
-  model: -> []
+Frontend.ApplicationRoute = Ember.Route.extend()

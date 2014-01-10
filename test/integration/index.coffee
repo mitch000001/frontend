@@ -11,14 +11,6 @@ describe "Index page", ->
     visit("/").then ->
       find("a[href*='items/new']").length.should.eql 1
 
-describe "ApplicationRoute", ->
-  describe "model property", ->
-    applicationRoute = Frontend.ApplicationRoute.create()
-
-    it "should have the right number of items", ->
-      model = applicationRoute.model()
-      model.should.have.length 0
-
 describe "IndexRoute", ->
   describe "model property", ->
     applicationRoute = Frontend.IndexRoute.create()

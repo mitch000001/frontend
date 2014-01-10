@@ -1,0 +1,1 @@
+Frontend.ItemsNewController = Ember.ObjectController.extend()

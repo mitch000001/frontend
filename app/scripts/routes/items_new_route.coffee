@@ -1,2 +1,3 @@
 Frontend.ItemsNewRoute = Ember.Route.extend
-  model: -> []
+  model: ->
+    Frontend.Store.createRecord('item')
