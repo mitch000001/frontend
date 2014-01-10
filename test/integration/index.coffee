@@ -5,7 +5,11 @@ describe "Index page", ->
 
   it "displays recent items", ->
     visit("/").then ->
-      find("div.items").length.should.eql 1
+      find("ul.items").length.should.eql 1
+
+  it "contains a link to create new items", ->
+    visit("/").then ->
+      find("a[rel=new_item]").length.should.eql 1
 
 describe "ApplicationRoute", ->
   describe "model property", ->

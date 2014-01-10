@@ -1,8 +1,11 @@
 <div class="well">
   Welcome to Umsatz
 </div>
-<div class="items">
-  {{#each item in controller}}
+<div>
+  <a rel="new_item" href="">Create new item</a>
+  <ul class="items">
+    {{#each item in controller}}
       <li class="list-group-item">{{item}}</li>
-  {{/each}}
+    {{/each}}
+  </ul>
 </div>
