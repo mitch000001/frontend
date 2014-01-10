@@ -1,4 +1,10 @@
-Frontend = window.Frontend = Ember.Application.create()
+Frontend = window.Frontend = Ember.Application.create({
+  LOG_TRANSITIONS: true
+})
+
+Frontend.Router.map ->
+  @resource "items", ->
+    @route "new"
 
 # Order and include as you please.
 require 'scripts/controllers/*'

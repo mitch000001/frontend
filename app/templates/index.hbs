@@ -2,7 +2,7 @@
   Welcome to Umsatz
 </div>
 <div>
-  <a rel="new_item" href="">Create new item</a>
+  {{#link-to 'items.new'}}Create new item{{/link-to}}
   <ul class="items">
     {{#each item in controller}}
       <li class="list-group-item">{{item}}</li>

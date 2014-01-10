@@ -9,7 +9,7 @@ describe "Index page", ->
 
   it "contains a link to create new items", ->
     visit("/").then ->
-      find("a[rel=new_item]").length.should.eql 1
+      find("a[href*='items/new']").length.should.eql 1
 
 describe "ApplicationRoute", ->
   describe "model property", ->
