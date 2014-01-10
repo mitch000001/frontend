@@ -1,3 +1,6 @@
-Frontend.ItemsNewRoute = Ember.Route.extend
+Frontend.ItemsNewRoute = Ember.Route.extend({
   model: ->
-    Frontend.Store.createRecord('item')
+    # @store.create('item', { date: new Date(), title: 'Example' })
+    {}
+
+})

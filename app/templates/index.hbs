@@ -5,8 +5,8 @@
 <div>
   {{#link-to 'items.new'}}Create new item{{/link-to}}
   <ul class="items">
-    {{#each item in  controller}}
-      <li class="list-group-item">{{ item }}</li>
+    {{#each item in items}}
+      <li class="list-group-item">{{ item.title }} ({{l item.date }})</li>
     {{/each}}
   </ul>
 </div>

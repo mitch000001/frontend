@@ -13,8 +13,8 @@ describe "Index page", ->
 
 describe "IndexRoute", ->
   describe "model property", ->
-    applicationRoute = Frontend.IndexRoute.create()
+    indexRoute = Frontend.IndexRoute.create()
 
-    it "should have the right number of items", ->
-      model = applicationRoute.model()
-      model.should.have.length 3
+    it "should have items", ->
+      items = indexRoute.models()
+      expect.items.to.exist
