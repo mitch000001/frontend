@@ -3,6 +3,9 @@ Frontend = window.Frontend = Ember.Application.create({
   LOG_TRANSITIONS_INTERNAL: true
 })
 Frontend.ApplicationAdapter = DS.FixtureAdapter
+# Frontend.Store =  DS.Store.Extend({
+#   adapter: Frontend.ApplicationAdapter
+# })
 
 Frontend.Router.map ->
   @resource "items", ->

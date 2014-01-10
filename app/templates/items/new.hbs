@@ -1,14 +1,14 @@
 <form>
   <fieldset>
-    <legend>New Item</legend>
-    {{view Frontend.DateField valueBinding=date placeholder="Belegdatum"}}
-    {{view Ember.TextField valueBinding=number placeholder="Belegnummer"}}
+    <legend class="header">New Item</legend>
+    {{view Frontend.DateField valueBinding="date" placeholder="Belegdatum" id="item_date"}}
+    {{view Ember.TextField valueBinding="number" placeholder="Belegnummer" id="item_number"}}
     <br>
-    {{view Ember.TextArea valueBinding=description placeholder="Beschreibung"}}
+    {{view Ember.TextArea valueBinding="description" placeholder="Beschreibung" id="item_description"}}
     <br>
-    {{view Ember.TextField valueBinding=totalWithTax placeholder="Betrag"}}
+    {{view Ember.TextField valueBinding="totalWithTax" placeholder="Betrag" id="item_total_with_tax"}}
 
 
   </fieldset>
-  <button {{action "saveItem"}}>Speichern</button>
+  <button type="submit" {{action "saveItem"}}>Speichern</button>
 </form>

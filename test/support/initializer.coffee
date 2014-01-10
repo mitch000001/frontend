@@ -12,6 +12,8 @@ Frontend.setupForTesting()
 Frontend.injectTestHelpers()
 Ember.run Frontend, Frontend.advanceReadiness
 
+console.log "starting"
+
 window.start = ->
 window.stop = ->
 

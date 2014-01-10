@@ -11,7 +11,6 @@ module.exports = function(config) {
     // Testing framework to be used, default is `jasmine`.
     frameworks : [
       'mocha'
-
     ],
 
 
@@ -23,13 +22,15 @@ module.exports = function(config) {
       'app/bower_components/ember-data-shim/ember-data.js',
 
       'test/bower_components/chai/chai.js',
+      'test/bower_components/chai-jquery/chai-jquery.js',
       'app/bower_components/ember-mocha-adapter/adapter.js',
 
       '.tmp/scripts/combined-scripts.js',
       '.tmp/scripts/compiled-templates.js',
+
       'test/support/*.coffee',
       'test/spec/*.coffee',
-      'test/integration/*.coffee'
+      'test/integration/**/*.coffee'
     ],
 
 
