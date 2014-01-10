@@ -9,6 +9,7 @@ Frontend.Router.map ->
     @route "new"
 
 # Order and include as you please.
+require 'scripts/lib/*'
 require 'scripts/helpers'
 require 'scripts/controllers/*'
 require 'scripts/models/*'
