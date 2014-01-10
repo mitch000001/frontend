@@ -1,9 +1,5 @@
 describe "Index page", ->
 
-  it "displays a welcome message", ->
-    visit("/").then ->
-      find("div.well").text().should.contain "Welcome to Umsatz"
-
   it "contains a link to create new items", ->
     visit("/").then ->
       find("a[href*='items/new']").length.should.eql 1

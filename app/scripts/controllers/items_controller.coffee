@@ -19,3 +19,7 @@ Frontend.ItemsNewController = Ember.ObjectController.extend({
       item.save().then => @transitionToRoute 'index'
   }
 })
+
+Frontend.ItemsIndexController = Ember.ArrayController.extend({
+
+})

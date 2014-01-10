@@ -1,7 +1,4 @@
 Frontend.IndexRoute = Ember.Route.extend({
-  model: -> []
-
-  setupController: (controller, model) ->
+  setupController: (controller) ->
     controller.set 'items', @store.find('item')
-
 })

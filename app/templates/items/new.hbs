@@ -4,11 +4,16 @@
     {{view Frontend.DateField valueBinding="date" placeholder="Belegdatum" id="item_date"}}
     {{view Ember.TextField valueBinding="number" placeholder="Belegnummer" id="item_number"}}
     <br>
-    {{view Ember.TextArea valueBinding="description" placeholder="Beschreibung" id="item_description"}}
+    {{view Ember.TextArea valueBinding="description" placeholder="Description" id="item_description"}}
     <br>
-    {{view Ember.TextField valueBinding="totalWithTax" placeholder="Betrag" id="item_total_with_tax"}}
+    {{view Ember.TextField valueBinding="totalWithTax" placeholder="Total" id="item_total_with_tax"}}
 
 
   </fieldset>
-  <button type="submit" {{action "saveItem"}}>Speichern</button>
+
+  <button type="submit" class="btn btn-primary" {{action "saveItem"}}>
+    Save
+  </button>
+  or
+  {{#link-to "index"}}cancel{{/link-to}}
 </form>

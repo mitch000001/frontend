@@ -32,7 +32,7 @@ module.exports = function (grunt) {
                 tasks: ['emberTemplates']
             },
             coffee: {
-                files: ['<%= yeoman.app %>/scripts/{,*/}*.coffee'],
+                files: ['<%= yeoman.app %>/scripts/**/*.coffee'],
                 tasks: ['coffee:dist']
             },
             coffeeTest: {
