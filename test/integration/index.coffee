@@ -1,7 +1,7 @@
 describe "Index page", ->
   it "displays a welcome message", ->
     visit('/').then ->
-      find('div.well').text().should.contain 'Welcome to Yeoman and Ember.js'
+      find('div.well').text().should.contain 'Welcome to Umsatz'
 
 describe "ApplicationRoute", ->
   describe "model property", ->
