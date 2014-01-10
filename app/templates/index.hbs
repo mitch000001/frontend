@@ -6,7 +6,10 @@
   {{#link-to 'items.new'}}Create new item{{/link-to}}
   <ul class="items">
     {{#each item in items}}
-      <li class="list-group-item">{{ item.title }} ({{l item.date }})</li>
+      <li class="list-group-item">
+        {{ item.number }} ({{l item.date }})<br>
+        {{ item.totalWithTax }}
+      </li>
     {{/each}}
   </ul>
 </div>

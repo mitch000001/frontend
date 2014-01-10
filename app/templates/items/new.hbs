@@ -1,8 +1,14 @@
 <form>
   <fieldset>
     <legend>New Item</legend>
-    {{ model.date }}
-    {{view Ember.TextField valueBinding=title placeholder="Title"}}
+    {{view Ember.TextField valueBinding=date placeholder="Belegdatum"}}
+    {{view Ember.TextField valueBinding=number placeholder="Belegnummer"}}
+    <br>
+    {{view Ember.TextArea valueBinding=description placeholder="Beschreibung"}}
+    <br>
+    {{view Ember.TextField valueBinding=totalWithTax placeholder="Betrag"}}
+
+
   </fieldset>
-  <button>Speichern</button>
+  <button {{action "saveItem"}}>Speichern</button>
 </form>
