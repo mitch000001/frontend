@@ -4,6 +4,7 @@ Frontend.Item = DS.Model.extend({
   description: DS.attr "string"
   totalWithTax: DS.attr "number"
   subjectToTurnoverTax: DS.attr "boolean"
+  fiscalPeriod: DS.belongsTo('fiscal_period')
 })
 
 Frontend.Item.FIXTURES = [

@@ -7,6 +7,7 @@ Frontend.FiscalPeriod.FIXTURES = [
   {
     id: 1
     title: "2013"
+    items: [1]
   }
   {
     id: 2
