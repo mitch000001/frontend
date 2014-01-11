@@ -21,5 +21,4 @@ Frontend.ItemsNewController = Ember.ObjectController.extend({
 })
 
 Frontend.ItemsIndexController = Ember.ArrayController.extend({
-
 })

@@ -8,6 +8,10 @@ Frontend.ApplicationAdapter = DS.FixtureAdapter
 # })
 
 Frontend.Router.map ->
+  @resource "fiscalPeriods", ->
+    @route "new"
+  @resource 'fiscalPeriod', { path: '/fiscalPeriod/:id' }
+
   @resource "items", ->
     @route "new"
 

@@ -18,8 +18,11 @@
       <div>
         <div class="col-md-3">
           <div class="well sidebar-nav">
-            <!-- TODO -->
-            {{#link-to 'items'}}All Items{{/link-to}}
+            <ul>
+              {{#each period in fiscalPeriods}}
+                <li>{{#link-to 'fiscalPeriod' period}} {{period.title}} {{/link-to}}</li>
+              {{/each}}
+            </ul>
           </div>
         </div>
         <div class="col-md-9">
