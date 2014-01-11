@@ -20,7 +20,7 @@
           <div class="well sidebar-nav">
             <ul>
               {{#each period in fiscalPeriods}}
-                <li>{{#link-to 'fiscalPeriod' period}} {{period.title}} {{/link-to}}</li>
+                <li>{{#link-to 'fiscalPeriods.show' period}} {{period.title}} {{/link-to}}</li>
               {{/each}}
             </ul>
           </div>
