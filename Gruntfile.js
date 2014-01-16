@@ -64,8 +64,8 @@ module.exports = function (grunt) {
                 tasks: ['handlebars']
             },
             test: {
-                files: ['<%= yeoman.app %>/scripts/{,*/}*.js', 'test/spec/**/*.js'],
-                tasks: ['test']
+                files: ['<%= yeoman.app %>/scripts/{,*/}*.js', 'test/spec/**/*.js', 'test/spec/**/*.coffee'],
+                tasks: ['mocha']
             }
         },
         connect: {
@@ -108,6 +108,11 @@ module.exports = function (grunt) {
                 }
             }
         },
+        open: {
+            server: {
+                path: 'http://localhost:<%= connect.options.port %>'
+            }
+        },
         clean: {
             dist: ['.tmp', '<%= yeoman.dist %>/*'],
             server: '.tmp'
@@ -148,7 +153,7 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     cwd: 'test/spec',
-                    src: '{,*/}*.coffee',
+                    src: '**/*.coffee',
                     dest: '.tmp/spec',
                     ext: '.js'
                 }]
@@ -169,11 +174,6 @@ module.exports = function (grunt) {
                 options: {
                     debugInfo: true
                 }
-            }
-        },
-        karma: {
-            unit: {
-                configFile: 'karma.conf.js'
             }
         },
         requirejs: {
@@ -308,7 +308,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('server', function (target) {
         if (target === 'dist') {
-            return grunt.task.run(['build', 'connect:dist:keepalive']);
+            return grunt.task.run(['build', 'open', 'connect:dist:keepalive']);
         }
 
         if (target === 'test') {
@@ -329,6 +329,7 @@ module.exports = function (grunt) {
             'createDefaultTemplate',
             'handlebars',
             'compass:server',
+            'connect:test',
             'connect:livereload',
             'watch'
         ]);
@@ -341,7 +342,7 @@ module.exports = function (grunt) {
         'handlebars',
         'compass',
         'connect:test',
-        'karma',
+        'mocha',
         'watch:test'
     ]);
 

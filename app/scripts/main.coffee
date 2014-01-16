@@ -25,6 +25,6 @@ require.config
 
 require [
   'backbone'
-], (Backbone) ->
+  "app"
+], (Backbone, app) ->
   Backbone.history.start()
-  console.log "yeah"
