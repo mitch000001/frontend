@@ -171,6 +171,11 @@ module.exports = function (grunt) {
                 }
             }
         },
+        karma: {
+            unit: {
+                configFile: 'karma.conf.js'
+            }
+        },
         requirejs: {
             dist: {
                 // Options: https://github.com/jrburke/r.js/blob/master/build/example.build.js
@@ -336,7 +341,7 @@ module.exports = function (grunt) {
         'handlebars',
         'compass',
         'connect:test',
-        'mocha',
+        'karma',
         'watch:test'
     ]);
 
