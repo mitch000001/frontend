@@ -22,11 +22,10 @@ require.config({
       exports: 'mocha'
     }
   },
-  urlArgs: 'bust=' + (new Date()).getTime()
+
 });
 
 require(['require', 'chai', 'mocha', 'jquery'], function(require, chai, mocha, jquery){
-  var should = chai.should();
   // chai.use(chaiJquery);
 
   mocha.setup('bdd');
