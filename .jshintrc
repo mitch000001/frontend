@@ -2,23 +2,21 @@
     "node": true,
     "browser": true,
     "esnext": true,
-    "bitwise": false,
-    "curly": false,
+    "bitwise": true,
+    "camelcase": true,
+    "curly": true,
     "eqeqeq": true,
-    "eqnull": true,
     "immed": true,
+    "indent": 4,
     "latedef": true,
     "newcap": true,
     "noarg": true,
+    "quotmark": "single",
+    "regexp": true,
     "undef": true,
-    "strict": false,
-    "trailing": false,
+    "unused": true,
+    "strict": true,
+    "trailing": true,
     "smarttabs": true,
-    "globals": {
-        "Frontend": true,
-        "jQuery": true,
-        "Ember": true,
-        "Handlebars": true,
-        "DS": true
-    }
+    "jquery": true
 }
