@@ -1,9 +1,10 @@
 Frontend.FiscalPeriodsShowRoute = Ember.Route.extend({
-  model: (params) ->
-    console.log params
-    @store.find "fiscal_period", params.id
-  setupController: (controller, model) ->
-    console.log controller, model
+  model: (params, transition) ->
+    fiscalPeriodId = transition.params.fiscal_period_id
+    fiscalPeriod = @store.find Frontend.FiscalPeriod, fiscalPeriodId
+    fiscalPeriod.get "items"
+    fiscalPeriod
 
-    controller.set 'items', model.get('items')
+  setupController: (controller, model) ->
+    controller.set 'items', model.get("items")
 })

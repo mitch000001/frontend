@@ -1,6 +1,8 @@
 Frontend.ItemsNewController = Ember.ObjectController.extend({
+  content: Ember.Object.create()
   actions: {
     saveItem: ->
+
       number = @get 'number'
       date = new Date(Date.parse @get('date'))
       description = @get 'description'
@@ -16,7 +18,15 @@ Frontend.ItemsNewController = Ember.ObjectController.extend({
 
       @set('number', '')
 
-      item.save().then => @transitionToRoute 'index'
+      onSuccess = (items) =>
+        items.pushObject item
+        @transitionToRoute 'index'
+
+      item.save().then =>
+        fiscalPeriod = @content.fiscalPeriod
+        fiscalPeriod.get("items").then onSuccess, null
+
+
   }
 })
 

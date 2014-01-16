@@ -3,17 +3,15 @@ Frontend = window.Frontend = Ember.Application.create({
   LOG_TRANSITIONS_INTERNAL: true
 })
 Frontend.ApplicationAdapter = DS.FixtureAdapter
-# Frontend.Store =  DS.Store.Extend({
-#   adapter: Frontend.ApplicationAdapter
-# })
 
 Frontend.Router.map ->
-  @resource "fiscalPeriods", ->
-    @route "new"
-    @route "show", { path: "/:id" }
-  #  @resource 'fiscalPeriod', { path: '/fiscalPeriod/:id' }, ->
-  @resource "items", ->
-    @route "new"
+  @resource "fiscalPeriods", { path: "fiscalPeriods/:fiscal_period_id" }, ->
+    # @route "new"
+    @route "show", { path: "/" }
+
+    @resource "items", ->
+      @route "new"
+
 
 # Order and include as you please.
 require 'scripts/lib/*'
