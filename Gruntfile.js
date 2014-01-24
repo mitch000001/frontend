@@ -34,10 +34,14 @@ module.exports = function (grunt) {
                     'index.html'
                 ]
             },
-            compass: {
-                files: ['styles/**/*.scss'],
-                tasks: ['compass']
+            sass: {
+              files: 'styles/**/*.scss',
+              tasks: ['sass']
             },
+            // compass: {
+            //     files: ['styles/**/*.scss'],
+            //     tasks: ['compass']
+            // },
             /* not used at the moment
             handlebars: {
                 files: [
@@ -75,23 +79,37 @@ module.exports = function (grunt) {
             }
         },
 
-        compass: {
+        sass: {
+          options: {
+            includePaths: ['bower_components/foundation/scss', 'bower_components']
+          },
+          dist: {
             options: {
-                sassDir: 'styles',
-                cssDir: '.tmp/styles',
-                imagesDir: 'images',
-                javascriptsDir: 'scripts',
-                fontsDir: 'styles/fonts',
-                importPath: 'bower_components',
-                relativeAssets: true
+              outputStyle: 'compressed'
             },
-            dist: {},
-            server: {
-                options: {
-                    debugInfo: true
-                }
+            files: {
+              '.tmp/styles/main.css': 'styles/main.scss'
             }
+          }
         },
+
+        // compass: {
+        //     options: {
+        //         sassDir: 'styles',
+        //         cssDir: '.tmp/styles',
+        //         imagesDir: 'images',
+        //         javascriptsDir: 'scripts',
+        //         fontsDir: 'styles/fonts',
+        //         importPath: ['bower_components/foundation/scss', 'bower_components'],
+        //         relativeAssets: true,
+        //     },
+        //     dist: {},
+        //     server: {
+        //         options: {
+        //             debugInfo: true
+        //         }
+        //     }
+        // },
 
         clean: {
             dist: ['.tmp', '<%= yeoman.dist %>/*'],
@@ -259,7 +277,7 @@ module.exports = function (grunt) {
 
         grunt.task.run([
             'clean:server',
-            'compass:server',
+            'sass',
             'connect:livereload',
             'watch'
         ]);
@@ -269,7 +287,7 @@ module.exports = function (grunt) {
         'clean',
         'createDefaultTemplate',
         'handlebars',
-        'compass:dist',
+        'sass',
         'useminPrepare',
         'requirejs',
         'imagemin',

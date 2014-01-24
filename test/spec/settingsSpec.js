@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  define(['settings'], function( Settings ) {
+  define( ['settings'], function( Settings ) {
 
     describe('Settings', function() {
 
