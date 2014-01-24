@@ -1,20 +1,25 @@
 define([
     'backbone',
     'communicator',
-    'hbs!tmpl/welcome'
+    'collections/fiscalPeriods',
+    'views/fiscalPeriodNavigation'
   ],
 
-  function( Backbone, Communicator, WelcomeTmpl ) {
+  function( Backbone, Communicator, FiscalPeriods, FiscalPeriodNavigation ) {
     'use strict';
-
-    var welcomeTmpl = WelcomeTmpl;
 
     var App = new Backbone.Marionette.Application();
 
-    App.addRegions({});
+    App.addRegions({
+      navigation: '#navigation',
+      content: '#content'
+    });
 
     App.addInitializer( function () {
-      document.body.innerHTML = welcomeTmpl({ success: 'umsatz' });
+      var fiscalPeriods = new FiscalPeriods();
+      fiscalPeriods.fetch();
+      App.navigation.show(new FiscalPeriodNavigation({ collection: fiscalPeriods }));
+
       Communicator.mediator.trigger('APP:START');
     });
 

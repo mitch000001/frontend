@@ -1,12 +1,14 @@
 define([
     'backbone',
-    'models/fiscalPeriod'
+    'models/fiscalPeriod',
+    'settings'
   ],
 
-  function(Backbone, FiscalPeriod) {
+  function(Backbone, FiscalPeriod, Settings) {
     'use strict';
 
     return Backbone.Collection.extend({
-      model: FiscalPeriod
+      model: FiscalPeriod,
+      url: Settings.apiUrl('/fiscalPeriods')
     });
   });
