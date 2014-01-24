@@ -4,13 +4,6 @@ var mountFolder = function (connect, dir) {
     return connect.static(require('path').resolve(dir));
 };
 
-// # Globbing
-// for performance reasons we're only matching one level down:
-// 'test/spec/{,*/}*.js'
-// use this if you want to match all subfolders:
-// 'test/spec/**/*.js'
-// templateFramework: 'handlebars'
-
 module.exports = function (grunt) {
     // load all grunt tasks
     require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
@@ -61,6 +54,22 @@ module.exports = function (grunt) {
             }
         },
 
+        compass: {                  // Task
+            dist: {                   // Target
+              options: {              // Target options
+                sassDir: 'sass',
+                cssDir: 'css',
+                environment: 'production'
+              }
+            },
+            dev: {                    // Another target
+              options: {
+                sassDir: 'sass',
+                cssDir: 'css'
+              }
+            }
+        },
+
         clean: {
             dist: ['.tmp', '<%= yeoman.dist %>/*'],
             server: '.tmp'
@@ -80,7 +89,15 @@ module.exports = function (grunt) {
             ]
         },
 
-
+        concat: {
+            options: {
+              separator: ';',
+            },
+            dist: {
+              src: [''],
+              dest: 'dist/built.js',
+            },
+        },
 
         // require
         requirejs: {
@@ -88,8 +105,11 @@ module.exports = function (grunt) {
                 // Options: https://github.com/jrburke/r.js/blob/master/build/example.build.js
                 options: {
                     // `name` and `out` is set by grunt-usemin
-                    baseUrl: 'app/scripts',
+                    appDir: "scripts",
+                    baseUrl: './',
+                    mainConfigFile: 'scripts/init.js',
                     optimize: 'none',
+                    dir: 'dist',
                     paths: {
                         'templates': '../../.tmp/scripts/templates'
                     },
@@ -239,12 +259,12 @@ module.exports = function (grunt) {
         'handlebars',
         'compass:dist',
         'useminPrepare',
-        'requirejs',
+        'requirejs:dist',
         'imagemin',
         'htmlmin',
-        'concat',
+        // 'concat',
         'cssmin',
-        'uglify',
+        // 'uglify',
         'copy',
         'usemin'
     ]);
