@@ -6,11 +6,8 @@ for (var file in window.__karma__.files) {
   }
 }
 
-// console.log(window.__karma__.files);
-
 require.config({
   baseUrl: '/base/scripts',
-  // urlArgs: '?' + (new Date().getTime()),
 
   shim: {
     backbone: {
