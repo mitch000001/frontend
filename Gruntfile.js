@@ -30,8 +30,9 @@ module.exports = function (grunt) {
             livereload: {
                 files: [
                     'scripts/**/*.js',
-                    'templates/**/*.hbs',
-                    'test/spec/**/*.js'
+                    'templates/{,**/}*.hbs',
+                    'test/spec/**/*.js',
+                    'index.html'
                 ],
                 options: {
                     livereload: LIVERELOAD_PORT
