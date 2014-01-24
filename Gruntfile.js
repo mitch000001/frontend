@@ -1,5 +1,7 @@
 'use strict';
-var lrSnippet = require('grunt-contrib-livereload/lib/utils').livereloadSnippet;
+var LIVERELOAD_PORT = 35729;
+var SERVER_PORT = 9000;
+var lrSnippet = require('connect-livereload')({port: LIVERELOAD_PORT});
 var mountFolder = function (connect, dir) {
     return connect.static(require('path').resolve(dir));
 };
@@ -21,19 +23,24 @@ module.exports = function (grunt) {
 
         // watch list
         watch: {
-
+            options: {
+                nospawn: true,
+                livereload: true
+            },
             livereload: {
                 files: [
-
-                    'scripts/{,**/}*.js',
-                    'templates/{,**/}*.hbs',
-
-                    'test/spec/{,**/}*.js'
+                    'scripts/**/*.js',
+                    'templates/**/*.hbs',
+                    'test/spec/**/*.js'
                 ],
                 options: {
-                    livereload: true
+                    livereload: LIVERELOAD_PORT
                 }
-            }
+            },
+            compass: {
+                files: ['styles/{,*/}*.{scss,sass}'],
+                tasks: ['compass']
+            },
             /* not used at the moment
             handlebars: {
                 files: [
@@ -46,27 +53,46 @@ module.exports = function (grunt) {
         // testing server
         connect: {
             options: {
-                port: 9000,
-                base: '.'
+                port: SERVER_PORT,
+                hostname: 'localhost'
             },
-            server: {
-
+            livereload: {
+                options: {
+                    middleware: function (connect) {
+                        return [
+                            lrSnippet,
+                            mountFolder(connect, '.tmp'),
+                            mountFolder(connect, yeomanConfig.app)
+                        ];
+                    }
+                }
+            },
+            dist: {
+                options: {
+                    middleware: function (connect) {
+                        return [
+                            mountFolder(connect, yeomanConfig.dist)
+                        ];
+                    }
+                }
             }
         },
 
-        compass: {                  // Task
-            dist: {                   // Target
-              options: {              // Target options
-                sassDir: 'sass',
-                cssDir: 'css',
-                environment: 'production'
-              }
+        compass: {
+            options: {
+                sassDir: 'styles',
+                cssDir: '.tmp/styles',
+                imagesDir: 'images',
+                javascriptsDir: 'scripts',
+                fontsDir: 'styles/fonts',
+                importPath: 'bower_components',
+                relativeAssets: true
             },
-            dev: {                    // Another target
-              options: {
-                sassDir: 'sass',
-                cssDir: 'css'
-              }
+            dist: {},
+            server: {
+                options: {
+                    debugInfo: true
+                }
             }
         },
 
@@ -238,18 +264,10 @@ module.exports = function (grunt) {
     // starts express server with live testing via testserver
     grunt.registerTask('default', function (target) {
 
-        // what is this??
-        if (target === 'dist') {
-            return grunt.task.run(['build', 'open', 'connect:dist:keepalive']);
-        }
-
-        grunt.option('force', true);
-
         grunt.task.run([
             'clean:server',
-
-            'connect:server',
-
+            'compass:server',
+            'connect:livereload',
             'watch'
         ]);
     });

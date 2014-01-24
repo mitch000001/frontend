@@ -14,7 +14,7 @@ function( Backbone, Communicator, Welcome_tmpl ) {
   App.addRegions({});
 
   App.addInitializer( function () {
-    document.body.innerHTML = welcomeTmpl({ success: "CONGRATS!" });
+    document.body.innerHTML = welcomeTmpl({ success: "umsatz" });
     Communicator.mediator.trigger("APP:START");
   });
 
