@@ -1,12 +1,33 @@
+var tests = [];
+for (var file in window.__karma__.files) {
+    if (/Spec.js$/.test(file)) {
+        tests.push(file);
+    }
+}
+
+// console.log(window.__karma__.files);
+
 require.config({
-    baseUrl: '../scripts',
-    urlArgs: 'cb=' + Math.random(),
+    baseUrl: '/base/scripts',
+    // urlArgs: '?' + (new Date().getTime()),
 
     deps: ['backbone.marionette'],
 
-    paths: {
-        spec: '../../test/spec', // lives in the test directory
+    shim: {
+        backbone: {
+            deps: [
+                'underscore',
+                'jquery'
+            ],
+            exports: 'Backbone'
+        },
+        bootstrap: {
+            deps: ['jquery'],
+            exports: 'jquery'
+        }
+    },
 
+    paths: {
         jquery: '../bower_components/jquery/jquery',
         backbone: '../bower_components/backbone-amd/backbone',
         underscore: '../bower_components/underscore-amd/underscore',
@@ -17,7 +38,7 @@ require.config({
 
         /* alias all marionette libs */
         'backbone.marionette': '../bower_components/backbone.marionette/lib/core/amd/backbone.marionette',
-        'backbone.wreqr': '../bower_components/backbone.wreqr/lib/amd/backbone.wreqr', 
+        'backbone.wreqr': '../bower_components/backbone.wreqr/lib/amd/backbone.wreqr',
         'backbone.babysitter': '../bower_components/backbone.babysitter/lib/amd/backbone.babysitter',
 
         /* alias the bootstrap js lib */
@@ -34,35 +55,16 @@ require.config({
         /* require handlebars plugin - Alex Sexton */
         i18nprecompile: '../bower_components/require-handlebars-plugin/hbs/i18nprecompile',
         json2: '../bower_components/require-handlebars-plugin/hbs/json2',
-        hbs: '../bower_components/require-handlebars-plugin/hbs'
+        hbs: '../bower_components/require-handlebars-plugin/hbs',
     },
 
     hbs: {
         disableI18n: true
-    }
+    },
+
+    // ask Require.js to load these files (all our tests)
+    deps: tests,
+
+    // start test run, once Require.js is done
+    callback: window.__karma__.start
 });
-
-/* require test suite */
-require([
-    'jquery',
-    'spec/testSuite'
-],
-function( $, testSuite ) {
-
-    'use strict';
-
-    /* on dom ready require all specs and run */
-    $( function() {
-        require(testSuite.specs, function() {
-
-            if (window.mochaPhantomJS) {
-                mochaPhantomJS.run();
-            }
-            else {
-                mocha.run();
-            }
-            
-        });
-    });
-});
-  

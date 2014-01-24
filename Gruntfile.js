@@ -28,16 +28,15 @@ module.exports = function (grunt) {
 
         // watch list
         watch: {
-            
+
             livereload: {
                 files: [
-                    
+
                     'scripts/{,**/}*.js',
                     'templates/{,**/}*.hbs',
-                    
+
                     'test/spec/{,**/}*.js'
                 ],
-                tasks: ['exec'],
                 options: {
                     livereload: true
                 }
@@ -53,28 +52,12 @@ module.exports = function (grunt) {
 
         // testing server
         connect: {
-            testserver: {
-                options: {
-                    port: 1234,
-                    base: '.'
-                }
-            }
-        },
-
-        // mocha command
-        exec: {
-            mocha: {
-                command: 'mocha-phantomjs http://localhost:<%= connect.testserver.options.port %>/test',
-                stdout: true
-            }
-        },
-
-        
-
-        // open app and test page
-        open: {
+            options: {
+                port: 9000,
+                base: '.'
+            },
             server: {
-                path: 'http://localhost:<%= connect.testserver.options.port %>'
+
             }
         },
 
@@ -97,7 +80,7 @@ module.exports = function (grunt) {
             ]
         },
 
-        
+
 
         // require
         requirejs: {
@@ -244,24 +227,12 @@ module.exports = function (grunt) {
 
         grunt.task.run([
             'clean:server',
-            
-            'connect:testserver',
-            
-            'exec',
-            'open',
+
+            'connect:server',
+
             'watch'
         ]);
     });
-
-    // todo fix these
-    grunt.registerTask('test', [
-        'clean:server',
-        'createDefaultTemplate',
-        'handlebars',
-        'compass',
-        'connect:testserver',
-        'exec:mocha'
-    ]);
 
     grunt.registerTask('build', [
         'createDefaultTemplate',
