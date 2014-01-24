@@ -22,6 +22,11 @@
   "predef": [
     "_",
     "$",
-    "define"
+    "define",
+
+    // jasmine
+    "describe",
+    "it",
+    "expect"
   ]
 }
