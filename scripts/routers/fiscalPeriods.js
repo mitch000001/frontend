@@ -1,14 +1,23 @@
 define([
     'application',
-    'backbone.marionette'
+    'backbone.marionette',
+    'views/fiscalPeriodIndex'
   ],
 
-  function( App, Marionette ) {
+  function( App, Marionette, FiscalPeriodIndexView ) {
     'use strict';
 
     var FiscalPeriodController = function() {
-      this.someMethod = function(year) {
-        console.log(year);
+      this.dashboard = function() {
+        App.content.close();
+      };
+
+      this.yearsIndex = function( year ) {
+        var view = new FiscalPeriodIndexView({
+            year: year
+          });
+
+        App.content.show(view);
       };
     };
 
@@ -17,7 +26,8 @@ define([
       controller: new FiscalPeriodController(),
 
       appRoutes: {
-        'years/:year': 'someMethod'
+        '': 'dashboard',
+        'years/:year': 'yearsIndex'
       },
 
     });

@@ -7,7 +7,7 @@ require([
   function ( Backbone, App, FiscalPeriodsRouter ) {
     'use strict';
 
-    App.addInitializer(function(options){
+    App.addInitializer(function( options ){
       new FiscalPeriodsRouter();
       Backbone.history.start();
     });
