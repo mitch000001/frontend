@@ -6,21 +6,13 @@ define([
   function( Marionette, FiscalPeriodOverviewViewTemplate, FiscalItemViewTemplate ) {
     'use strict';
 
-    // var FiscalPeriodMenuItemView = Marionette.ItemView.extend({
-    //   template: FiscalPeriodOverviewViewTemplate
-    // });
+    var FiscalPeriodPositionItemView = Marionette.ItemView.extend({
+      template: FiscalItemViewTemplate
+    });
 
     return Marionette.CompositeView.extend({
         template: FiscalPeriodOverviewViewTemplate,
         itemViewContainer: 'ul.items',
-        itemView: FiscalItemViewTemplate,
-
-        serializeData: function() {
-          var data = Backbone.Marionette.ItemView.prototype.serializeData.apply(this, arguments);
-
-          data.year = this.options.year;
-
-          return data;
-        }
+        itemView: FiscalPeriodPositionItemView,
       });
   });

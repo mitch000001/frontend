@@ -13,7 +13,7 @@ define([
 
       appRoutes: {
         '': 'dashboard',
-        'years/:year': 'yearsIndex',
+        'years/:year': 'yearOverview',
         'years/:year/items/new': 'newYearPosition'
       },
 

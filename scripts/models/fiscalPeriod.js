@@ -13,7 +13,10 @@ define([
         type: Backbone.HasMany,
         key: 'positions',
         relatedModel: Position,
-        collectionType: PositionCollection
+        collectionType: PositionCollection,
+        reverseRelation: {
+          key: 'fiscalPeriod'
+        }
       }]
     });
   });

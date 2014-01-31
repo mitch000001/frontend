@@ -5,10 +5,24 @@
   },
   {
     "id": 2,
-    "year": 2013
+    "year": 2013,
+    "positions": [
+      {
+        "id": 4,
+        "category": "Freelance",
+        "account": "5900",
+        "type": "income",
+        "invoiceDate": "2014-01-31",
+        "invoiceNumber": "20140101",
+        "totalAmount": 733.50,
+        "tax": 19,
+        "fiscalPeriodId": 2
+      }
+    ]
   },
   {
     "id": 3,
-    "year": 2014
+    "year": 2014,
+    "positions": [1]
   }
 ]

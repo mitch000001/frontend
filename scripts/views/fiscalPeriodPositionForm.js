@@ -12,12 +12,22 @@ define([
           'form': '.fiscal-item'
         },
 
-        triggers: {
-          'submit @ui.form': {
-            event: 'fiscalItem:put',
-            preventDefault: true,
-            stopPropagation: false
-          }
+        events: {
+          'submit @ui.form': 'updateModel'
+        },
+
+        setModelAttribute: function(attribute) {
+          this.model.set(attribute.name, attribute.value);
+        },
+
+        updateModel: function(evt) {
+          evt.preventDefault();
+
+          var data = this.ui.form.serializeArray();
+          data.forEach(this.setModelAttribute, this);
+
+          this.model.save();
+          this.trigger('fiscalItem:put')
         },
 
         templateHelpers: {
