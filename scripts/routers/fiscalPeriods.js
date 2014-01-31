@@ -1,10 +1,11 @@
 define([
     'application',
     'backbone.marionette',
-    'views/fiscalPeriodIndex'
+    'views/fiscalPeriodIndex',
+    'views/fiscalPeriodPositionForm'
   ],
 
-  function( App, Marionette, FiscalPeriodIndexView ) {
+  function( App, Marionette, FiscalPeriodIndexView, PositionForm ) {
     'use strict';
 
     var FiscalPeriodController = function() {
@@ -19,6 +20,11 @@ define([
 
         App.content.show(view);
       };
+
+      this.newYearPosition = function( year ) {
+        var view = new PositionForm();
+        App.content.show(view);
+      };
     };
 
     return Marionette.AppRouter.extend({
@@ -27,7 +33,8 @@ define([
 
       appRoutes: {
         '': 'dashboard',
-        'years/:year': 'yearsIndex'
+        'years/:year': 'yearsIndex',
+        'years/:year/items/new': 'newYearPosition'
       },
 
     });
