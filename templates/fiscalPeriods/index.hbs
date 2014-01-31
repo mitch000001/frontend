@@ -1,14 +1,16 @@
 <div class="row">
-  <h2>Positionen im Jahr {{ year }}</h1>
+  <div class="large-12 columns">
+    <h2>Positionen im Jahr {{ year }}</h1>
 
-  <ul class="button-group small">
-    <li>
-      <a href="/#/years/{{ year }}/items/new" class="tiny button">
-        Neue Position anlegen
-      </a>
-    </li>
-  </ul>
+    <ul class="button-group small">
+      <li>
+        <a href="/#/years/{{ year }}/items/new" class="tiny button">
+          Neue Position anlegen
+        </a>
+      </li>
+    </ul>
 
-  <ul class="{{ year }} items">
-  </ul>
+    <ul class="{{ year }} items">
+    </ul>
+  </div>
 </div>
