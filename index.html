@@ -21,9 +21,32 @@
     <!-- endbuild -->
   </head>
   <body>
-    <ul id="navigation" class="side-nav"></ul>
+    <nav class="top-bar" data-topbar>
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="#">Umsatz</a></h1>
+        </li>
+      </ul>
+      <section class="top-bar-section">
+        <ul class="right">
+        </ul>
+        <ul class="left">
+          <li class="has-dropdown">
+            <a href="#">Abrechnungszeiträume</a>
+
+            <ul id="navigation" class="dropdown"></ul>
+          </li>
+        </ul>
+      </section>
+    </nav>
+
     <div id="content"></div>
+
     <!-- build:js scripts/main.js -->
+    <script src="bower_components/jquery/jquery.js"></script>
+    <script src="bower_components/foundation/js/foundation/foundation.js"></script>
+    <script src="bower_components/foundation/js/foundation/foundation.topbar.js"></script>
+    <script>$(document).foundation();</script>
     <script data-main="scripts/init" src="bower_components/requirejs/require.js"></script>
     <!-- endbuild -->
   </body>
