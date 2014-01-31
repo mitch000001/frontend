@@ -12,9 +12,9 @@
         "category": "Freelance",
         "account": "5900",
         "type": "income",
-        "invoiceDate": "2014-01-31",
-        "invoiceNumber": "20140101",
-        "totalAmount": 733.50,
+        "invoiceDate": "2013-12-30",
+        "invoiceNumber": "20130101",
+        "totalAmount": 37.50,
         "tax": 19,
         "fiscalPeriodId": 2
       }
