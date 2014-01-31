@@ -6,6 +6,36 @@ define([
     'use strict';
 
     return Marionette.ItemView.extend({
-        template: FiscalPeriodPositionViewTemplate
+        template: FiscalPeriodPositionViewTemplate,
+
+        ui: {
+          'form': '.fiscal-item'
+        },
+
+        triggers: {
+          'submit @ui.form': {
+            event: 'fiscalItem:put',
+            preventDefault: true,
+            stopPropagation: false
+          }
+        },
+
+        templateHelpers: {
+          isExpense: function(){
+            return this.type === 'expense';
+          },
+          isIncome: function() {
+            return this.type === 'income';
+          },
+          withoutTax: function() {
+            return this.tax == null;
+          },
+          reducedTax: function() {
+            return this.tax === 7;
+          },
+          regularTax: function() {
+            return this.tax === 19;
+          }
+        }
       });
   });

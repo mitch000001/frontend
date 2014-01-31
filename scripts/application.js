@@ -17,7 +17,9 @@ define([
 
     App.addInitializer( function () {
       var fiscalPeriods = new FiscalPeriods();
-      fiscalPeriods.fetch();
+      App.fiscalPeriods = fiscalPeriods;
+      App.fiscalPeriodsPromise = fiscalPeriods.fetch();
+
       App.navigation.show(new FiscalPeriodNavigation({ collection: fiscalPeriods }));
 
       Communicator.mediator.trigger('APP:START');

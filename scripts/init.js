@@ -14,6 +14,10 @@ require.config({
     bootstrap: {
       deps: ['jquery'],
       exports: 'jquery'
+    },
+    'backbone.relational': {
+      deps: ['backbone'],
+      exports: 'Backbone.RelationalModel'
     }
   },
 
@@ -26,6 +30,7 @@ require.config({
     'backbone.marionette': '../bower_components/backbone.marionette/lib/core/amd/backbone.marionette',
     'backbone.wreqr': '../bower_components/backbone.wreqr/lib/amd/backbone.wreqr',
     'backbone.babysitter': '../bower_components/backbone.babysitter/lib/amd/backbone.babysitter',
+    'backbone.relational': '../bower_components/backbone-relational/backbone-relational',
 
     /* alias the bootstrap js lib */
     bootstrap: 'vendor/bootstrap',

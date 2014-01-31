@@ -1,13 +1,19 @@
 define([
     'backbone',
+    'backbone.relational',
+    'collections/positions',
+    'models/position'
   ],
 
-  function ( Backbone ) {
+  function ( Backbone, BackboneRelational, PositionCollection, Position ) {
     'use strict';
 
-    return Backbone.Model.extend({
-      sayHello: function() {
-          window.alert('Hello');
-        }
+    return BackboneRelational.extend({
+      relations: [{
+        type: Backbone.HasMany,
+        key: 'positions',
+        relatedModel: Position,
+        collectionType: PositionCollection
+      }]
     });
   });
