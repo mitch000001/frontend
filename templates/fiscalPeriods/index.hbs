@@ -1,6 +1,6 @@
 <div class="row">
   <div class="large-12 columns">
-    <h2>Positionen im Jahr {{ year }}</h1>
+    <h2>Positionen im Jahr {{ year }}</h2>
 
     <ul class="button-group small">
       <li>
@@ -10,7 +10,26 @@
       </li>
     </ul>
 
-    <ul class="{{ year }} items">
-    </ul>
+    <table class="{{ year }} items large-12">
+      <thead>
+        <tr>
+          <th>Datum</th>
+          <th>Bezeichnung</th>
+          <th>Kategorie</th>
+          <th>Konto</th>
+          <th>Summe</th>
+        </tr>
+      </thead>
+
+      <tbody>
+      </tbody>
+
+      <tfoot>
+        <tr>
+          <td colspan="4"></td>
+          <td>{{ currency total }}</td>
+        </tr>
+      </tfoot>
+    </table>
   </div>
 </div>

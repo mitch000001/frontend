@@ -35,9 +35,12 @@ define([
 
       this.yearOverview = function( year ) {
         loadFiscalYear(year).done(function( fiscalYear ) {
+          var fiscalYearPositions = fiscalYear.get('positions');
+
+          fiscalYearPositions.on('all', function() { console.log(arguments) });
           var view = new FiscalPeriodIndexView({
               model: fiscalYear,
-              collection: fiscalYear.get('positions')
+              collection: fiscalYearPositions
             });
 
           App.content.show(view);

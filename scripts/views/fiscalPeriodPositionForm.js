@@ -18,8 +18,16 @@ define([
           'click @ui.cancel': 'cancelModel'
         },
 
+        attributeTransformations: {
+          'totalAmount': parseFloat
+        },
+
         setModelAttribute: function(attribute) {
-          this.model.set(attribute.name, attribute.value);
+          var value = attribute.value;
+          if ( this.attributeTransformations[attribute.name] ) {
+            value = this.attributeTransformations[attribute.name]( value );
+          }
+          this.model.set(attribute.name, value);
         },
 
         updateModel: function(evt) {

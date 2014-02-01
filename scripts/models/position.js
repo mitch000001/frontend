@@ -14,6 +14,7 @@ define([
         }
         return Settings.apiUrl('/fiscalPeriods/' + this.get('fiscalPeriod').get('id') + '/positions/' + this.get('id') );
       },
+
       defaults: {
         category: 'Some Category',
         account: "5900",
@@ -23,6 +24,10 @@ define([
         totalAmount: 42.55,
         tax: 7,
         fiscalPeriodId: null
+      },
+
+      totalAmount: function() {
+        return parseFloat( this.get('totalAmount') );
       }
     });
   });
