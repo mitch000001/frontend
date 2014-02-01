@@ -14,7 +14,7 @@ define([
     var loadFiscalYear = function ( year ) {
       var promise = new $.Deferred();
 
-      App.fiscalPeriodsPromise.done(function() {
+      App.fiscalPeriods.fetch().done(function() {
         var fiscalYear = App.fiscalPeriods.findWhere({
             year: parseInt( year, 10 )
           });
@@ -22,7 +22,7 @@ define([
         promise.resolve(fiscalYear);
       });
 
-      App.fiscalPeriodsPromise.fail(function() {
+      App.fiscalPeriods.fetch().fail(function() {
         promise.reject();
       })
       return promise;
@@ -37,7 +37,6 @@ define([
         loadFiscalYear(year).done(function( fiscalYear ) {
           var fiscalYearPositions = fiscalYear.get('positions');
 
-          fiscalYearPositions.on('all', function() { console.log(arguments) });
           var view = new FiscalPeriodIndexView({
               model: fiscalYear,
               collection: fiscalYearPositions
