@@ -40,7 +40,7 @@ require.config({
     tmpl: '../templates',
 
     /* handlebars from the require handlerbars plugin below */
-    handlebars: '../bower_components/require-handlebars-plugin/Handlebars',
+    Handlebars: '../bower_components/require-handlebars-plugin/hbs/handlebars',
 
     /* require handlebars plugin - Alex Sexton */
     i18nprecompile: '../bower_components/require-handlebars-plugin/hbs/i18nprecompile',
@@ -49,6 +49,11 @@ require.config({
   },
 
   hbs: {
-    disableI18n: true
+    helpers: true,
+    helperDirectory: '/scripts/template-helpers/',
+    helperPathCallback: function( name ) {
+      return '/scripts/template-helpers/' + name + '.js';
+    },
+    compileOptions: {}
   }
 });
