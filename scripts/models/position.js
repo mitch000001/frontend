@@ -1,13 +1,12 @@
 define([
     'backbone',
-    'backbone.relational',
     'settings'
   ],
 
-  function ( Backbone, BackboneRelational, Settings ) {
+  function ( Backbone, Settings ) {
     'use strict';
 
-    return BackboneRelational.extend({
+    return Backbone.RelationalModel.extend({
       url: function() {
         if (this.isNew()) {
           return Settings.apiUrl('/fiscalPeriods/' + this.get('fiscalPeriod').get('id') + '/positions' );

@@ -132,10 +132,27 @@ module.exports = function (grunt) {
 
         requirejs: {
             dist: {
-                // Options: https://github.com/jrburke/r.js/blob/master/build/example.build.js
                 options: {
                     baseUrl: 'scripts',
                     optimize: 'none',
+
+                    /* starting point for application */
+                    deps: ['backbone.marionette', 'backbone.relational', 'backbone.cacheit', 'main'],
+
+                    shim: {
+                      backbone: {
+                        deps: [
+                          'underscore',
+                          'jquery',
+                        ],
+                        exports: 'Backbone'
+                      },
+                      'backbone.relational': {
+                        deps: ['backbone'],
+                        exports: 'Backbone.Relational'
+                      }
+                    },
+
                     paths: {
                         templates: '../.tmp/scripts/templates',
                         jquery: '../bower_components/jquery/jquery',
@@ -146,6 +163,8 @@ module.exports = function (grunt) {
                         'backbone.marionette': '../bower_components/backbone.marionette/lib/core/amd/backbone.marionette',
                         'backbone.wreqr': '../bower_components/backbone.wreqr/lib/amd/backbone.wreqr',
                         'backbone.babysitter': '../bower_components/backbone.babysitter/lib/amd/backbone.babysitter',
+                        'backbone.relational': '../bower_components/backbone-relational/backbone-relational',
+                        'backbone.cacheit': 'vendor/backbone.cacheit',
 
                         /* Alias text.js for template loading and shortcut the templates dir to tmpl */
                         text: '../bower_components/requirejs-text/text',
@@ -159,15 +178,19 @@ module.exports = function (grunt) {
                         json2: '../bower_components/require-handlebars-plugin/hbs/json2',
                         hbs: '../bower_components/require-handlebars-plugin/hbs'
                     },
-                    // TODO: Figure out how to make sourcemaps work with grunt-usemin
-                    // https://github.com/yeoman/grunt-usemin/issues/30
-                    //generateSourceMaps: true,
-                    // required to support SourceMaps
-                    // http://requirejs.org/docs/errors.html#sourcemapcomments
+
                     preserveLicenseComments: false,
                     useStrict: true,
-                    wrap: true
-                    //uglify2: {} // https://github.com/mishoo/UglifyJS2
+                    wrap: true,
+
+                    hbs: {
+                      helpers: true,
+                      helperDirectory: './scripts/template-helpers/',
+                      helperPathCallback: function( name ) {
+                        return '../../template-helpers/' + name + '.js';
+                      },
+                      compileOptions: {}
+                    }
                 }
             }
         },

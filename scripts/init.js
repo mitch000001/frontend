@@ -1,7 +1,7 @@
 require.config({
 
   /* starting point for application */
-  deps: ['backbone.marionette', 'backbone.cacheit', 'main'],
+  deps: ['backbone.marionette', 'backbone.relational', 'backbone.cacheit', 'main'],
 
   shim: {
     backbone: {
@@ -13,7 +13,7 @@ require.config({
     },
     'backbone.relational': {
       deps: ['backbone'],
-      exports: 'Backbone.RelationalModel'
+      exports: 'Backbone.Relational'
     }
   },
 
