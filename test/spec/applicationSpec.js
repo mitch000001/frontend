@@ -1,14 +1,12 @@
-(function() {
+define(['application'], function(App) {
   'use strict';
 
-  define(['application'], function(App) {
+  describe('Umsatz App', function () {
 
-    describe('Example Test', function () {
-      it('should have true equal true', function () {
-        expect( App ).toBeDefined();
-      });
+    it('should be defined', function () {
+      expect( App ).toBeDefined();
     });
 
   });
 
-}).call( this );
+});
