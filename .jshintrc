@@ -26,6 +26,7 @@
 
     // jasmine
     "describe",
+    "beforeEach",
     "it",
     "expect"
   ]
