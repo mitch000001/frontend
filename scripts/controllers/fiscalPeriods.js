@@ -28,6 +28,7 @@ define([
         return promise;
       };
 
+      // TODO move this into a separate controller
       this.dashboard = function() {
         App.content.close();
       };
