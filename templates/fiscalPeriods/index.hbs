@@ -4,7 +4,7 @@
 
     <ul class="button-group small">
       <li>
-        <a href="/#/years/{{ year }}/items/new" class="tiny button">
+        <a href="/#/years/{{ year }}/positions/new" class="tiny button">
           Neue Position anlegen
         </a>
       </li>
@@ -18,6 +18,7 @@
           <th width="175">Kategorie</th>
           <th width="125">Konto</th>
           <th width="100">Summe</th>
+          <th width="50"></th>
         </tr>
       </thead>
 
@@ -27,7 +28,7 @@
       <tfoot>
         <tr>
           <td colspan="4"></td>
-          <td>{{ currency total }}</td>
+          <td colspan="2">{{ currency total }}</td>
         </tr>
       </tfoot>
     </table>

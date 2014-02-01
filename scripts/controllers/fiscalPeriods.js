@@ -47,6 +47,20 @@ define([
         });
       };
 
+      this.showYearPosition = function( year, id ) {
+        loadFiscalYear(year).done(function( fiscalYear ) {
+          var position = fiscalYear.get('positions').get(parseInt(id, 10));
+          var view = new PositionForm({
+            model: position
+          });
+
+          view.on('fiscalItem:put', function() {
+            Backbone.history.navigate('years/' + fiscalYear.get('year'), true);
+          }.bind(this));
+          App.content.show(view);
+        });
+      };
+
       this.newYearPosition = function( year ) {
         loadFiscalYear(year).done(function(fiscalYear) {
           var view = new PositionForm({

@@ -1,7 +1,7 @@
 define([
     'backbone.marionette',
     'hbs!tmpl/fiscalPeriods/index',
-    'hbs!tmpl/fiscalItems/_show'
+    'hbs!tmpl/fiscalItems/show'
   ],
   function( Marionette, FiscalPeriodOverviewViewTemplate, FiscalItemViewTemplate ) {
     'use strict';

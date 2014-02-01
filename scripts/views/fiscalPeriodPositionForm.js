@@ -1,6 +1,6 @@
 define([
     'backbone.marionette',
-    'hbs!tmpl/fiscalItems/_form'
+    'hbs!tmpl/fiscalItems/form'
   ],
   function( Marionette, FiscalPeriodPositionViewTemplate ) {
     'use strict';
@@ -19,7 +19,12 @@ define([
         },
 
         attributeTransformations: {
-          'totalAmount': parseFloat
+          'totalAmount': parseFloat,
+          'tax': function(taxValue) { return parseInt(taxValue || 0, 10); }
+        },
+
+        modelEvents: {
+          'change': 'render'
         },
 
         setModelAttribute: function(attribute) {
@@ -58,7 +63,7 @@ define([
             return this.type === 'income';
           },
           withoutTax: function() {
-            return this.tax == null;
+            return this.tax == 0;
           },
           reducedTax: function() {
             return this.tax === 7;

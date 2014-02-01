@@ -14,7 +14,8 @@ define([
       appRoutes: {
         '': 'dashboard',
         'years/:year': 'yearOverview',
-        'years/:year/items/new': 'newYearPosition'
+        'years/:year/positions/new': 'newYearPosition',
+        'years/:year/positions/:id': 'showYearPosition'
       },
 
     });
