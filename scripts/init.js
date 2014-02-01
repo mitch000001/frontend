@@ -13,7 +13,7 @@ require.config({
     },
     'backbone.relational': {
       deps: ['backbone'],
-      exports: 'Backbone.Relational'
+      exports: 'Backbone.RelationalModel'
     }
   },
 
