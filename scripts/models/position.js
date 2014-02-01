@@ -9,6 +9,9 @@ define([
 
     return BackboneRelational.extend({
       url: function() {
+        if (this.isNew()) {
+          return Settings.apiUrl('/fiscalPeriods/' + this.get('fiscalPeriod').get('id') + '/positions' );
+        }
         return Settings.apiUrl('/fiscalPeriods/' + this.get('fiscalPeriod').get('id') + '/positions/' + this.get('id') );
       },
       defaults: {
