@@ -1,13 +1,13 @@
 require.config({
 
   /* starting point for application */
-  deps: ['backbone.marionette', 'main'],
+  deps: ['backbone.marionette', 'backbone.cacheit', 'main'],
 
   shim: {
     backbone: {
       deps: [
         'underscore',
-        'jquery'
+        'jquery',
       ],
       exports: 'Backbone'
     },
@@ -27,6 +27,7 @@ require.config({
     'backbone.wreqr': '../bower_components/backbone.wreqr/lib/amd/backbone.wreqr',
     'backbone.babysitter': '../bower_components/backbone.babysitter/lib/amd/backbone.babysitter',
     'backbone.relational': '../bower_components/backbone-relational/backbone-relational',
+    'backbone.cacheit': 'vendor/backbone.cacheit',
 
     /* Alias text.js for template loading and shortcut the templates dir to tmpl */
     text: '../bower_components/requirejs-text/text',
