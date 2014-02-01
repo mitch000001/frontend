@@ -1,7 +1,7 @@
 var tests = [];
 /*jshint camelcase: false */
 for (var file in window.__karma__.files) {
-  if (/Spec.js$/.test(file)) {
+  if (/^\/base\/test\/spec/.test(file) && /Spec.js$/.test(file)) {
     tests.push(file);
   }
 }
@@ -20,6 +20,10 @@ require.config({
     bootstrap: {
       deps: ['jquery'],
       exports: 'jquery'
+    },
+    'backbone.relational': {
+      deps: ['backbone'],
+      exports: 'Backbone.RelationalModel'
     }
   },
 
@@ -28,14 +32,11 @@ require.config({
     backbone: '../bower_components/backbone-amd/backbone',
     underscore: '../bower_components/underscore-amd/underscore',
 
-    /* backbone plugins */
-    'backbone.syphon': '../bower_components/backbone.syphon/lib/amd/backbone.syphon',
-    'backbone.iobind': '../bower_components/backbone.iobind/dist/backbone.iobind',
-
     /* alias all marionette libs */
     'backbone.marionette': '../bower_components/backbone.marionette/lib/core/amd/backbone.marionette',
     'backbone.wreqr': '../bower_components/backbone.wreqr/lib/amd/backbone.wreqr',
     'backbone.babysitter': '../bower_components/backbone.babysitter/lib/amd/backbone.babysitter',
+    'backbone.relational': '../bower_components/backbone-relational/backbone-relational',
 
     /* alias the bootstrap js lib */
     bootstrap: 'vendor/bootstrap',
@@ -46,7 +47,7 @@ require.config({
     tmpl: '../templates',
 
     /* handlebars from the require handlerbars plugin below */
-    handlebars: '../bower_components/require-handlebars-plugin/Handlebars',
+    Handlebars: '../bower_components/require-handlebars-plugin/hbs/handlebars',
 
     /* require handlebars plugin - Alex Sexton */
     i18nprecompile: '../bower_components/require-handlebars-plugin/hbs/i18nprecompile',
@@ -55,7 +56,12 @@ require.config({
   },
 
   hbs: {
-    disableI18n: true
+    helpers: true,
+    helperDirectory: '/scripts/template-helpers/',
+    helperPathCallback: function( name ) {
+      return '/scripts/template-helpers/' + name + '.js';
+    },
+    compileOptions: {}
   },
 
   // ask Require.js to load these files (all our tests)
