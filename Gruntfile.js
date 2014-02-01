@@ -147,9 +147,6 @@ module.exports = function (grunt) {
                         'backbone.wreqr': '../bower_components/backbone.wreqr/lib/amd/backbone.wreqr',
                         'backbone.babysitter': '../bower_components/backbone.babysitter/lib/amd/backbone.babysitter',
 
-                        /* alias the bootstrap js lib */
-                        bootstrap: 'vendor/bootstrap',
-
                         /* Alias text.js for template loading and shortcut the templates dir to tmpl */
                         text: '../bower_components/requirejs-text/text',
                         tmpl: "../templates",

@@ -17,10 +17,6 @@ require.config({
       ],
       exports: 'Backbone'
     },
-    bootstrap: {
-      deps: ['jquery'],
-      exports: 'jquery'
-    },
     'backbone.relational': {
       deps: ['backbone'],
       exports: 'Backbone.RelationalModel'
