@@ -15,6 +15,7 @@
         "invoiceDate": "2013-12-30",
         "invoiceNumber": "20130101",
         "totalAmount": 37.50,
+        "currency": "EUR",
         "tax": 19,
         "fiscalPeriodId": 2
       }
