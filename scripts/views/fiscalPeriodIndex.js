@@ -9,9 +9,24 @@ define([
     var FiscalPeriodPositionItemView = Marionette.ItemView.extend({
       tagName: 'tr',
       template: FiscalItemViewTemplate,
+
       modelEvents: {
         'change': 'render',
-      }
+      },
+
+      ui: {
+        'delete': '[data-method="delete"]'
+      },
+
+      events: {
+        'click @ui.delete': 'deletePosition'
+      },
+
+      deletePosition: function(evt) {
+        evt.preventDefault();
+
+        this.model.destroy();
+      },
     });
 
     return Marionette.CompositeView.extend({
@@ -21,7 +36,8 @@ define([
         itemView: FiscalPeriodPositionItemView,
 
         collectionEvents: {
-          'change': 'render'
+          'change': 'render',
+          'destroy': 'render'
         },
 
         serializeData: function() {
