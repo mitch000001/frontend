@@ -9,11 +9,13 @@ define([
         template: FiscalPeriodPositionViewTemplate,
 
         ui: {
-          'form': '.fiscal-item'
+          'form': '.fiscal-item',
+          'cancel': 'a[data-cancel]'
         },
 
         events: {
-          'submit @ui.form': 'updateModel'
+          'submit @ui.form': 'updateModel',
+          'click @ui.cancel': 'cancelModel'
         },
 
         setModelAttribute: function(attribute) {
@@ -28,6 +30,16 @@ define([
 
           this.model.save();
           this.trigger('fiscalItem:put')
+        },
+
+        cancelModel: function(evt) {
+          evt.preventDefault();
+
+          if (this.model.isNew()) {
+            this.model.destroy();
+          }
+
+          window.history.back();
         },
 
         templateHelpers: {

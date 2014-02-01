@@ -48,6 +48,7 @@ define([
         loadFiscalYear(year).done(function(fiscalYear) {
           var view = new PositionForm({
             model: new Position({
+              fiscalPeriod: fiscalYear,
               fiscalPeriodId: fiscalYear.get('id')
             })
           });
