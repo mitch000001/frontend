@@ -25,9 +25,13 @@
     "define",
 
     // jasmine
+    "jasmine",
     "describe",
     "beforeEach",
     "it",
-    "expect"
+    "expect",
+
+    // jasmine-ajax
+    "mostRecentAjaxRequest"
   ]
 }

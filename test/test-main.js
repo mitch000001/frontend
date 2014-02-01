@@ -49,6 +49,9 @@ require.config({
     i18nprecompile: '../bower_components/require-handlebars-plugin/hbs/i18nprecompile',
     json2: '../bower_components/require-handlebars-plugin/hbs/json2',
     hbs: '../bower_components/require-handlebars-plugin/hbs',
+
+    /* test only libraries */
+    'jasmine.ajax': '../bower_components/jasmine-ajax/lib/mock-ajax',
   },
 
   hbs: {
