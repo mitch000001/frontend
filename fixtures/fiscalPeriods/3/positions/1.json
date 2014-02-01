@@ -8,5 +8,6 @@
   "totalAmount": 733.50,
   "currency": "EUR",
   "tax": 19,
-  "fiscalPeriodId": 3
+  "fiscalPeriodId": 3,
+  "description": "Kunde A Januar 2014"
 }

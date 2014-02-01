@@ -17,7 +17,8 @@
         "totalAmount": 37.50,
         "currency": "EUR",
         "tax": 19,
-        "fiscalPeriodId": 2
+        "fiscalPeriodId": 2,
+        "description": "Abrechung Dezember 2013"
       }
     ]
   },
