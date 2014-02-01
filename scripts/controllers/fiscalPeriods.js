@@ -10,31 +10,30 @@ define([
   function( App, Backbone, $, Position, FiscalPeriodIndexView, PositionForm ) {
     'use strict';
 
-    /* load a single fiscalYear from the app fiscalPeriods */
-    var loadFiscalYear = function ( year ) {
-      var promise = new $.Deferred();
-
-      App.fiscalPeriods.fetch().done(function() {
-        var fiscalYear = App.fiscalPeriods.findWhere({
-            year: parseInt( year, 10 )
-          });
-        fiscalYear.fetchRelated( 'positions' );
-        promise.resolve(fiscalYear);
-      });
-
-      App.fiscalPeriods.fetch().fail(function() {
-        promise.reject();
-      })
-      return promise;
-    };
-
     return function() {
+      this.loadFiscalYear = function( year ) {
+        var promise = new $.Deferred();
+
+        App.fiscalPeriods.fetch().done(function() {
+          var fiscalYear = App.fiscalPeriods.findWhere({
+              year: parseInt( year, 10 )
+            });
+          fiscalYear.fetchRelated( 'positions' );
+          promise.resolve(fiscalYear);
+        });
+
+        App.fiscalPeriods.fetch().fail(function() {
+          promise.reject();
+        })
+        return promise;
+      };
+
       this.dashboard = function() {
         App.content.close();
       };
 
       this.yearOverview = function( year ) {
-        loadFiscalYear(year).done(function( fiscalYear ) {
+        this.loadFiscalYear(year).done(function( fiscalYear ) {
           var fiscalYearPositions = fiscalYear.get('positions');
 
           var view = new FiscalPeriodIndexView({
@@ -47,7 +46,7 @@ define([
       };
 
       this.showYearPosition = function( year, id ) {
-        loadFiscalYear(year).done(function( fiscalYear ) {
+        this.loadFiscalYear(year).done(function( fiscalYear ) {
           var position = fiscalYear.get('positions').get(parseInt(id, 10));
           var view = new PositionForm({
             model: position
@@ -61,7 +60,7 @@ define([
       };
 
       this.newYearPosition = function( year ) {
-        loadFiscalYear(year).done(function(fiscalYear) {
+        this.loadFiscalYear(year).done(function(fiscalYear) {
           var view = new PositionForm({
             model: new Position({
               fiscalPeriod: fiscalYear,
