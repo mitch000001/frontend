@@ -1,8 +1,9 @@
 define([
     'backbone.marionette',
-    'hbs!tmpl/fiscalItems/form'
+    'hbs!tmpl/fiscalItems/form',
+    'base64'
   ],
-  function( Marionette, FiscalPeriodPositionViewTemplate ) {
+  function( Marionette, FiscalPeriodPositionViewTemplate, Base64 ) {
     'use strict';
 
     return Marionette.ItemView.extend({
@@ -10,12 +11,27 @@ define([
 
         ui: {
           'form': '.fiscal-item',
-          'cancel': 'a[data-cancel]'
+          'cancel': 'a[data-cancel]',
+          'attachment': ':input[type=file]'
         },
 
         events: {
           'submit @ui.form': 'updateModel',
-          'click @ui.cancel': 'cancelModel'
+          'click @ui.cancel': 'cancelModel',
+          'change @ui.attachment': 'serializeAttachment'
+        },
+
+        serializeAttachment: function(evt) {
+          var file = evt.currentTarget.files[0];
+          var reader = new FileReader();
+
+          reader.onload = function(e) {
+            var encodedAsBase64 = Base64.encode( reader.result );
+            this.model.set( 'encodedAttachment', encodedAsBase64, { silent: true } );
+            this.model.set( 'encodedFileExtension', file.name.split('.').pop(), { silent: true } );
+          }.bind(this);
+
+          reader.readAsBinaryString(file);
         },
 
         attributeTransformations: {

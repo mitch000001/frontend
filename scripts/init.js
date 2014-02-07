@@ -14,6 +14,9 @@ require.config({
     'backbone.relational': {
       deps: ['backbone'],
       exports: 'Backbone.RelationalModel'
+    },
+    base64: {
+      exports: 'Base64'
     }
   },
 
@@ -28,6 +31,9 @@ require.config({
     'backbone.babysitter': '../bower_components/backbone.babysitter/lib/amd/backbone.babysitter',
     'backbone.relational': '../bower_components/backbone-relational/backbone-relational',
     'backbone.cacheit': 'vendor/backbone.cacheit',
+
+    /* base64 encoding, used for file uploads */
+    'base64': '../bower_components/js-base64/base64',
 
     /* Alias text.js for template loading and shortcut the templates dir to tmpl */
     text: '../bower_components/requirejs-text/text',
