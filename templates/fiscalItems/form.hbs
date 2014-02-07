@@ -74,10 +74,14 @@
       <hr>
       <div class="row">
         <div class="large-6 columns">
+
           <label>Anhang</label>
           <input type="file" id="attachment" name="attachment">
         </div>
-        <div class="large-6 columns  ">
+        <div class="large-6 columns">
+          {{#if attachmentPath}}
+            <a href="{{ attachmentPath }}">Download</a>
+          {{/if}}
         </div>
       </div>
     </div>
