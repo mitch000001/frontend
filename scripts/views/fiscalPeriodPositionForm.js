@@ -41,8 +41,9 @@ define([
           var data = this.ui.form.serializeArray();
           data.forEach(this.setModelAttribute, this);
 
-          this.model.save();
-          this.trigger('fiscalItem:put')
+          this.model.save().done(function() {
+            this.trigger('fiscalItem:put')
+          }.bind(this));
         },
 
         cancelModel: function(evt) {

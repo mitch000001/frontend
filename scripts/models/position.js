@@ -9,9 +9,9 @@ define([
     return Relational.extend({
       url: function() {
         if (this.isNew()) {
-          return Settings.apiUrl('/fiscalPeriods/' + this.get('fiscalPeriod').get('id') + '/positions' );
+          return Settings.apiUrl('/fiscalPeriods/' + this.get('fiscalPeriod').get('year') + '/positions' );
         }
-        return Settings.apiUrl('/fiscalPeriods/' + this.get('fiscalPeriod').get('id') + '/positions/' + this.get('id') );
+        return Settings.apiUrl('/fiscalPeriods/' + this.get('fiscalPeriod').get('year') + '/positions/' + this.get('id') );
       },
 
       defaults: {
@@ -27,6 +27,14 @@ define([
 
       totalAmount: function() {
         return parseFloat( this.get('totalAmount') );
+      },
+
+      toJSON: function() {
+        var data = Relational.prototype.toJSON.apply(this);
+        if ( data != null ) {
+          delete data.fiscalPeriod;
+        }
+        return data;
       }
     });
   });

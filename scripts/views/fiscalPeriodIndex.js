@@ -27,6 +27,15 @@ define([
 
         this.model.destroy();
       },
+
+      serializeData: function() {
+        var data = Marionette.ItemView.prototype.serializeData.call(this);
+
+        if (this.model != null) {
+          data.fiscalPeriod = this.model.get('fiscalPeriod').toJSON();
+        }
+        return data;
+      }
     });
 
     return Marionette.CompositeView.extend({
