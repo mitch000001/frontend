@@ -19,12 +19,22 @@ define([
         },
 
         attributeTransformations: {
-          'totalAmount': parseFloat,
+          'totalAmountCents': function(amount) { return Math.round(parseFloat(amount) * 100); },
           'tax': function(taxValue) { return parseInt(taxValue || 0, 10); }
         },
 
         modelEvents: {
           'change': 'render'
+        },
+
+        serializeData: function() {
+          var data = Marionette.ItemView.prototype.serializeData.call(this);
+
+          if (this.model != null) {
+            data.totalAmount = data.totalAmountCents / 100.0;
+          }
+
+          return data;
         },
 
         setModelAttribute: function(attribute) {

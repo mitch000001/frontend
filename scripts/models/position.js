@@ -20,13 +20,13 @@ define([
         type: 'expense',
         invoiceDate: '2014-01-01',
         invoiceNumber: '20140101',
-        totalAmount: 42.55,
+        totalAmountCents: 0,
         tax: 7,
         fiscalPeriodId: null
       },
 
       totalAmount: function() {
-        return parseFloat( this.get('totalAmount') );
+        return parseFloat( this.get('totalAmountCents') ) / 100.0;
       },
 
       toJSON: function() {

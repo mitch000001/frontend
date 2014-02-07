@@ -7,7 +7,7 @@ define(['hbs/handlebars'], function ( Handlebars ) {
     }
 
     options.currency = options.currency || ' €';
-    return context.toFixed(2) + options.currency;
+    return (context || 0).toFixed(2) + options.currency;
   }
   Handlebars.registerHelper( 'currency', currency );
   return currency;

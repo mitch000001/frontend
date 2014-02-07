@@ -33,6 +33,7 @@ define([
 
         if (this.model != null) {
           data.fiscalPeriod = this.model.get('fiscalPeriod').toJSON();
+          data.totalAmount = data.totalAmountCents / 100.0;
         }
         return data;
       }
