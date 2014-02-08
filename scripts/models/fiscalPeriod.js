@@ -1,13 +1,14 @@
 define([
-    'backbone.relational',
+    'backbone',
     'collections/positions',
-    'models/position'
+    'models/position',
+    'backbone.relational'
   ],
 
-  function ( Relational, PositionCollection, Position ) {
+  function ( Backbone, PositionCollection, Position ) {
     'use strict';
 
-    return Relational.extend({
+    return Backbone.RelationalModel.extend({
       relations: [{
         type: Backbone.HasMany,
         key: 'positions',

@@ -14,7 +14,7 @@
         "type": "income",
         "invoiceDate": "2013-12-30",
         "invoiceNumber": "20130101",
-        "totalAmount": 37.50,
+        "totalAmountCents": 3750,
         "currency": "EUR",
         "tax": 19,
         "fiscalPeriodId": 2,
@@ -25,6 +25,31 @@
   {
     "id": 3,
     "year": 2014,
-    "positions": [1, 2]
+    "positions": [{
+      "id": 1,
+      "category": "Freelance",
+      "account": "5900",
+      "type": "income",
+      "invoiceDate": "2014-01-31",
+      "invoiceNumber": "20140101",
+      "totalAmountCents": 73350,
+      "currency": "EUR",
+      "tax": 19,
+      "fiscalPeriodId": 3,
+      "description": "Kunde A Januar 2014"
+    }
+    , {
+      "id": 2,
+      "category": "Freelance",
+      "account": "5900",
+      "type": "income",
+      "invoiceDate": "2014-02-28",
+      "invoiceNumber": "20140101",
+      "totalAmountCents": 12570,
+      "currency": "EUR",
+      "tax": 19,
+      "fiscalPeriodId": 3,
+      "description": "Kunde A Februar 2014"
+    } ]
   }
 ]

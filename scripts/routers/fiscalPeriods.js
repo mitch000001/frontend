@@ -1,13 +1,14 @@
 define([
     'application',
-    'backbone.marionette',
+    'backbone',
     'controllers/fiscalPeriods',
+    'backbone.marionette'
   ],
 
-  function( App, Marionette, FiscalPeriodController) {
+  function( App, Backbone, FiscalPeriodController) {
     'use strict';
 
-    return Marionette.AppRouter.extend({
+    return Backbone.Marionette.AppRouter.extend({
 
       controller: new FiscalPeriodController(),
 

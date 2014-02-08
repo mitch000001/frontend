@@ -1,19 +1,23 @@
 require.config({
 
   /* starting point for application */
-  deps: ['backbone.marionette', 'backbone.relational', 'backbone.cacheit', 'main'],
+  deps: ['backbone', 'backbone.relational', 'backbone.marionette', 'backbone.cacheit', 'main'],
 
   shim: {
+    underscore: {
+      exports: '_'
+    },
     backbone: {
-      deps: [
-        'underscore',
-        'jquery',
-      ],
+      deps: ['underscore', 'jquery'],
+      exports: 'Backbone'
+    },
+    'backbone.marionette': {
+      deps: ['backbone'],
       exports: 'Backbone'
     },
     'backbone.relational': {
       deps: ['backbone'],
-      exports: 'Backbone.RelationalModel'
+      exports: 'Backbone'
     },
     base64: {
       exports: 'Base64'
@@ -29,7 +33,7 @@ require.config({
     'backbone.marionette': '../bower_components/backbone.marionette/lib/core/amd/backbone.marionette',
     'backbone.wreqr': '../bower_components/backbone.wreqr/lib/amd/backbone.wreqr',
     'backbone.babysitter': '../bower_components/backbone.babysitter/lib/amd/backbone.babysitter',
-    'backbone.relational': '../bower_components/backbone-relational/backbone-relational',
+    'backbone.relational': 'vendor/backbone.relational',
     'backbone.cacheit': 'vendor/backbone.cacheit',
 
     /* base64 encoding, used for file uploads */

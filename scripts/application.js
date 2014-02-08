@@ -2,7 +2,8 @@ define([
     'backbone',
     'communicator',
     'collections/fiscalPeriods',
-    'views/fiscalPeriodNavigation'
+    'views/fiscalPeriodNavigation',
+    'backbone.marionette'
   ],
 
   function( Backbone, Communicator, FiscalPeriods, FiscalPeriodNavigation ) {

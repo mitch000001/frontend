@@ -1,12 +1,13 @@
 define([
-    'backbone.marionette',
+    'backbone',
     'hbs!tmpl/fiscalPeriods/index',
-    'hbs!tmpl/fiscalItems/show'
+    'hbs!tmpl/fiscalItems/show',
+    'backbone.marionette'
   ],
-  function( Marionette, FiscalPeriodOverviewViewTemplate, FiscalItemViewTemplate ) {
+  function( Backbone, FiscalPeriodOverviewViewTemplate, FiscalItemViewTemplate ) {
     'use strict';
 
-    var FiscalPeriodPositionItemView = Marionette.ItemView.extend({
+    var FiscalPeriodPositionItemView = Backbone.Marionette.ItemView.extend({
       tagName: 'tr',
       template: FiscalItemViewTemplate,
 
@@ -29,7 +30,7 @@ define([
       },
 
       serializeData: function() {
-        var data = Marionette.ItemView.prototype.serializeData.call(this);
+        var data = Backbone.Marionette.ItemView.prototype.serializeData.call(this);
 
         if (this.model != null) {
           data.fiscalPeriod = this.model.get('fiscalPeriod').toJSON();
@@ -39,7 +40,7 @@ define([
       }
     });
 
-    return Marionette.CompositeView.extend({
+    return Backbone.Marionette.CompositeView.extend({
         template: FiscalPeriodOverviewViewTemplate,
 
         itemViewContainer: 'table.items > tbody',
@@ -51,7 +52,7 @@ define([
         },
 
         serializeData: function() {
-          var data = Marionette.CompositeView.prototype.serializeData.call(this);
+          var data = Backbone.Marionette.CompositeView.prototype.serializeData.call(this);
 
           data.total = 0.0;
           this.collection.forEach(function(position) {

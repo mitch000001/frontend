@@ -4,7 +4,8 @@ define([
     'jquery',
     'models/position',
     'views/fiscalPeriodIndex',
-    'views/fiscalPeriodPositionForm'
+    'views/fiscalPeriodPositionForm',
+    'backbone.marionette'
   ],
 
   function( App, Backbone, $, Position, FiscalPeriodIndexView, PositionForm ) {

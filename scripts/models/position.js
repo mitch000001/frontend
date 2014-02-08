@@ -1,12 +1,13 @@
 define([
-    'backbone.relational',
-    'settings'
+    'backbone',
+    'settings',
+    'backbone.relational'
   ],
 
-  function ( Relational, Settings ) {
+  function ( Backbone, Settings ) {
     'use strict';
 
-    return Relational.extend({
+    return Backbone.RelationalModel.extend({
       url: function() {
         if (this.isNew()) {
           return Settings.apiUrl('/fiscalPeriods/' + this.get('fiscalPeriod').get('year') + '/positions' );
@@ -30,7 +31,7 @@ define([
       },
 
       toJSON: function() {
-        var data = Relational.prototype.toJSON.apply(this);
+        var data = Backbone.RelationalModel.prototype.toJSON.apply(this);
         if ( data != null ) {
           delete data.fiscalPeriod;
         }

@@ -1,5 +1,5 @@
 define([
-    'backbone',
+    'backbone.marionette',
     'communicator'
   ],
   function( Backbone, Communicator ) {

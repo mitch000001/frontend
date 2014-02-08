@@ -1,15 +1,16 @@
 define([
-    'backbone.marionette',
+    'backbone',
     'hbs!tmpl/navigation/fiscalYear',
+    'backbone.marionette'
   ],
-  function(Marionette, ItemViewTemplate) {
+  function(Backbone, ItemViewTemplate) {
     'use strict';
 
-    var FiscalPeriodMenuItemView = Marionette.ItemView.extend({
+    var FiscalPeriodMenuItemView = Backbone.Marionette.ItemView.extend({
       template: ItemViewTemplate
     });
 
-    return Marionette.CollectionView.extend({
+    return Backbone.Marionette.CollectionView.extend({
         itemView: FiscalPeriodMenuItemView
       });
   });

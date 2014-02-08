@@ -1,12 +1,13 @@
 define([
-    'backbone.marionette',
+    'backbone',
     'hbs!tmpl/fiscalItems/form',
-    'base64'
+    'base64',
+    'backbone.marionette'
   ],
-  function( Marionette, FiscalPeriodPositionViewTemplate, Base64 ) {
+  function( Backbone, FiscalPeriodPositionViewTemplate, Base64 ) {
     'use strict';
 
-    return Marionette.ItemView.extend({
+    return Backbone.Marionette.ItemView.extend({
         template: FiscalPeriodPositionViewTemplate,
 
         ui: {
@@ -44,7 +45,7 @@ define([
         },
 
         serializeData: function() {
-          var data = Marionette.ItemView.prototype.serializeData.call(this);
+          var data = Backbone.Marionette.ItemView.prototype.serializeData.call(this);
 
           if (this.model != null) {
             data.totalAmount = data.totalAmountCents / 100.0;
