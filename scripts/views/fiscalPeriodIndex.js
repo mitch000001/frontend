@@ -33,7 +33,10 @@ define([
         var data = Backbone.Marionette.ItemView.prototype.serializeData.call(this);
 
         if (this.model != null) {
-          data.fiscalPeriod = this.model.get('fiscalPeriod').toJSON();
+          if (this.model.get('fiscalPeriod') != null) {
+            data.fiscalPeriod = this.model.get('fiscalPeriod').toJSON();
+          }
+
           data.totalAmount = data.totalAmountCents / 100.0;
         }
         return data;
