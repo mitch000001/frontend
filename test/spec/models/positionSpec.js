@@ -1,4 +1,4 @@
-define(['models/position'], function( Position ) {
+define(['models/position', 'models/fiscalPeriod'], function( Position, FiscalPeriod ) {
   'use strict';
 
   var position = null;
@@ -11,6 +11,22 @@ define(['models/position'], function( Position ) {
 
     it('is defined', function() {
       expect( Position ).toBeDefined();
+    });
+
+    describe('#toJSON', function() {
+
+      var fiscalPeriod = null;
+      beforeEach(function() {
+        fiscalPeriod = new FiscalPeriod();
+        position.set('fiscalPeriod', fiscalPeriod);
+      });
+
+      it('does not contain the fiscalPeriod data', function() {
+        var data = position.toJSON();
+        expect(data.fiscalPeriod).not.toBeDefined();
+        expect(data.type).toBeDefined();
+      });
+
     });
 
     describe('#totalAmount', function() {
