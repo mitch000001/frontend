@@ -54,10 +54,11 @@ define([
         serializeData: function() {
           var data = Backbone.Marionette.CompositeView.prototype.serializeData.call(this);
 
-          data.total = 0.0;
+          var total = 0.0;
           this.collection.forEach(function(position) {
-            data.total += position.totalAmount();
+            total += position.get('totalAmountCents');
           });
+          data.totalAmount = total / 100.0;
 
           return data;
         }
