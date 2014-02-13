@@ -1,16 +1,28 @@
 define([
     'backbone',
+    'hbs!tmpl/navigation/fiscalYearContainer',
     'hbs!tmpl/navigation/fiscalYear',
     'backbone.marionette'
   ],
-  function(Backbone, ItemViewTemplate) {
+  function( Backbone, FiscalPeriodNavigationTemplate, ItemViewTemplate ) {
     'use strict';
 
     var FiscalPeriodMenuItemView = Backbone.Marionette.ItemView.extend({
-      template: ItemViewTemplate
+      template: ItemViewTemplate,
+      tagName: 'li'
     });
 
-    return Backbone.Marionette.CollectionView.extend({
-        itemView: FiscalPeriodMenuItemView
+    return Backbone.Marionette.CompositeView.extend({
+        template: FiscalPeriodNavigationTemplate,
+
+        itemViewContainer: 'ul.dropdown',
+        itemView: FiscalPeriodMenuItemView,
+
+        tagName: 'ul',
+        className: 'left',
+
+        onShow: function() {
+          Foundation.libs.topbar.init();
+        }
       });
   });

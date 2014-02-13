@@ -21,7 +21,8 @@ define([
       App.fiscalPeriods = fiscalPeriods;
       App.fiscalPeriods.fetch();
 
-      App.navigation.show(new FiscalPeriodNavigation({ collection: fiscalPeriods }));
+      var fiscalNavigation = new FiscalPeriodNavigation({ collection: fiscalPeriods });
+      App.navigation.show(fiscalNavigation);
 
       Communicator.mediator.trigger('APP:START');
     });
