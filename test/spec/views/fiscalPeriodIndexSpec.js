@@ -29,8 +29,13 @@ define([
 
       describe('template', function() {
 
+        var $el = null;
+
+        beforeEach(function() {
+          $el = view.render().$el;
+        })
+
         it('renders the totalAmount', function() {
-          var $el = view.render().$el;
           expect($el.html()).toContain(Currency(0));
 
           positions.push(new Backbone.Model({ totalAmountCents: 101 }));
@@ -40,12 +45,18 @@ define([
 
         it('contains a delete link for every position', function() {
           positions.push(new Backbone.Model({ totalAmountCents: 101 }));
-          var $el = view.render().$el;
-
           expect($el.find('[data-method=delete]').length).toBe( 1 );
 
           positions.push(new Backbone.Model({ totalAmountCents: 101 }));
           expect($el.find('[data-method=delete]').length).toBe( 2 );
+        });
+
+        it('contains an edit link for every position', function() {
+          positions.push(new Backbone.Model({ totalAmountCents: 101 }));
+          expect($el.find('[data-method=show]').length).toBe( 1 );
+
+          positions.push(new Backbone.Model({ totalAmountCents: 101 }));
+          expect($el.find('[data-method=show]').length).toBe( 2 );
         });
 
       });
