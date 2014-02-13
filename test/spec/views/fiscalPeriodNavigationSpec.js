@@ -18,7 +18,12 @@ define([
       });
 
       it('displays all fiscalPeriods', function() {
+        expect($el.find('[data-method=show]').length).toBe( 0 );
 
+        fiscalPeriods.push(new Backbone.Model({ year: 2013 }));
+
+        expect($el.find('[data-method=show]').length).toBe( 1 );
+        expect($el.html()).toContain( 2013 );
       });
 
     });

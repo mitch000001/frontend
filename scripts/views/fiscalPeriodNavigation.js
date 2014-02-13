@@ -1,7 +1,7 @@
 define([
     'backbone',
     'hbs!tmpl/navigation/fiscalYearContainer',
-    'hbs!tmpl/navigation/fiscalYear',
+    'hbs!tmpl/navigation/fiscalYearItem',
     'backbone.marionette'
   ],
   function( Backbone, FiscalPeriodNavigationTemplate, ItemViewTemplate ) {
