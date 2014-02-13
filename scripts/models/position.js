@@ -17,7 +17,7 @@ define([
 
       defaults: {
         category: 'Some Category',
-        account: "5900",
+        account: '5900',
         type: 'expense',
         invoiceDate: '2014-01-01',
         invoiceNumber: '20140101',

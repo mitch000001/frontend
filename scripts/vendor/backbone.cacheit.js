@@ -3,7 +3,7 @@
 * Copyright 2012, Tim Branyen (@tbranyen)
 * backbone.cacheit.js may be freely distributed under the MIT license.
 */
-require([
+define([
     'backbone',
     'jquery',
     'underscore'

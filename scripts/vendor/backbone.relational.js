@@ -45,7 +45,7 @@
       monkey = zoo.get( 'animals' ).first(),
       sameZoo = lion.get( 'livesIn' );
  */
-require([
+define([
     'backbone',
     'jquery',
     'underscore'

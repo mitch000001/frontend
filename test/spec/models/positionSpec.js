@@ -1,4 +1,4 @@
-define( ['models/position'], function( Position ) {
+define(['models/position'], function( Position ) {
   'use strict';
 
   var position = null;
@@ -16,7 +16,7 @@ define( ['models/position'], function( Position ) {
     describe('#totalAmount', function() {
 
       it('returns the totalAmount attribute as float', function() {
-        position.set('totalAmount', '2.2');
+        position.set('totalAmountCents', 220);
         expect( position.totalAmount() ).toEqual( 2.2 );
       });
 
