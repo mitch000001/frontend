@@ -2,9 +2,11 @@ define([
     'backbone',
     'hbs!tmpl/navigation/fiscalYearContainer',
     'hbs!tmpl/navigation/fiscalYearItem',
+    'jquery',
+    'foundation.topbar',
     'backbone.marionette'
   ],
-  function( Backbone, FiscalPeriodNavigationTemplate, ItemViewTemplate ) {
+  function( Backbone, FiscalPeriodNavigationTemplate, ItemViewTemplate, jQuery, Foundation ) {
     'use strict';
 
     var FiscalPeriodMenuItemView = Backbone.Marionette.ItemView.extend({
@@ -22,7 +24,7 @@ define([
         className: 'left',
 
         onShow: function() {
-          Foundation.libs.topbar.init();
+          jQuery(document).foundation();
         }
       });
   });

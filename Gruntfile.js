@@ -132,10 +132,10 @@ module.exports = function (grunt) {
 
         uglify: {
             options: {
-                // beautify: true,
-                // mangle: {
-                //     except: ['jQuery', 'Backbone']
-                // }
+                beautify: true,
+                mangle: {
+                    except: ['jQuery', 'Backbone']
+                }
             },
         },
 

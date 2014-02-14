@@ -21,6 +21,14 @@ require.config({
     },
     base64: {
       exports: 'Base64'
+    },
+    foundation: {
+      deps: ['jquery'],
+      exports: 'Foundation'
+    },
+    'foundation.topbar': {
+      deps: ['foundation'],
+      exports: 'Foundation'
     }
   },
 
@@ -37,7 +45,14 @@ require.config({
     'backbone.cacheit': 'vendor/backbone.cacheit',
 
     /* base64 encoding, used for file uploads */
-    'base64': '../bower_components/js-base64/base64',
+    base64: '../bower_components/js-base64/base64',
+
+    /* i18n */
+    i18next: '../bower_components/i18next/release/i18next.amd-1.7.1',
+
+    /* foundation */
+    foundation: '../bower_components/foundation/js/foundation/foundation',
+    'foundation.topbar': '../bower_components/foundation/js/foundation/foundation.topbar',
 
     /* Alias text.js for template loading and shortcut the templates dir to tmpl */
     text: '../bower_components/requirejs-text/text',
