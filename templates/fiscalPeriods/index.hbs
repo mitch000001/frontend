@@ -4,20 +4,18 @@
 
     <ul class="button-group small">
       <li>
-        <a href="/#/years/{{ year }}/positions/new" class="tiny button">
-          Neue Position anlegen
-        </a>
+        <a href="/#/years/{{ year }}/positions/new" class="tiny button">{{t "positions.actions.new" }}</a>
       </li>
     </ul>
 
     <table class="{{ year }} items large-12">
       <thead>
         <tr>
-          <th width="100">Datum</th>
-          <th>Bezeichnung</th>
-          <th width="175">Kategorie</th>
-          <th width="125">Konto</th>
-          <th width="100">Summe</th>
+          <th width="100">{{t "positions.listing.invoiceDate" }}</th>
+          <th>{{t "positions.listing.description" }}</th>
+          <th width="175">{{t "positions.listing.category" }}</th>
+          <th width="125">{{t "positions.listing.account" }}</th>
+          <th width="100">{{t "positions.listing.totalAmount" }}</th>
           <th width="50"></th>
         </tr>
       </thead>

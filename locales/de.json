@@ -1,5 +1,20 @@
 {
   "fiscalPeriods": {
     "headline": "Positionen im Jahr %{year}"
+  },
+  "positions": {
+    "actions": {
+      "new": "Neue Position anlegen"
+    },
+    "listing": {
+      "invoiceDate": "Datum",
+      "description": "Beschreibung",
+      "category":    "Kategorie",
+      "account":     "Konto",
+      "totalAmount": "Betrag"
+    },
+    "attributes": {
+      "invoiceDate": "Rechnungsdatum"
+    }
   }
 }
