@@ -63,7 +63,8 @@ module.exports = function (grunt) {
                         return [
                             lrSnippet,
                             mountFolder(connect, '.tmp'),
-                            mountFolder(connect, yeomanConfig.app)
+                            mountFolder(connect, yeomanConfig.app),
+                            mountFolder(connect, 'bower_components/foundation-icon-fonts')
                         ];
                     }
                 }
@@ -83,6 +84,7 @@ module.exports = function (grunt) {
           options: {
             includePaths: [
                 'bower_components/foundation/scss',
+                'bower_components/foundation-icon-fonts',
                 'bower_components'
             ]
           },
@@ -230,8 +232,27 @@ module.exports = function (grunt) {
                         '*.{ico,txt}',
                         '.htaccess',
                         'images/{,*/}*.{webp,gif}',
-                        'styles/fonts/{,*/}*.*',
-                        'bower_components/sass-bootstrap/fonts/*.*'
+                        'styles/fonts/{,*/}*.*'
+                    ]
+                }, {
+                    expand: true,
+                    dot: true,
+                    cwd: '',
+                    dest: '<%= yeoman.dist %>',
+                    src: ['fixtures/**']
+                }, {
+                    expand: true,
+                    dot: true,
+                    cwd: '',
+                    dest: '<%= yeoman.dist %>',
+                    src: ['locales/*.json']
+                }, {
+                    expand: true,
+                    dot: true,
+                    cwd: 'bower_components/foundation-icon-fonts/',
+                    dest: '<%= yeoman.dist %>',
+                    src: [
+                        '*.{ttf,eot,woff,svg}'
                     ]
                 }]
             }
