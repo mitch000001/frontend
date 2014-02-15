@@ -18,7 +18,8 @@
     "js-base64": "~2.1.2",
     "typeahead.js": "~0.10.1",
     "i18next": "~1.7.1",
-    "foundation-icon-fonts": "git@github.com:nicolai86/foundation-icon-fonts"
+    "foundation-icon-fonts": "git@github.com:nicolai86/foundation-icon-fonts",
+    "selectize": "~0.8.5"
   },
   "devDependencies": {},
   "directory": "bower_components"

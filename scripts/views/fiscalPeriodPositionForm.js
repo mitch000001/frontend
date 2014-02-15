@@ -2,9 +2,10 @@ define([
     'backbone',
     'hbs!tmpl/fiscalItems/form',
     'base64',
+    'selectize',
     'backbone.marionette'
   ],
-  function( Backbone, FiscalPeriodPositionViewTemplate, Base64 ) {
+  function( Backbone, FiscalPeriodPositionViewTemplate, Base64, Selectize ) {
     'use strict';
 
     return Backbone.Marionette.ItemView.extend({
@@ -42,6 +43,21 @@ define([
 
         modelEvents: {
           'change': 'render'
+        },
+
+        onShow: function() {
+          $('[name=account]', this.$el).selectize({
+            delimiter: ',',
+            persist: false,
+            plugins: ['restore_on_backspace'],
+            maxItems: 1,
+            create: function(input) {
+              return {
+                value: input,
+                text: input
+              }
+            }
+          });
         },
 
         serializeData: function() {
