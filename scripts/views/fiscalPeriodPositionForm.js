@@ -50,19 +50,18 @@ define([
           var app = require('application');
           app.accounts.fetch().done(function() {
 
-            var numbers = new Bloodhound({
+            var datasource = new Bloodhound({
               datumTokenizer: function(d) {
-                return [d.code, d.label];
+                return _.map([d.code, d.label].concat(d.label.split(',')), $.trim);
               },
               queryTokenizer: Bloodhound.tokenizers.whitespace,
               local: app.accounts.toJSON()
             });
-            console.log(numbers);
-            numbers.initialize();
+            datasource.initialize();
 
-            $('[name=account]', this.$el).typeahead(null, {
+            $('[name=account]', this.$el).typeahead({highlight: true}, {
               displayKey: 'displayName',
-              source: numbers.ttAdapter(),
+              source: datasource.ttAdapter(),
               templates: {
                 suggestion: function(item) {
                   return item.displayName;

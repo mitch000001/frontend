@@ -20,15 +20,17 @@ define([
     App.addInitializer( function () {
       var fiscalPeriods = new FiscalPeriods();
       App.fiscalPeriods = fiscalPeriods;
-      App.fiscalPeriods.fetch();
+      var fiscalPeriodPromise = App.fiscalPeriods.fetch();
+
+      App.accounts = new Accounts();
+      var accountsPromise = App.accounts.fetch();
 
       var fiscalNavigation = new FiscalPeriodNavigation({ collection: fiscalPeriods });
       App.navigation.show(fiscalNavigation);
 
-      App.accounts = new Accounts();
-      App.accounts.fetch();
-
-      Communicator.mediator.trigger('APP:START');
+      $.when( fiscalPeriodPromise, accountsPromise ).done( function() {
+        Communicator.mediator.trigger('APP:START');
+      });
     });
 
     return App;
