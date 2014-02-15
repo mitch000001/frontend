@@ -2,10 +2,11 @@ define([
     'backbone',
     'hbs!tmpl/fiscalItems/form',
     'base64',
-    'selectize',
+    'bloodhound',
+    'typeahead',
     'backbone.marionette'
   ],
-  function( Backbone, FiscalPeriodPositionViewTemplate, Base64, Selectize ) {
+  function( Backbone, FiscalPeriodPositionViewTemplate, Base64, Bloodhound ) {
     'use strict';
 
     return Backbone.Marionette.ItemView.extend({
@@ -46,18 +47,30 @@ define([
         },
 
         onShow: function() {
-          $('[name=account]', this.$el).selectize({
-            delimiter: ',',
-            persist: false,
-            plugins: ['restore_on_backspace'],
-            maxItems: 1,
-            create: function(input) {
-              return {
-                value: input,
-                text: input
+          var app = require('application');
+          app.accounts.fetch().done(function() {
+
+            var numbers = new Bloodhound({
+              datumTokenizer: function(d) {
+                return [d.code, d.label];
+              },
+              queryTokenizer: Bloodhound.tokenizers.whitespace,
+              local: app.accounts.toJSON()
+            });
+            console.log(numbers);
+            numbers.initialize();
+
+            $('[name=account]', this.$el).typeahead(null, {
+              displayKey: 'displayName',
+              source: numbers.ttAdapter(),
+              templates: {
+                suggestion: function(item) {
+                  return item.displayName;
+                }
               }
-            }
+            });
           });
+
         },
 
         serializeData: function() {
