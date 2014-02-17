@@ -35,6 +35,12 @@ require.config({
     'foundation.topbar': {
       deps: ['foundation'],
       exports: 'Foundation'
+    },
+    typeahead: {
+      deps: ['jquery', 'bloodhound']
+    },
+    bloodhound: {
+      exports: 'Bloodhound'
     }
   },
 
@@ -59,6 +65,11 @@ require.config({
     /* foundation */
     foundation: '../bower_components/foundation/js/foundation/foundation',
     'foundation.topbar': '../bower_components/foundation/js/foundation/foundation.topbar',
+
+    /* auto completion */
+    typeahead: '../bower_components/typeahead.js/dist/typeahead.bundle',
+    bloodhound: '../bower_components/typeahead.js/dist/bloodhound',
+
 
     /* Alias text.js for template loading and shortcut the templates dir to tmpl */
     text: '../bower_components/requirejs-text/text',
