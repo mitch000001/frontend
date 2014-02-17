@@ -38,8 +38,8 @@ define([
         },
 
         attributeTransformations: {
-          'totalAmountCents': function(amount) { return Math.round(parseFloat(amount) * 100); },
-          'tax': function(taxValue) { return parseInt(taxValue || 0, 10); }
+          totalAmountCents: function(amount) { return Math.round(parseFloat(amount) * 100); },
+          tax: function(taxValue) { return parseInt(taxValue || 0, 10); }
         },
 
         modelEvents: {
@@ -49,7 +49,6 @@ define([
         onShow: function() {
           var app = require('application');
           app.accounts.fetch().done(function() {
-
             var datasource = new Bloodhound({
               datumTokenizer: function(d) {
                 return _.map([d.code, d.label].concat(d.label.split(',')), $.trim);
@@ -68,7 +67,7 @@ define([
                 }
               }
             });
-          });
+          }.bind(this));
 
         },
 

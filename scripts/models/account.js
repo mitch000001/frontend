@@ -7,9 +7,13 @@ define([
 
     return Backbone.Model.extend({
 
+      displayName: function() {
+        return this.get('label') + ' <' + this.get('code') + '>';
+      },
+
       toJSON: function() {
         var data = Backbone.Model.prototype.toJSON.apply(this);
-        data.displayName = data.label + ' <' + data.code + '>';
+        data.displayName = this.displayName();
         return data;
       }
 
