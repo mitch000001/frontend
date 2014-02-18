@@ -15,6 +15,8 @@ define([
 
         jasmine.Ajax.useMock();
         App.fiscalPeriods = new FiscalPeriods();
+        App.accounts = new Backbone.Collection;
+        App.accounts.fetch = function() { return []; };
       });
 
       describe('#loadFiscalYear', function() {

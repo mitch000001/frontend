@@ -26,7 +26,8 @@ define([
         App.fiscalPeriods.fetch().fail(function() {
           promise.reject();
         })
-        return promise;
+
+        return $.when(promise, App.accounts.fetch());
       };
 
       // TODO move this into a separate controller
@@ -50,6 +51,8 @@ define([
       this.showYearPosition = function( year, id ) {
         this.loadFiscalYear(year).done(function( fiscalYear ) {
           var position = fiscalYear.get('positions').get(parseInt(id, 10));
+          position.set( 'account', App.accounts.findWhere({ code: position.get('accountCode') }) );
+
           var view = new PositionForm({
             model: position
           });

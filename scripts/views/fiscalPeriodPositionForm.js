@@ -39,7 +39,8 @@ define([
 
         attributeTransformations: {
           totalAmountCents: function(amount) { return Math.round(parseFloat(amount) * 100); },
-          tax: function(taxValue) { return parseInt(taxValue || 0, 10); }
+          tax: function(taxValue) { return parseInt(taxValue || 0, 10); },
+          accountCode: function(accountDisplayName) { return accountDisplayName.split('<')[1].split('>')[0]; }
         },
 
         modelEvents: {
@@ -47,27 +48,26 @@ define([
         },
 
         onShow: function() {
-          var app = require('application');
-          app.accounts.fetch().done(function() {
-            var datasource = new Bloodhound({
-              datumTokenizer: function(d) {
-                return _.map([d.code, d.label].concat(d.label.split(',')), $.trim);
-              },
-              queryTokenizer: Bloodhound.tokenizers.whitespace,
-              local: app.accounts.toJSON()
-            });
-            datasource.initialize();
+          var App = require('application');
 
-            $('[name=account]', this.$el).typeahead({highlight: true}, {
-              displayKey: 'displayName',
-              source: datasource.ttAdapter(),
-              templates: {
-                suggestion: function(item) {
-                  return item.displayName;
-                }
+          var datasource = new Bloodhound({
+            datumTokenizer: function(d) {
+              return _.map([d.code, d.label].concat(d.label.split(',')), $.trim);
+            },
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            local: App.accounts.toJSON()
+          });
+          datasource.initialize();
+
+          $('[name=accountCode]', this.$el).typeahead({highlight: true}, {
+            displayKey: 'displayName',
+            source: datasource.ttAdapter(),
+            templates: {
+              suggestion: function(item) {
+                return item.displayName;
               }
-            });
-          }.bind(this));
+            }
+          });
 
         },
 
@@ -76,6 +76,9 @@ define([
 
           if (this.model != null) {
             data.totalAmount = data.totalAmountCents / 100.0;
+          }
+          if (this.model.get('account') != null) {
+            data.account = this.model.get('account').displayName();
           }
 
           return data;
