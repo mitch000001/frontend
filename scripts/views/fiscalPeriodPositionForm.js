@@ -19,7 +19,7 @@ define([
         },
 
         events: {
-          'submit @ui.form': 'updateModel',
+          'submit @ui.form': 'submitForm',
           'click @ui.cancel': 'cancelModel',
           'change @ui.attachment': 'serializeAttachment'
         },
@@ -92,15 +92,18 @@ define([
           this.model.set(attribute.name, value);
         },
 
-        updateModel: function(evt) {
-          evt.preventDefault();
-
-          var data = this.ui.form.serializeArray();
+        updateModel: function(data) {
           data.forEach(this.setModelAttribute, this);
 
           this.model.save().done(function() {
-            this.trigger('fiscalItem:put')
+            this.trigger('fiscalItem:put');
           }.bind(this));
+        },
+
+        submitForm: function(evt) {
+          evt.preventDefault();
+
+          this.updateModel( this.ui.form.serializeArray() );
         },
 
         cancelModel: function(evt) {

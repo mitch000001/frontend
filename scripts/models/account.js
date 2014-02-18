@@ -1,11 +1,15 @@
 define([
-    'backbone'
+    'backbone',
+    'settings'
   ],
 
-  function ( Backbone ) {
+  function ( Backbone, Settings ) {
     'use strict';
 
     return Backbone.Model.extend({
+      url: function() {
+        return Settings.apiUrl('/accounts' + (this.isNew() ? '' : '/' + this.get('id')));
+      },
 
       displayName: function() {
         return this.get('label') + ' <' + this.get('code') + '>';
