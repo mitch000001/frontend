@@ -1,8 +1,9 @@
 define([
     'backbone',
     'template-helpers/currency',
-    'views/fiscalPeriodIndex'
-  ], function( Backbone, Currency, FiscalPeriodIndexView ) {
+    'views/fiscalPeriodIndex',
+    'i18next'
+  ], function( Backbone, Currency, FiscalPeriodIndexView, I18n ) {
     'use strict';
 
     var positions = null;
@@ -33,7 +34,11 @@ define([
 
         beforeEach(function() {
           $el = view.render().$el;
-        })
+        });
+
+        it('displays table headers', function() {
+          expect($el.html()).toContain(I18n.t("positions.listing.invoiceDate"))
+        });
 
         it('renders the totalAmount', function() {
           expect($el.html()).toContain(Currency(0));

@@ -16,6 +16,7 @@ module.exports = function(config) {
         {pattern: 'templates/**/*.hbs', included: false},
         {pattern: 'bower_components/**/*.js', included: false},
         {pattern: 'test/spec/**/*.js', included: false},
+        {pattern: 'locales/**/*.json', included: false, served: true},
         'test/test-main.js'
     ],
 
