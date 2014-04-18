@@ -1,16 +1,15 @@
 {
   "fiscalPeriods": {
-    "headline": "Positionen im Jahr %{year}"
+    "headline": "Buchungen im Jahr %{year}"
   },
   "positions": {
     "actions": {
-      "new": "Neue Position anlegen"
+      "new": "Neue Buchung anlegen"
     },
     "listing": {
-      "invoiceDate": "Datum",
+      "invoiceDate": "Rechnungsdatum",
       "description": "Beschreibung",
-      "category":    "Kategorie",
-      "account":     "Konto",
+      "account":     "Buchungskonto",
       "totalAmount": "Betrag"
     },
     "attributes": {

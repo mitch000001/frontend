@@ -9,8 +9,8 @@
     "positions": [
       {
         "id": 4,
-        "category": "Freelance",
         "accountCode": "5900",
+        "bookedAccountCode": "1100",
         "type": "income",
         "invoiceDate": "2013-12-30",
         "invoiceNumber": "20130101",
@@ -27,8 +27,8 @@
     "year": 2014,
     "positions": [{
       "id": 1,
-      "category": "Freelance",
-      "accountCode": "5900",
+      "accountCode": "02",
+      "bookedAccountCode": "1100",
       "type": "income",
       "invoiceDate": "2014-01-31",
       "invoiceNumber": "20140101",
@@ -37,11 +37,10 @@
       "tax": 19,
       "fiscalPeriodId": 3,
       "description": "Kunde A Januar 2014"
-    }
-    , {
+    }, {
       "id": 2,
-      "category": "Freelance",
-      "accountCode": "5900",
+      "accountCode": "02",
+      "bookedAccountCode": "1100",
       "type": "income",
       "invoiceDate": "2014-02-28",
       "invoiceNumber": "20140101",
@@ -50,6 +49,18 @@
       "tax": 19,
       "fiscalPeriodId": 3,
       "description": "Kunde A Februar 2014"
+    },{
+      "id": 3,
+      "accountCode": "1100",
+      "bookedAccountCode": "5900",
+      "type": "expense",
+      "invoiceDate": "2014-01-31",
+      "invoiceNumber": "20140101",
+      "totalAmountCents": 4900,
+      "currency": "EUR",
+      "tax": 19,
+      "fiscalPeriodId": 3,
+      "description": "Hetzner 01.2014"
     } ]
   }
 ]

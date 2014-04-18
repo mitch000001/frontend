@@ -9,6 +9,12 @@
     "code": "02",
     "label": "Eigenleistungen"
   }, {
+    "code": "1000",
+    "label": "Kasse"
+  }, {
+    "code": "1100",
+    "label": "Bank"
+  }, {
     "code": "07",
     "label": "Fortbildung, Fachliteratur"
   }, {

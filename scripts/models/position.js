@@ -16,7 +16,6 @@ define([
       },
 
       defaults: {
-        category: 'Some Category',
         type: 'expense',
         invoiceDate: '2014-01-01',
         invoiceNumber: '20140101',

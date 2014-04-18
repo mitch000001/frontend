@@ -11,7 +11,8 @@ define([
 
     var FiscalPeriodMenuItemView = Backbone.Marionette.ItemView.extend({
       template: ItemViewTemplate,
-      tagName: 'li'
+      tagName: 'li',
+      className: 'has-dropdown'
     });
 
     return Backbone.Marionette.CompositeView.extend({

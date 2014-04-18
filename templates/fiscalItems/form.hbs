@@ -1,7 +1,7 @@
 <form class="fiscal-item" action="/fiscalPeriods/{{ year }}/positions/new" method="post">
   <div class="row">
     <div class="large-12 columns">
-      <h2>Position anlegen und bearbeiten</h2>
+      <h2>Buchung</h2>
     </div>
   </div>
 
@@ -13,13 +13,19 @@
       <input type="radio" name="type" value="income" id="typeIncome" {{#isIncome}}checked{{/isIncome}}>
       <label for="typeIncome">Einnahme</label>
     </div>
-    <div class="large-4 columns">
-      <label>Konto</label>
-      <input type="text" name="accountCode" placeholder="Identifikation" value="{{ account }}"/>
-    </div>
-    <div class="large-4 columns">
-      <label>Kategorie</label>
-      <input type="text" name="category" placeholder="Kategorie" value="{{ category }}" />
+    <div class="large-8 columns">
+      <div class="large-5 columns">
+        <label>Konto von</label>
+        <input type="text" name="accountCode" placeholder="Identifikation" value="{{ account }}"/>
+      </div>
+      <div class="large-2 columns">
+        <label>Richtung</label>
+        ->
+      </div>
+      <div class="large-5 columns">
+        <label>Konto nach</label>
+        <input type="text" name="accountCode" placeholder="Identifikation" value="{{ bookedAccount }}"/>
+      </div>
     </div>
   </div>
 
