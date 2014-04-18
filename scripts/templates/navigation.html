@@ -1,0 +1,28 @@
+<ul class="title-area">
+  <li class="name">
+    <h1><a href="#">Umsatz</a></h1>
+  </li>
+  <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+</ul>
+<section class="top-bar-section">
+  <ul>
+    <li class="has-dropdown">
+      <a href="#">Abrechnungszeiträume</a>
+
+      <ul class="dropdown">
+        {{#years}}
+        <li>
+          <a href="/#/years/{{ year }}" data-method="show">
+            {{ year }}
+          </a>
+          <ul class="dropdown">
+            <li>
+              <a href="/#/years/{{ year }}/accounts">Kontoübersicht</a>
+            </li>
+          </ul>
+        </li>
+        {{/years}}
+      </ul>
+    </li>
+  </ul>
+</section>

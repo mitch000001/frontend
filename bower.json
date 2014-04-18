@@ -18,7 +18,10 @@
     "js-base64": "~2.1.2",
     "typeahead.js": "~0.10.1",
     "i18next": "~1.7.1",
-    "foundation-icon-fonts": "git@github.com:nicolai86/foundation-icon-fonts"
+    "foundation-icon-fonts": "git@github.com:nicolai86/foundation-icon-fonts",
+    "ractive": "~0.4.0",
+    "ractive-adaptors-backbone": "git@github.com:ractivejs/ractive-adaptors-backbone#master",
+    "requirejs-ractive": "git@github.com:ractivejs/requirejs-ractive"
   },
   "devDependencies": {},
   "directory": "bower_components"

@@ -3,11 +3,11 @@ define([
     'communicator',
     'collections/fiscalPeriods',
     'collections/accounts',
-    'views/fiscalPeriodNavigation',
-    'backbone.marionette'
+    'backbone.marionette',
+    'views/navigation'
   ],
 
-  function( Backbone, Communicator, FiscalPeriods, Accounts, FiscalPeriodNavigation ) {
+  function( Backbone, Communicator, FiscalPeriods, Accounts, Marionette, Navigation ) {
     'use strict';
 
     var App = new Backbone.Marionette.Application();
@@ -25,11 +25,11 @@ define([
       App.accounts = new Accounts();
       var accountsPromise = App.accounts.fetch();
 
-      var fiscalNavigation = new FiscalPeriodNavigation({ collection: fiscalPeriods });
-      App.navigation.show(fiscalNavigation);
+      Navigation(fiscalPeriods);
 
       $.when( fiscalPeriodPromise, accountsPromise ).done( function() {
         Communicator.mediator.trigger('APP:START');
+        jQuery(document).foundation();
       });
     });
 

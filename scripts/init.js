@@ -1,7 +1,7 @@
 require.config({
 
   /* starting point for application */
-  deps: ['backbone', 'backbone.relational', 'backbone.marionette', 'backbone.cacheit', 'main'],
+  deps: ['backbone', 'backbone.relational', 'backbone.marionette', 'backbone.cacheit', 'ractive', 'main'],
 
   shim: {
     underscore: {
@@ -49,6 +49,13 @@ require.config({
     'backbone.babysitter': '../bower_components/backbone.babysitter/lib/amd/backbone.babysitter',
     'backbone.relational': 'vendor/backbone.relational',
     'backbone.cacheit': 'vendor/backbone.cacheit',
+
+    /* ractive */
+    ractive: '../bower_components/ractive/ractive',
+    'ractive-backbone': '../bower_components/ractive-adaptors-backbone/ractive-adaptors-backbone',
+    'amd-loader': '../bower_components/requirejs-ractive/amd-loader',
+    rv: '../bower_components/requirejs-ractive/rv',
+    rvc: '../bower_components/requirejs-ractive/rvc',
 
     /* base64 encoding, used for file uploads */
     base64: '../bower_components/js-base64/base64',
