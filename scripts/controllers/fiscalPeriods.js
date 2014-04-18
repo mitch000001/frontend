@@ -3,15 +3,19 @@ define([
     'backbone',
     'jquery',
     'models/position',
-    'views/fiscalPeriodIndex',
+    'views/positions',
     'views/fiscalPeriodPositionForm',
-    'backbone.marionette'
+    'backbone.marionette',
   ],
 
-  function( App, Backbone, $, Position, FiscalPeriodIndexView, PositionForm ) {
+  function( App, Backbone, $, Position, PositionsOverview, PositionForm ) {
     'use strict';
 
     return function() {
+      this.showAccountOverview = function(year) {
+        // TODO
+      };
+
       this.loadFiscalYear = function( year ) {
         var promise = new $.Deferred();
 
@@ -37,14 +41,7 @@ define([
 
       this.yearOverview = function( year ) {
         this.loadFiscalYear(year).done(function( fiscalYear ) {
-          var fiscalYearPositions = fiscalYear.get('positions');
-
-          var view = new FiscalPeriodIndexView({
-              model: fiscalYear,
-              collection: fiscalYearPositions
-            });
-
-          App.content.show(view);
+          PositionsOverview(fiscalYear, fiscalYear.get('positions'))
         });
       };
 

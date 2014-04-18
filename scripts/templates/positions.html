@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="large-12 columns">
+    <h2>{{ t('fiscalPeriods.headline', { year: year }) }}</h2>
+
+    <ul class="button-group small">
+      <li>
+        <a href="/#/years/{{ year }}/positions/new" class="tiny button">{{ t('positions.actions.new') }}</a>
+      </li>
+    </ul>
+
+    <table class="{{ year }} items large-12">
+      <thead>
+        <tr>
+          <th width="100">{{ t('positions.listing.invoiceDate') }}</th>
+          <th>{{ t('positions.listing.description') }}</th>
+          <th width="125">{{ t('positions.listing.account') }}</th>
+          <th width="100">{{ t('positions.listing.totalAmount') }}</th>
+          <th width="50"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {{#positions}}
+          <tr>
+            <td>{{ invoiceDate }}</td>
+            <td>{{ description }}</td>
+            <td>{{ accountCode }} -> {{ bookedAccountCode }}</td>
+            <td><currency amount='{{ totalAmountCents }}'/> </td>
+            <td>
+              <a href="#/years/{{ fiscalPeriod.year }}/positions/{{ id }}" data-method="show">
+                <i class="fi-widget"></i>
+              </a>
+              <a href="#/years/{{ fiscalPeriod.year }}/positions/{{ id }}" data-method="delete" class="alert">
+                <i class="fi-trash"></i>
+              </a>
+            </td>
+          </tr>
+        {{/positions}}
+      </tbody>
+
+      <tfoot>
+        <tr>
+          <td colspan="3"></td>
+          <td colspan="2">{{ currency(totalAmount) }}</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>

@@ -13,7 +13,6 @@ define([
     var App = new Backbone.Marionette.Application();
 
     App.addRegions({
-      navigation: '#navigation',
       content: '#content'
     });
 

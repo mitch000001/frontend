@@ -16,7 +16,8 @@ define([
         '': 'dashboard',
         'years/:year': 'yearOverview',
         'years/:year/positions/new': 'newYearPosition',
-        'years/:year/positions/:id': 'showYearPosition'
+        'years/:year/positions/:id': 'showYearPosition',
+        'years/:year/accounts': 'showAccountOverview',
       },
 
     });

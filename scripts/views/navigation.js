@@ -19,10 +19,12 @@ define([
 
         data: {
           years: collection
+        },
+
+        complete: function() {
+          jQuery(document).foundation();
         }
       });
-
-      jQuery(document).foundation();
 
       return navigation;
     };
