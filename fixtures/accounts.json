@@ -1,8 +1,5 @@
 [
   {
-    "code": "5900",
-    "label": "Fremdleistungen"
-  }, {
     "code": "01",
     "label": "Waren"
   }, {
@@ -15,10 +12,13 @@
     "code": "1100",
     "label": "Bank"
   }, {
-    "code": "07",
-    "label": "Fortbildung, Fachliteratur"
+    "code": "5900",
+    "label": "Fremdleistungen"
   }, {
     "code": "6805",
     "label": "Telefon"
+  }, {
+    "code": "07",
+    "label": "Fortbildung, Fachliteratur"
   }
 ]
