@@ -56,6 +56,13 @@ require.config({
     'backbone.relational': 'vendor/backbone.relational',
     'backbone.cacheit': 'vendor/backbone.cacheit',
 
+    /* ractive */
+    ractive: '../bower_components/ractive/ractive',
+    'ractive-backbone': '../bower_components/ractive-adaptors-backbone/ractive-adaptors-backbone',
+    'amd-loader': '../bower_components/requirejs-ractive/amd-loader',
+    rv: '../bower_components/requirejs-ractive/rv',
+    rvc: '../bower_components/requirejs-ractive/rvc',
+
     /* base64 encoding, used for file uploads */
     base64: '../bower_components/js-base64/base64',
 
@@ -75,24 +82,8 @@ require.config({
     text: '../bower_components/requirejs-text/text',
     tmpl: '../templates',
 
-    /* handlebars from the require handlerbars plugin below */
-    Handlebars: '../bower_components/require-handlebars-plugin/hbs/handlebars',
-
-    /* require handlebars plugin - Alex Sexton */
-    i18nprecompile: '../bower_components/require-handlebars-plugin/hbs/i18nprecompile',
-    json2: '../bower_components/require-handlebars-plugin/hbs/json2',
-    hbs: '../bower_components/require-handlebars-plugin/hbs',
-
     /* test only libraries */
     'jasmine.ajax': '../bower_components/jasmine-ajax/lib/mock-ajax',
-  },
-
-  hbs: {
-    helpers: true,
-    helperPathCallback: function( name ) {
-      return '/base/scripts/template-helpers/' + name + '.js';
-    },
-    compileOptions: {}
   },
 
   // ask Require.js to load these files (all our tests)
