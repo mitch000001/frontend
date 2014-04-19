@@ -8,7 +8,7 @@ define([], function ( ) {
 
     options.currency = options.currency || ' €';
     amount = parseFloat(amount) || 0;
-    console.log(amount);
+
     if (options.cents != null) {
       amount /= options.cents;
     }

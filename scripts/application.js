@@ -12,10 +12,6 @@ define([
 
     var App = new Backbone.Marionette.Application();
 
-    App.addRegions({
-      content: '#content'
-    });
-
     App.addInitializer( function () {
       var fiscalPeriods = new FiscalPeriods();
       App.fiscalPeriods = fiscalPeriods;

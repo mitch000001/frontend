@@ -25,12 +25,12 @@
             <td>{{ invoiceDate }}</td>
             <td>{{ description }}</td>
             <td>{{ accountCode }} -> {{ bookedAccountCode }}</td>
-            <td><currency amount='{{ totalAmountCents }}'/> </td>
+            <td><currency amountCents='{{ totalAmountCents }}'/></td>
             <td>
               <a href="#/years/{{ fiscalPeriod.year }}/positions/{{ id }}" data-method="show">
                 <i class="fi-widget"></i>
               </a>
-              <a href="#/years/{{ fiscalPeriod.year }}/positions/{{ id }}" data-method="delete" class="alert">
+              <a on-click="delete" class="alert">
                 <i class="fi-trash"></i>
               </a>
             </td>
@@ -41,7 +41,7 @@
       <tfoot>
         <tr>
           <td colspan="3"></td>
-          <td colspan="2">{{ currency(totalAmount) }}</td>
+          <td colspan="2"><currency amountCents='{{ totalAmount }}'/></td>
         </tr>
       </tfoot>
     </table>

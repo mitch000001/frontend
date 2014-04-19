@@ -4,7 +4,7 @@ define([
     'jquery',
     'models/position',
     'views/positions',
-    'views/fiscalPeriodPositionForm',
+    'views/editPosition',
     'backbone.marionette',
   ],
 
@@ -36,7 +36,7 @@ define([
 
       // TODO move this into a separate controller
       this.dashboard = function() {
-        App.content.close();
+        // App.content.close();
       };
 
       this.yearOverview = function( year ) {
@@ -48,27 +48,21 @@ define([
       this.showYearPosition = function( year, id ) {
         this.loadFiscalYear(year).done(function( fiscalYear ) {
           var position = fiscalYear.get('positions').get(parseInt(id, 10));
-          position.set( 'account', App.accounts.findWhere({ code: position.get('accountCode') }) );
+          PositionForm(position);
 
-          var view = new PositionForm({
-            model: position
-          });
-
-          view.on('fiscalItem:put', function() {
-            Backbone.history.navigate('years/' + fiscalYear.get('year'), true);
-          }.bind(this));
-          App.content.show(view);
+          // view.on('fiscalItem:put', function() {
+          //   Backbone.history.navigate('years/' + fiscalYear.get('year'), true);
+          // }.bind(this));
         });
       };
 
       this.newYearPosition = function( year ) {
         this.loadFiscalYear(year).done(function(fiscalYear) {
-          var view = new PositionForm({
-            model: new Position({
+          var position = new Position({
               fiscalPeriod: fiscalYear,
               fiscalPeriodId: fiscalYear.get('id')
-            })
-          });
+            });
+          PositionForm(position);
 
           view.on('fiscalItem:put', function() {
             fiscalYear.get('positions').add( view.model );
