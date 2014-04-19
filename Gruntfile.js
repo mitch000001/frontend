@@ -42,13 +42,6 @@ module.exports = function (grunt) {
             //     files: ['styles/**/*.scss'],
             //     tasks: ['compass']
             // },
-            /* not used at the moment
-            handlebars: {
-                files: [
-                    '/templates/*.hbs'
-                ],
-                tasks: ['handlebars']
-            }*/
         },
 
         // testing server
@@ -262,19 +255,6 @@ module.exports = function (grunt) {
             all: {
                 rjsConfig: 'scripts/init.js'
             }
-        },
-
-        // handlebars
-        handlebars: {
-            compile: {
-                options: {
-                    namespace: 'JST',
-                    amd: true
-                },
-                files: {
-                    '.tmp/scripts/templates.js': ['templates/**/*.hbs']
-                }
-            }
         }
     });
 
@@ -296,7 +276,6 @@ module.exports = function (grunt) {
     grunt.registerTask('build', [
         'clean',
         'createDefaultTemplate',
-        'handlebars',
         'sass',
         'useminPrepare',
         'requirejs',

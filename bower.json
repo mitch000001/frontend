@@ -12,7 +12,6 @@
     "backbone.marionette": "latest",
     "backbone.wreqr": "latest",
     "backbone.babysitter": "~0.0.6",
-    "require-handlebars-plugin": "~0.7.0",
     "foundation": "~5.0.3",
     "backbone-relational": "~0.8.7",
     "js-base64": "~2.1.2",
