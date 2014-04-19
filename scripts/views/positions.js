@@ -32,7 +32,7 @@ define([
             get: function() {
               var total = 0;
               this.get('fiscalYear.positions').forEach(function(position) {
-                total += position.get('totalAmountCents');
+                total += position.signedTotalAmountCents();
               });
               return total;
             }

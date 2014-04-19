@@ -25,6 +25,13 @@ define([
         description: ''
       },
 
+      signedTotalAmountCents: function() {
+        if (this.get('type') === 'expense') {
+          return this.get('totalAmountCents') * -1;
+        }
+        return this.get('totalAmountCents');
+      },
+
       toJSON: function() {
         var data = Backbone.RelationalModel.prototype.toJSON.apply(this);
         if ( data != null ) {
