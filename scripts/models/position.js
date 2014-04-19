@@ -30,7 +30,7 @@ define([
 
       toJSON: function() {
         var data = Backbone.RelationalModel.prototype.toJSON.apply(this);
-        if ( data != null ) {
+        if ( data !== null ) {
           delete data.fiscalPeriod;
         }
         return data;
