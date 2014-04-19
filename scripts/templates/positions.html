@@ -24,7 +24,7 @@
           <tr>
             <td>{{ invoiceDate }}</td>
             <td>{{ description }}</td>
-            <td>{{ accountCode }} -> {{ bookedAccountCode }}</td>
+            <td>{{ accountCodeFrom }} -> {{ accountCodeTo }}</td>
             <td><currency amountCents="{{ totalAmountCents }}" type="{{ type }}"/></td>
             <td>
               <a href="#/years/{{ fiscalPeriod.year }}/positions/{{ id }}" data-method="show">

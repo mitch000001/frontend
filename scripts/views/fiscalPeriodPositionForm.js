@@ -2,8 +2,6 @@ define([
     'backbone',
     'hbs!tmpl/fiscalItems/form',
     'base64',
-    'bloodhound',
-    'typeahead',
     'backbone.marionette'
   ],
   function( Backbone, FiscalPeriodPositionViewTemplate, Base64, Bloodhound ) {
@@ -48,26 +46,7 @@ define([
         },
 
         onShow: function() {
-          var App = require('application');
 
-          var datasource = new Bloodhound({
-            datumTokenizer: function(d) {
-              return _.map([d.code, d.label].concat(d.label.split(',')), $.trim);
-            },
-            queryTokenizer: Bloodhound.tokenizers.whitespace,
-            local: App.accounts.toJSON()
-          });
-          datasource.initialize();
-
-          $('[name=accountCode]', this.$el).typeahead({highlight: true}, {
-            displayKey: 'displayName',
-            source: datasource.ttAdapter(),
-            templates: {
-              suggestion: function(item) {
-                return item.displayName;
-              }
-            }
-          });
 
         },
 

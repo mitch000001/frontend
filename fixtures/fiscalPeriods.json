@@ -9,8 +9,8 @@
     "positions": [
       {
         "id": 4,
-        "accountCode": "5900",
-        "bookedAccountCode": "1100",
+        "accountCodeFrom": "5900",
+        "accountCodeTo": "1100",
         "type": "income",
         "invoiceDate": "2013-12-30",
         "invoiceNumber": "20130101",
@@ -27,8 +27,8 @@
     "year": 2014,
     "positions": [{
       "id": 1,
-      "accountCode": "02",
-      "bookedAccountCode": "1100",
+      "accountCodeFrom": "02",
+      "accountCodeTo": "1100",
       "type": "income",
       "invoiceDate": "2014-01-31",
       "invoiceNumber": "20140101",
@@ -39,8 +39,8 @@
       "description": "Kunde A Januar 2014"
     }, {
       "id": 2,
-      "accountCode": "02",
-      "bookedAccountCode": "1100",
+      "accountCodeFrom": "02",
+      "accountCodeTo": "1100",
       "type": "income",
       "invoiceDate": "2014-02-28",
       "invoiceNumber": "20140101",
@@ -51,8 +51,8 @@
       "description": "Kunde A Februar 2014"
     },{
       "id": 3,
-      "accountCode": "1100",
-      "bookedAccountCode": "5900",
+      "accountCodeFrom": "1100",
+      "accountCodeTo": "5900",
       "type": "expense",
       "invoiceDate": "2014-01-31",
       "invoiceNumber": "20140101",
