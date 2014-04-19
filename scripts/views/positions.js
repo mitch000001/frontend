@@ -17,13 +17,26 @@ define([
         el: 'content',
 
         data: {
-          year: fiscalYear.get('year'),
-          positions: fiscalYear.get('positions'),
+          fiscalYear: fiscalYear,
           t: I18n.t
         },
 
+        twoway: false,
+
         complete: function() {
 
+        },
+
+        computed: {
+          totalAmount: {
+            get: function() {
+              var total = 0;
+              this.get('fiscalYear.positions').forEach(function(position) {
+                total += position.get('totalAmountCents');
+              });
+              return total;
+            }
+          }
         }
       });
 

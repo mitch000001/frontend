@@ -6,7 +6,11 @@ define(
     var CurrencyWidget = Ractive.extend({
         template: '<span>{{amount}}</span>',
         init: function () {
-          this.set('amount',currencyHelper(this.data.amountCents, { cents: 100 }));
+          if (this.data.amountCents != null) {
+            this.set('amount',currencyHelper(this.data.amountCents, { cents: 100 }));
+          } else {
+            this.set('amount',currencyHelper(this.data.amount, { cents: 1 }));
+          }
         },
         data: {
           amount: 'missing amount'

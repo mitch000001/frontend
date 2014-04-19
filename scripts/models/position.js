@@ -1,8 +1,7 @@
 define([
     'backbone',
     'settings',
-    'backbone.relational',
-    'backbone.mutators'
+    'backbone.relational'
   ],
 
   function ( Backbone, Settings ) {
@@ -14,23 +13,6 @@ define([
           return Settings.apiUrl('/fiscalPeriods/' + this.get('fiscalPeriod').get('year') + '/positions' );
         }
         return Settings.apiUrl('/fiscalPeriods/' + this.get('fiscalPeriod').get('year') + '/positions/' + this.get('id') );
-      },
-
-      mutators: {
-        totalAmount: {
-          set: function (key, value, options, set) {
-            this.set('totalAmountCents', value * 100, options);
-          },
-          get: function () {
-            return (this.get('totalAmountCents') / 100.0).toFixed(2);
-          },
-          transient: true
-        }
-      },
-
-      constructor: function() {
-        Backbone.RelationalModel.apply(this, arguments);
-        this.set('totalAmount', this.get('totalAmount'));
       },
 
       defaults: {

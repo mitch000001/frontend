@@ -1,14 +1,14 @@
 <div class="row">
   <div class="large-12 columns">
-    <h2>{{ t('fiscalPeriods.headline', { year: year }) }}</h2>
+    <h2>{{ t('fiscalPeriods.headline', { year: fiscalYear.year }) }}</h2>
 
     <ul class="button-group small">
       <li>
-        <a href="/#/years/{{ year }}/positions/new" class="tiny button">{{ t('positions.actions.new') }}</a>
+        <a href="/#/years/{{ fiscalYear.year }}/positions/new" class="tiny button">{{ t('positions.actions.new') }}</a>
       </li>
     </ul>
 
-    <table class="{{ year }} items large-12">
+    <table class="{{ fiscalYear.year }} items large-12">
       <thead>
         <tr>
           <th width="100">{{ t('positions.listing.invoiceDate') }}</th>
@@ -20,7 +20,7 @@
       </thead>
 
       <tbody>
-        {{#positions}}
+        {{#fiscalYear.positions}}
           <tr>
             <td>{{ invoiceDate }}</td>
             <td>{{ description }}</td>
@@ -35,7 +35,7 @@
               </a>
             </td>
           </tr>
-        {{/positions}}
+        {{/fiscalYear}}
       </tbody>
 
       <tfoot>

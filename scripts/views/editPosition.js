@@ -20,6 +20,19 @@ define([
           position: position,
           year: position.get('fiscalPeriod').get('year'),
           t: I18n.t
+        },
+
+        lazy: true,
+
+        computed: {
+          totalAmount: {
+            get: function() { return (this.get('position.totalAmountCents') / 100.0).toFixed(2); },
+            set: function( value ) {
+              this.set({
+                'position.totalAmountCents': parseInt(value * 100)
+              });
+            }
+          }
         }
       });
 
