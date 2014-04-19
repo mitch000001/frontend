@@ -48,11 +48,10 @@ define([
       this.showYearPosition = function( year, id ) {
         this.loadFiscalYear(year).done(function( fiscalYear ) {
           var position = fiscalYear.get('positions').get(parseInt(id, 10));
-          PositionForm(position);
-
-          // view.on('fiscalItem:put', function() {
-          //   Backbone.history.navigate('years/' + fiscalYear.get('year'), true);
-          // }.bind(this));
+          var view = PositionForm(position);
+          view.on( 'fiscalItem:put', function() {
+            Backbone.history.navigate('years/' + fiscalYear.get('year'), true);
+          });
         });
       };
 
@@ -62,13 +61,12 @@ define([
               fiscalPeriod: fiscalYear,
               fiscalPeriodId: fiscalYear.get('id')
             });
-          PositionForm(position);
+          var view = PositionForm(position);
 
-          view.on('fiscalItem:put', function() {
+          view.on( 'fiscalItem:put', function() {
             fiscalYear.get('positions').add( view.model );
             Backbone.history.navigate('years/' + fiscalYear.get('year'), true);
-          }.bind(this));
-          App.content.show(view);
+          }.bind(this) );
         });
       };
     };

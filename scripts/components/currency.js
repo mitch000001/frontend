@@ -2,6 +2,7 @@ define(
   ['ractive', 'template-helpers/currency'],
   function( Ractive, currencyHelper ) {
     'use strict';
+
     var CurrencyWidget = Ractive.extend({
         template: '<span>{{amount}}</span>',
         init: function () {

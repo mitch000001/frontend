@@ -12,7 +12,7 @@ define([
     return function(position) {
       var ractive = new Ractive({
         template: PositionsTemplate  ,
-        adapt: [ 'Backbone' ],
+        adapt: [ Ractive.adaptors.Backbone ],
 
         el: 'content',
 
@@ -20,15 +20,19 @@ define([
           position: position,
           year: position.get('fiscalPeriod').get('year'),
           t: I18n.t
-        },
-
-        complete: function() {
-
         }
       });
 
-      ractive.on( 'delete', function ( event ) {
-        event.context.destroy();
+      ractive.on({
+        save: function( event ) {
+          var model = event.context.position;
+
+          model.save().always(function() {
+            this.fire('fiscalItem:put');
+          }.bind(this));
+
+          event.original.preventDefault();
+        }
       });
 
       return ractive;

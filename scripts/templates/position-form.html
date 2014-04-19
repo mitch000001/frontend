@@ -1,4 +1,5 @@
-<form class="fiscal-item" action="/fiscalPeriods/{{ year }}/positions/new" method="post">
+<form class="fiscal-item" on-submit="save">
+
   {{#position}}
   <div class="row">
     <div class="large-12 columns">
@@ -47,6 +48,7 @@
   <div class="row">
     <div class="large-12 columns">
       <label>Beschreibung</label>
+      {{ description }}
       <input type="text" name="description" placeholder="Beschreibung" value="{{ description }}">
       <hr>
     </div>
@@ -57,7 +59,7 @@
       <div class="row collapse">
         <label for="totalAmount">Betrag</label>
         <div class="small-8 columns">
-          <input type="text" id="totalAmount" placeholder="Betrag" value="{{ totalAmountCents }}">
+          <input type="text" id="totalAmount" placeholder="Betrag" value="{{ totalAmount }}">
         </div>
         <div class="small-4 columns">
           <select class="postfix" value="{{ currency }}">
