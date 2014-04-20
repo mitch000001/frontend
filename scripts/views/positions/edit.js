@@ -10,6 +10,7 @@ define([
     'use strict';
 
     return function(position) {
+      var originalAttributes = _.clone(position.attributes);
       var ractive = new Ractive({
         template: PositionsTemplate  ,
         adapt: [ Ractive.adaptors.Backbone ],
@@ -45,6 +46,10 @@ define([
           }.bind(this));
 
           event.original.preventDefault();
+        },
+        cancel: function( event ) {
+          position.set( originalAttributes, { silence: true });
+          this.fire( 'fiscalItem:cancel' )
         }
       });
 

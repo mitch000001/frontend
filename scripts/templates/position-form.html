@@ -22,8 +22,9 @@
         <account-picker account="{{ accountCodeFrom }}"></account-picker>
       </div>
       <div class="large-2 columns">
-        <label>Richtung</label>
-        ->
+        <span class="account-direction">
+          ->
+        </span>
       </div>
       <div class="large-5 columns">
         <label>Konto nach</label>
@@ -100,7 +101,7 @@
   <div class="row">
     <div class="large-12 columns">
       <div class="form-actions">
-        <input class="tiny button" type="submit" value="Speichern"> oder <a href="#" data-cancel class="alert">abbrechen</a>
+        <input class="tiny button" type="submit" value="Speichern"> oder <a on-click="cancel" class="alert">abbrechen</a>
       </div>
     </div>
   </div>

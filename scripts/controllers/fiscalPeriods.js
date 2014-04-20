@@ -3,8 +3,8 @@ define([
     'backbone',
     'jquery',
     'models/position',
-    'views/positions',
-    'views/editPosition',
+    'views/positions/index',
+    'views/positions/edit',
     'backbone.marionette',
   ],
 
@@ -57,6 +57,9 @@ define([
           activeContent.on( 'fiscalItem:put', function() {
             Backbone.history.navigate('years/' + fiscalYear.get('year'), true);
           });
+          activeContent.on( 'fiscalItem:cancel', function() {
+            Backbone.history.navigate('years/' + fiscalYear.get('year'), true);
+          }.bind(this) )
         });
       };
 
@@ -71,6 +74,9 @@ define([
             fiscalYear.get('positions').add( activeContent.model );
             Backbone.history.navigate('years/' + fiscalYear.get('year'), true);
           }.bind(this) );
+          activeContent.on( 'fiscalItem:cancel', function() {
+            Backbone.history.navigate('years/' + fiscalYear.get('year'), true);
+          }.bind(this) )
         });
       };
     };
