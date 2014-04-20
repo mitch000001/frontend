@@ -15,7 +15,7 @@
     "foundation": "~5.0.3",
     "backbone-relational": "~0.8.7",
     "js-base64": "~2.1.2",
-    "typeahead.js": "~0.10.1",
+    "typeahead.js": "~0.10.2",
     "i18next": "~1.7.1",
     "foundation-icon-fonts": "git@github.com:nicolai86/foundation-icon-fonts",
     "ractive": "~0.4.0",

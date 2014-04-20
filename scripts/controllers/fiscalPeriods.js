@@ -54,6 +54,7 @@ define([
         this.loadFiscalYear(year).done(function( fiscalYear ) {
           var position = fiscalYear.get('positions').get(parseInt(id, 10));
           activeContent = PositionForm(position);
+
           activeContent.on( 'fiscalItem:put', function() {
             Backbone.history.navigate('years/' + fiscalYear.get('year'), true);
           });
@@ -71,7 +72,7 @@ define([
           activeContent = PositionForm(position);
 
           activeContent.on( 'fiscalItem:put', function() {
-            fiscalYear.get('positions').add( activeContent.model );
+            fiscalYear.get('positions').add( position );
             Backbone.history.navigate('years/' + fiscalYear.get('year'), true);
           }.bind(this) );
           activeContent.on( 'fiscalItem:cancel', function() {
