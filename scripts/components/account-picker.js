@@ -44,8 +44,8 @@ define(
           this.set({ suffix: counter });
         },
         data: {
-          account: 'missing',
-          label: 'missing'
+          account: '',
+          label: ''
         }
       });
 

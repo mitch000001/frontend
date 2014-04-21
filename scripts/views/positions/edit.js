@@ -10,13 +10,12 @@ define([
     'use strict';
 
     var labelForAccount = function labelForAccount(code) {
-      var App = require('application');
-      var account = App.accounts.findWhere({ code: code });
-      if (account !== undefined) {
+      var account;
+      if ( account = require('application').accounts.findWhere({ code: code }) ) {
         return account.get('label');
       }
       return '';
-    }
+    };
 
     var attrWrapper = function( attr, obj ) {
       return {
