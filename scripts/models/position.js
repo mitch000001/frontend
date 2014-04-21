@@ -22,7 +22,8 @@ define([
         totalAmountCents: 0,
         tax: 7,
         fiscalPeriodId: null,
-        description: ''
+        description: '',
+        attachment: null
       },
 
       signedTotalAmountCents: function() {

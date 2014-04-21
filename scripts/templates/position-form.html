@@ -19,7 +19,7 @@
     <div class="large-8 columns">
       <div class="large-5 columns">
         <label>Konto von</label>
-        <account-picker account="{{ accountCodeFrom }}" label="{{accountLabelFrom}}"></account-picker>
+        <account-picker account="{{ accountCodeFrom }}" label="{{ accountLabelFrom }}"></account-picker>
       </div>
       <div class="large-2 columns">
         <span class="account-direction">
@@ -28,7 +28,7 @@
       </div>
       <div class="large-5 columns">
         <label>Konto nach</label>
-        <account-picker account="{{ accountCodeTo }}" label="{{accountLabelTo}}"></account-picker>
+        <account-picker account="{{ accountCodeTo }}" label="{{ accountLabelTo }}"></account-picker>
       </div>
     </div>
   </div>
@@ -71,11 +71,11 @@
     </div>
     <div class="large-8 columns">
       <label>Umsatzsteuer</label>
-      <input type="radio" name="{{ tax }}" value="" id="noTax">
+      <input type="radio" name="{{ tax }}" value="">
       <label for="noTax">nicht anwendbar</label>
-      <input type="radio" name="{{ tax }}" value="7" id="reducedTax">
+      <input type="radio" name="{{ tax }}" value="7">
       <label for="reducedTax">7 %</label>
-      <input type="radio" name="{{ tax }}" value="19" id="regularTax">
+      <input type="radio" name="{{ tax }}" value="19">
       <label for="regularTax">19 %</label>
     </div>
   </div>
@@ -87,7 +87,7 @@
         <div class="large-6 columns">
 
           <label>Anhang</label>
-          <input type="file" id="attachment" name="attachment">
+          <input type="file" id="attachment" name="attachment" value="{{ attachment }}">
         </div>
         <div class="large-6 columns">
           {{#attachmentPath}}
@@ -97,6 +97,7 @@
       </div>
     </div>
   </div>
+  {{/position}}
 
   <div class="row">
     <div class="large-12 columns">
@@ -105,5 +106,4 @@
       </div>
     </div>
   </div>
-  {{/position}}
 </form>

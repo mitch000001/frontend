@@ -11,6 +11,15 @@ define([
     'use strict';
 
     var accountLabel = function( obj ) { return propertyWrapper('label', obj) };
+    var uploadFile = function( fileList ) {
+      var promise = new $.Deferred();
+      for (var i = fileList.length - 1; i >= 0; i--) {
+        var file = fileList[i];
+
+      };
+      promise.resolve(); // TODO only resolve after uploads are done
+      return promise;
+    }
 
     return function(position) {
       var originalAttributes = _.clone(position.attributes);
@@ -56,7 +65,8 @@ define([
 
           $.when(
             App.accounts.upsert(_.extend(accountFrom, { code: model.get('accountCodeFrom') })),
-            App.accounts.upsert(_.extend(accountTo, { code: model.get('accountCodeTo') }))
+            App.accounts.upsert(_.extend(accountTo, { code: model.get('accountCodeTo') })),
+            uploadFile( position.get('attachment') )
           ).always( function(pFrom, pTo) {
             // TODO if pFrom failed or pTo failed, display an error
             model.save().always(function() {
