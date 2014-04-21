@@ -19,6 +19,9 @@ define([
         return '';
       },
 
+      /**
+       * creates or updates an account, identified by its code.
+       */
       upsert: function( attrs ) {
         var account;
 
