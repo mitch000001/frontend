@@ -18,20 +18,15 @@ define([
 
         data: {
           fiscalYear: fiscalYear,
+          positions: fiscalYear.get('positions'),
           t: I18n.t
-        },
-
-        twoway: false,
-
-        complete: function() {
-
         },
 
         computed: {
           totalAmount: {
             get: function() {
               var total = 0;
-              this.get('fiscalYear.positions').forEach(function(position) {
+              this.get('positions').forEach(function(position) {
                 total += position.signedTotalAmountCents();
               });
               return total;
