@@ -15,7 +15,8 @@ define([
         relatedModel: Position,
         collectionType: PositionCollection,
         reverseRelation: {
-          key: 'fiscalPeriod'
+          key: 'fiscalPeriod',
+          includeInJSON: false
         }
       }]
     });

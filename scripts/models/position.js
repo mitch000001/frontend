@@ -7,7 +7,7 @@ define([
   function ( Backbone, Settings ) {
     'use strict';
 
-    return Backbone.RelationalModel.extend({
+    var Position = Backbone.RelationalModel.extend({
       url: function() {
         if (this.isNew()) {
           return Settings.apiUrl('/fiscalPeriods/' + this.get('fiscalPeriod').get('year') + '/positions' );
@@ -20,7 +20,8 @@ define([
         invoiceDate: '2014-01-01',
         invoiceNumber: '20140101',
         totalAmountCents: 0,
-        tax: 7,
+        currency: 'EUR',
+        tax: 19,
         fiscalPeriodId: null,
         description: '',
         attachment: null,
@@ -38,9 +39,14 @@ define([
       toJSON: function() {
         var data = Backbone.RelationalModel.prototype.toJSON.apply(this);
         if ( data != null ) {
-          delete data.fiscalPeriod;
+          data.accountCodeFrom = data.accountCodeFrom.toString();
+          data.accountCodeTo = data.accountCodeTo.toString();
+          data.description = data.description.toString();
+          data.invoiceNumber = data.invoiceNumber.toString();
+          data.tax = parseInt( data.tax, 10 );
         }
         return data;
       }
     });
+    return Position;
   });

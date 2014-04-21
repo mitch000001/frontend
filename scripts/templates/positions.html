@@ -12,6 +12,7 @@
       <thead>
         <tr>
           <th width="100">{{ t('positions.listing.invoiceDate') }}</th>
+          <th width="100">{{ t('positions.listing.bookingDate') }}</th>
           <th>{{ t('positions.listing.description') }}</th>
           <th width="125">{{ t('positions.listing.account') }}</th>
           <th width="100">{{ t('positions.listing.totalAmount') }}</th>
@@ -23,6 +24,7 @@
         {{#fiscalYear.positions}}
           <tr>
             <td>{{ invoiceDate }}</td>
+            <td>{{ bookingDate }}</td>
             <td>{{ description }}</td>
             <td>{{ accountCodeFrom }} -> {{ accountCodeTo }}</td>
             <td><currency amountCents="{{ totalAmountCents }}" type="{{ type }}"/></td>
@@ -40,7 +42,7 @@
 
       <tfoot>
         <tr>
-          <td colspan="3"></td>
+          <td colspan="4"></td>
           <td colspan="2"><currency amountCents='{{ totalAmount }}'/></td>
         </tr>
       </tfoot>
