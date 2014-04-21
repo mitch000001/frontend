@@ -3,19 +3,14 @@ define([
     'i18n',
     'rv!templates/position-form',
     'ractive',
+    'helpers/computedPropertyWrapper',
     'ractive-backbone'
   ],
 
-  function( Backbone, I18n, PositionsTemplate, Ractive ) {
+  function( Backbone, I18n, PositionsTemplate, Ractive, propertyWrapper ) {
     'use strict';
 
-    var attrWrapper = function( attr, obj ) {
-      return {
-        get: function() { return obj[attr] },
-        set: function( value ) { debugger; obj[attr] = value }
-      }
-    };
-    var accountLabel = function( obj ) { return attrWrapper('label', obj) };
+    var accountLabel = function( obj ) { return propertyWrapper('label', obj) };
 
     var putAccount = function putAccount( obj, code ) {
       var App = require( 'application' );
