@@ -31,6 +31,7 @@ require.config({
       deps: ['jquery', 'bloodhound']
     },
     bloodhound: {
+      deps: ['jquery'],
       exports: 'Bloodhound'
     }
   },
