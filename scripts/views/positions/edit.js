@@ -11,15 +11,27 @@ define([
     'use strict';
 
     var accountLabel = function( obj ) { return propertyWrapper('label', obj) };
-    var uploadFile = function( fileList ) {
+    var uploadFile = function( fileList, prefix ) {
+      // clear the filename of unwanted characters
+      var clean = function(string) {
+        return string.replace(/\s/, '_');
+      }
+
       var promise = new $.Deferred();
       if (fileList !== null) {
-        for (var i = fileList.length - 1; i >= 0; i--) {
-          var file = fileList[i];
-
-        };
+        var file = fileList[0];
+        $.ajax({
+          url: '//' + window.location.host + '/upload/' + prefix + '/' + clean(file.name),
+          method: 'POST',
+          data: file,
+          processData: false
+        }).done( function(data) {
+          var downloadPath = '/download/' + data.file.key;
+          promise.resolve(downloadPath);
+        }).fail( function() { promise.reject() });
+      } else {
+        promise.resolve();
       }
-      promise.resolve(); // TODO only resolve after uploads are done
       return promise;
     }
 
@@ -65,16 +77,20 @@ define([
         save: function( event ) {
           var model = event.context.position;
 
-          $.when(
-            App.accounts.upsert(_.extend(accountFrom, { code: model.get('accountCodeFrom').toString() })),
-            App.accounts.upsert(_.extend(accountTo, { code: model.get('accountCodeTo').toString() })),
-            uploadFile( position.get('attachment') )
-          ).always( function(pFrom, pTo) {
-            // TODO if pFrom failed or pTo failed, display an error
-            model.save().always(function() {
-              this.fire('fiscalItem:put');
-            }.bind(this));
-          }.bind(this));
+          // TODO maybe handle account update errors?
+          App.accounts.upsert(_.extend(accountFrom, { code: model.get('accountCodeFrom').toString() }));
+          App.accounts.upsert(_.extend(accountTo, { code: model.get('accountCodeTo').toString() }));
+
+          uploadFile( position.get('attachment'), position.get('fiscalPeriod').get('year') )
+            .done( function(attachmentPath) {
+              if (attachmentPath != null) {
+                model.set('attachmentPath', attachmentPath);
+              }
+              model.save().always(function() {
+                this.fire('fiscalItem:put');
+              }.bind(this));
+            }.bind(this)
+          );
 
           event.original.preventDefault();
         },

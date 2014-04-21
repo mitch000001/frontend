@@ -13,3 +13,8 @@ karma start
 ```
 grunt build && ruby -run -ehttpd dist -p8000
 ```
+
+## Uploads & Downloads
+
+curl -s -X POST --data-binary @fixture/test.zip 'http://umsatz.dev/upload/2014/foo.zip'
+curl -s 'http://umsatz.dev/download/2014/foo.zip' > foo.zip
