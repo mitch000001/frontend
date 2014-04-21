@@ -19,9 +19,6 @@ require.config({
       deps: ['backbone'],
       exports: 'Backbone'
     },
-    base64: {
-      exports: 'Base64'
-    },
     foundation: {
       deps: ['jquery'],
       exports: 'Foundation'
@@ -56,9 +53,6 @@ require.config({
     'amd-loader': '../bower_components/requirejs-ractive/amd-loader',
     rv: '../bower_components/requirejs-ractive/rv',
     rvc: '../bower_components/requirejs-ractive/rvc',
-
-    /* base64 encoding, used for file uploads */
-    base64: '../bower_components/js-base64/base64',
 
     /* i18n */
     i18next: '../bower_components/i18next/release/i18next.amd-1.7.1',
