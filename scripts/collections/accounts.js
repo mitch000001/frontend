@@ -24,9 +24,9 @@ define([
 
         if ( account = this.findWhere({ code: attrs.code }) ) {
           account.set( attrs );
-          account.save();
+          return account.save();
         } else {
-          account = this.create( attrs );
+          return this.create( attrs );
         }
       }
     });

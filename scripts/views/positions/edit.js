@@ -54,11 +54,14 @@ define([
         save: function( event ) {
           var model = event.context.position;
 
-          App.accounts.upsert(_.extend(accountFrom, { code: model.get('accountCodeFrom') }));
-          App.accounts.upsert(_.extend(accountTo, { code: model.get('accountCodeTo') }));
-
-          model.save().always(function() {
-            this.fire('fiscalItem:put');
+          $.when(
+            App.accounts.upsert(_.extend(accountFrom, { code: model.get('accountCodeFrom') })),
+            App.accounts.upsert(_.extend(accountTo, { code: model.get('accountCodeTo') }))
+          ).always( function(pFrom, pTo) {
+            // TODO if pFrom failed or pTo failed, display an error
+            model.save().always(function() {
+              this.fire('fiscalItem:put');
+            }.bind(this));
           }.bind(this));
 
           event.original.preventDefault();
