@@ -9,14 +9,6 @@ define([
   function( Backbone, I18n, PositionsTemplate, Ractive ) {
     'use strict';
 
-    var labelForAccount = function labelForAccount(code) {
-      var account;
-      if ( account = require('application').accounts.findWhere({ code: code }) ) {
-        return account.get('label');
-      }
-      return '';
-    };
-
     var attrWrapper = function( attr, obj ) {
       return {
         get: function() { return obj[attr] },
@@ -40,12 +32,13 @@ define([
 
     return function(position) {
       var originalAttributes = _.clone(position.attributes);
+      var App = require('application');
 
       var accountFrom = {
-        label: labelForAccount( position.get('accountCodeFrom') )
+        label: App.accounts.labelForCode( position.get('accountCodeFrom') )
       };
       var accountTo = {
-        label: labelForAccount( position.get('accountCodeTo') )
+        label: App.accounts.labelForCode( position.get('accountCodeTo') )
       };
 
       var ractive = new Ractive({
@@ -87,6 +80,11 @@ define([
           }.bind(this));
 
           event.original.preventDefault();
+        },
+        teardown: function( event ) {
+          if ( position.isNew() ) { // we probably used the navigation to close this view
+            position.destroy();
+          }
         },
         cancel: function( event ) {
           position.set( originalAttributes, { silence: true });
