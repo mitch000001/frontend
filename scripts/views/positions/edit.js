@@ -13,10 +13,12 @@ define([
     var accountLabel = function( obj ) { return propertyWrapper('label', obj) };
     var uploadFile = function( fileList ) {
       var promise = new $.Deferred();
-      for (var i = fileList.length - 1; i >= 0; i--) {
-        var file = fileList[i];
+      if (fileList !== null) {
+        for (var i = fileList.length - 1; i >= 0; i--) {
+          var file = fileList[i];
 
-      };
+        };
+      }
       promise.resolve(); // TODO only resolve after uploads are done
       return promise;
     }
@@ -64,8 +66,8 @@ define([
           var model = event.context.position;
 
           $.when(
-            App.accounts.upsert(_.extend(accountFrom, { code: model.get('accountCodeFrom') })),
-            App.accounts.upsert(_.extend(accountTo, { code: model.get('accountCodeTo') })),
+            App.accounts.upsert(_.extend(accountFrom, { code: model.get('accountCodeFrom').toString() })),
+            App.accounts.upsert(_.extend(accountTo, { code: model.get('accountCodeTo').toString() })),
             uploadFile( position.get('attachment') )
           ).always( function(pFrom, pTo) {
             // TODO if pFrom failed or pTo failed, display an error

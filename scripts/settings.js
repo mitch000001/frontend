@@ -3,7 +3,7 @@ define([],
     'use strict';
 
     return {
-      useFixtures: true,
+      useFixtures: false,
 
       apiUrl: function( path ) {
         if ( this.useFixtures ) {
