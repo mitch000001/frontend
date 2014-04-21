@@ -12,19 +12,6 @@ define([
 
     var accountLabel = function( obj ) { return propertyWrapper('label', obj) };
 
-    var putAccount = function putAccount( obj, code ) {
-      var App = require( 'application' );
-      obj.code = code;
-      var account = App.accounts.findWhere({ code: obj.code });
-
-      if (account === undefined) {
-        account = App.accounts.create(obj);
-      } else {
-        account.set( obj );
-        account.save();
-      }
-    }
-
     return function(position) {
       var originalAttributes = _.clone(position.attributes);
       var App = require('application');
@@ -67,8 +54,8 @@ define([
         save: function( event ) {
           var model = event.context.position;
 
-          putAccount(accountFrom, model.get('accountCodeFrom'));
-          putAccount(accountTo, model.get('accountCodeTo'));
+          App.accounts.upsert(_.extend(accountFrom, { code: model.get('accountCodeFrom') }));
+          App.accounts.upsert(_.extend(accountTo, { code: model.get('accountCodeTo') }));
 
           model.save().always(function() {
             this.fire('fiscalItem:put');

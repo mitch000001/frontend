@@ -18,5 +18,16 @@ define([
         }
         return '';
       },
+
+      upsert: function( attrs ) {
+        var account;
+
+        if ( account = this.findWhere({ code: attrs.code }) ) {
+          account.set( attrs );
+          account.save();
+        } else {
+          account = this.create( attrs );
+        }
+      }
     });
   });
