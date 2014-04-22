@@ -56,7 +56,7 @@ require.config({
     rvc: '../bower_components/requirejs-ractive/rvc',
 
     /* i18n */
-    i18next: '../bower_components/i18next/release/i18next.amd-1.7.1',
+    i18next: '../bower_components/i18next/i18next.amd',
 
     /* foundation */
     foundation: '../bower_components/foundation/js/foundation/foundation',
