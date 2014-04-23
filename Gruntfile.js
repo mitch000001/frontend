@@ -142,15 +142,7 @@ module.exports = function (grunt) {
                 options: {
                     baseUrl: 'scripts',
                     mainConfigFile: 'scripts/init.js',
-                    optimize: 'none',
-                    hbs: {
-                        helpers: true,
-                        helperDirectory: '/scripts/template-helpers/',
-                        helperPathCallback: function( name ) {
-                          return '/template-helpers/' + name + '.js';
-                        },
-                        compileOptions: {}
-                    }
+                    optimize: 'none'
                 }
             }
         },
