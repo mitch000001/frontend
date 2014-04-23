@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "year": 2012
+  },
+  {
+    "id": 2,
+    "year": 2013,
+    "positions": [
+      {
+        "id": 4,
+        "accountCodeFrom": "5900",
+        "accountCodeTo": "1100",
+        "type": "income",
+        "invoiceDate": "2013-12-30",
+        "invoiceNumber": "20130101",
+        "totalAmountCents": 3750.0,
+        "currency": "EUR",
+        "tax": 19,
+        "fiscalPeriodId": 2,
+        "description": "Abrechung Dezember 2013"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "year": 2014,
+    "positions": [{
+      "id": 1,
+      "accountCodeFrom": "02",
+      "accountCodeTo": "1100",
+      "type": "income",
+      "invoiceDate": "2014-01-31",
+      "invoiceNumber": "20140101",
+      "totalAmountCents": 73350.0,
+      "currency": "EUR",
+      "tax": 19,
+      "fiscalPeriodId": 3,
+      "description": "Kunde A Januar 2014"
+    }, {
+      "id": 2,
+      "accountCodeFrom": "02",
+      "accountCodeTo": "1100",
+      "type": "income",
+      "invoiceDate": "2014-02-28",
+      "invoiceNumber": "20140101",
+      "totalAmountCents": 12570.0,
+      "currency": "EUR",
+      "tax": 19,
+      "fiscalPeriodId": 3,
+      "description": "Kunde A Februar 2014"
+    },{
+      "id": 3,
+      "accountCodeFrom": "1100",
+      "accountCodeTo": "5900",
+      "type": "expense",
+      "invoiceDate": "2014-01-31",
+      "invoiceNumber": "20140101",
+      "totalAmountCents": 4900.0,
+      "currency": "EUR",
+      "tax": 19,
+      "fiscalPeriodId": 3,
+      "description": "Hetzner 01.2014"
+    } ]
+  }
+]
