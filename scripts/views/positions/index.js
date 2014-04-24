@@ -31,6 +31,24 @@ define([
               });
               return total;
             }
+          },
+          totalIncome: {
+            get: function() {
+              var total = 0;
+              this.get('positions').filter(function(position) { return position.isIncome() }).forEach(function(position) {
+                total += position.signedTotalAmountCents();
+              });
+              return total;
+            }
+          },
+          totalExpense: {
+            get: function() {
+              var total = 0;
+              this.get('positions').filter(function(position) { return !position.isIncome() }).forEach(function(position) {
+                total += position.signedTotalAmountCents();
+              });
+              return total;
+            }
           }
         }
       });

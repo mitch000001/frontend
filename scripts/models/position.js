@@ -29,6 +29,10 @@ define([
         accountCodeTo: ''
       },
 
+      isIncome: function() {
+        return this.get('type') == 'income';
+      },
+
       signedTotalAmountCents: function() {
         if (this.get('type') === 'expense') {
           return this.get('totalAmountCents') * -1;

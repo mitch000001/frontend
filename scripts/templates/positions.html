@@ -42,7 +42,12 @@
 
       <tfoot>
         <tr>
-          <td colspan="4"></td>
+          <td colspan="2">
+            Einnahmen: <currency amountCents='{{ totalIncome }}'/>
+          </td>
+          <td colspan="2">
+            Ausgaben: <currency amountCents='{{ totalExpense }}'/>
+          </td>
           <td colspan="2"><currency amountCents='{{ totalAmount }}'/></td>
         </tr>
       </tfoot>
