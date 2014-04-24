@@ -2,6 +2,7 @@ require.config({
 
   /* starting point for application */
   deps: ['backbone', 'backbone.relational', 'backbone.marionette', 'backbone.cacheit', 'ractive', 'components/currency', 'components/account-picker', 'i18n', 'main'],
+  waitSeconds: 180, // a raspberry pi is slow
 
   shim: {
     underscore: {
