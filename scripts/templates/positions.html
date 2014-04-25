@@ -29,7 +29,7 @@
             <td>{{ accountCodeFrom }} -> {{ accountCodeTo }}</td>
             <td><currency amountCents="{{ totalAmountCents }}" type="{{ type }}"/></td>
             <td>
-              <a href="#/years/{{ fiscalPeriod.year }}/positions/{{ id }}" data-method="show">
+              <a href="#/years/{{ fiscalYear.year }}/positions/{{ id }}" data-method="show">
                 <i class="fi-widget"></i>
               </a>
               <a on-click="delete" class="alert">
