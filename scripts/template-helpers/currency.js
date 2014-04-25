@@ -18,7 +18,12 @@ define(['accounting'], function ( accounting ) {
     }
     console.log( options.currency );
 
-    return accounting.formatMoney(amount, { symbol: symbols[options.currency],  format: "%v %s" });
+    return accounting.formatMoney(amount, {
+      symbol: symbols[options.currency],
+      format: "%v %s",
+      thousand: '.',
+      decimal: ','
+    });
   }
 
   return currency;
