@@ -21,21 +21,22 @@ define([
       this.loadFiscalYear = function( year ) {
         var promise = new $.Deferred();
 
-        App.fiscalPeriods.fetch().done(function() {
-          var fiscalYear = App.fiscalPeriods.findWhere({
-              year: parseInt( year, 10 )
+        App.fiscalPeriods.fetch()
+          .done(function() {
+            var fiscalYear = App.fiscalPeriods.findWhere({
+                year: parseInt( year, 10 )
+              });
+
+            fiscalYear.get( 'positions' ).fetch().done(function() {
+              promise.resolve(fiscalYear);
             });
-          fiscalYear.get( 'positions' ).fetch();
-
-          if (activeContent != null) {
-            activeContent.teardown();
-          }
-          promise.resolve(fiscalYear);
-        });
-
-        App.fiscalPeriods.fetch().fail(function() {
-          promise.reject();
-        })
+            if (activeContent != null) {
+              activeContent.teardown();
+            }
+          })
+          .fail(function() {
+            promise.reject();
+          })
 
         return $.when(promise, App.accounts.fetch());
       };
