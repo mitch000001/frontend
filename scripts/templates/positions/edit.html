@@ -35,23 +35,23 @@
 
   <div class="row">
     <div class="large-4 columns">
-      <label>Rechnungsnummer</label>
-      <input type="text" name="invoiceNumber" placeholder="z.b. 2014-01-01" value="{{ invoiceNumber }}">
+      <label for="invoiceNumber">Rechnungsnummer</label>
+      <input type="text" id="invoiceNumber" placeholder="z.b. 2014-01-01" value="{{ invoiceNumber }}">
     </div>
     <div class="large-4 columns">
-      <label>Rechnungsdatum</label>
-      <input type="date" name="invoiceDate" value="{{ invoiceDate }}">
+      <label for="invoiceDate">Rechnungsdatum</label>
+      <input type="date" id="invoiceDate" value="{{ invoiceDate }}">
     </div>
     <div class="large-4 columns">
-    <label>Buchungsdatum</label>
-      <input type="date" name="bookingDate" value="{{ bookingDate }}">
+    <label for="bookingDate">Buchungsdatum</label>
+      <input type="date" id="bookingDate" value="{{ bookingDate }}">
     </div>
   </div>
 
   <div class="row">
     <div class="large-12 columns">
-      <label>Beschreibung</label>
-      <input type="text" name="description" placeholder="Beschreibung" value="{{ description }}">
+      <label for="description">Beschreibung</label>
+      <input type="text" id="description" placeholder="Beschreibung" value="{{ description }}">
       <hr>
     </div>
   </div>
@@ -72,12 +72,12 @@
       </div>
     </div>
     <div class="large-8 columns">
-      <label>Umsatzsteuer</label>
-      <input type="radio" name="{{ tax }}" value="">
+      <label for="noTax">Umsatzsteuer</label>
+      <input type="radio" id="noTax" name="{{ tax }}" value="">
       <label for="noTax">nicht anwendbar</label>
-      <input type="radio" name="{{ tax }}" value="7">
+      <input type="radio" id="reducedTax" name="{{ tax }}" value="7">
       <label for="reducedTax">7 %</label>
-      <input type="radio" name="{{ tax }}" value="19">
+      <input type="radio" id="regularTax" name="{{ tax }}" value="19">
       <label for="regularTax">19 %</label>
     </div>
   </div>
@@ -88,7 +88,7 @@
       <div class="row">
         <div class="large-6 columns">
 
-          <label>Anhang</label>
+          <label for="attachment">Anhang</label>
           <input type="file" id="attachment" name="attachment" value="{{ attachment }}">
         </div>
         <div class="large-6 columns">
