@@ -1,18 +1,24 @@
-define([], function ( ) {
+define(['accounting'], function ( accounting ) {
   'use strict';
+
+  var symbols = {
+    'EUR': '€',
+    'USD': '$'
+  };
 
   function currency ( amount, options ) {
     if (options == null) {
       options = {};
     }
-
-    options.currency = options.currency || ' €';
     amount = parseFloat(amount) || 0;
+    options.currency = options.currency || 'EUR';
 
     if (options.cents != null) {
       amount /= options.cents;
     }
-    return amount.toFixed(2) + options.currency;
+    console.log( options.currency );
+
+    return accounting.formatMoney(amount, { symbol: symbols[options.currency],  format: "%v %s" });
   }
 
   return currency;
