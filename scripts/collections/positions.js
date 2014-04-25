@@ -11,6 +11,7 @@ define([
       model: Position,
       url: function() {
         return Settings.apiUrl('/fiscalPeriods/' + this.fiscalPeriod.get('year') + '/positions')
-      }
+      },
+      comparator: 'invoiceDate'
     });
   });
