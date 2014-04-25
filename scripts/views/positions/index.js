@@ -10,7 +10,6 @@ define([
     'use strict';
 
     return function(fiscalYear) {
-
       var ractive = new Ractive({
         template: PositionsTemplate  ,
         adapt: [ 'Backbone' ],

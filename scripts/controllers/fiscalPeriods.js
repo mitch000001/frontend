@@ -25,7 +25,7 @@ define([
           var fiscalYear = App.fiscalPeriods.findWhere({
               year: parseInt( year, 10 )
             });
-          fiscalYear.get( 'positions', true ).fetch()
+          fiscalYear.get( 'positions' ).fetch();
 
           if (activeContent != null) {
             activeContent.teardown();
