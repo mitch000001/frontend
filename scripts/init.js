@@ -20,6 +20,9 @@ require.config({
       deps: ['backbone'],
       exports: 'Backbone'
     },
+    accounting: {
+      exports: 'accounting'
+    },
     foundation: {
       deps: ['jquery'],
       exports: 'Foundation'
@@ -66,6 +69,9 @@ require.config({
     /* auto completion */
     typeahead: '../bower_components/typeahead.js/dist/typeahead.bundle',
     bloodhound: '../bower_components/typeahead.js/dist/bloodhound',
+
+    /* money */
+    accounting: '../bower_components/accounting/accounting',
 
     /* Alias text.js for template loading and shortcut the templates dir to tmpl */
     text: '../bower_components/requirejs-text/text',

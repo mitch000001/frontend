@@ -19,7 +19,8 @@
     "foundation-icon-fonts": "git@github.com:nicolai86/foundation-icon-fonts",
     "ractive": "~0.4.0",
     "ractive-adaptors-backbone": "git@github.com:ractivejs/ractive-adaptors-backbone#master",
-    "requirejs-ractive": "git@github.com:ractivejs/requirejs-ractive"
+    "requirejs-ractive": "git@github.com:ractivejs/requirejs-ractive",
+    "accounting": "~0.3.2"
   },
   "devDependencies": {},
   "directory": "bower_components"
