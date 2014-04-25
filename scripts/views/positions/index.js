@@ -1,7 +1,7 @@
 define([
     'backbone',
     'i18n',
-    'rv!templates/positions',
+    'rv!templates/positions/index',
     'ractive',
     'ractive-backbone'
   ],

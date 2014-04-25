@@ -27,7 +27,7 @@
             <td>{{ bookingDate }}</td>
             <td>{{ description }}</td>
             <td>{{ accountCodeFrom }} -> {{ accountCodeTo }}</td>
-            <td><currency amountCents="{{ totalAmountCents }}" type="{{ type }}"/></td>
+            <td><currency amountCents="{{ totalAmountCents }}" type="{{ type }}" currency="{{ currency }}"/></td>
             <td>
               <a href="#/years/{{ fiscalYear.year }}/positions/{{ id }}" data-method="show">
                 <i class="fi-widget"></i>
@@ -43,10 +43,10 @@
       <tfoot>
         <tr>
           <td colspan="2">
-            Einnahmen: <currency amountCents='{{ totalIncome }}'/>
+            {{ t('positions.listing.income') }}: <currency amountCents='{{ totalIncome }}'/>
           </td>
           <td colspan="2">
-            Ausgaben: <currency amountCents='{{ totalExpense }}'/>
+            {{ t('positions.listing.expenses') }}: <currency amountCents='{{ totalExpense }}'/>
           </td>
           <td colspan="2"><currency amountCents='{{ totalAmount }}'/></td>
         </tr>

@@ -11,7 +11,9 @@
       "bookingDate": "Buchungsdatum",
       "description": "Beschreibung",
       "account":     "Buchungskonto",
-      "totalAmount": "Betrag"
+      "totalAmount": "Betrag",
+      "income": "Einnahmen",
+      "expenses": "Ausgaben"
     },
     "attributes": {
       "invoiceDate": "Rechnungsdatum"

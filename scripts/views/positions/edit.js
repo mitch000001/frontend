@@ -1,7 +1,7 @@
 define([
     'backbone',
     'i18n',
-    'rv!templates/position-form',
+    'rv!templates/positions/edit',
     'ractive',
     'helpers/computedPropertyWrapper',
     'ractive-backbone'
