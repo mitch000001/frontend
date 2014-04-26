@@ -48,6 +48,7 @@ define([
 
       this.yearOverview = function( year ) {
         this.loadFiscalYear(year).done(function( fiscalYear ) {
+          fiscalYear.get('positions').sort();
           activeContent = PositionsOverview(fiscalYear)
         });
       };
