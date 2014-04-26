@@ -27,7 +27,7 @@
         {{#positions:index}}
           <tr>
             <td class="cleared month"><month month="{{ positions.monthForPosition(index) }}"></month></td>
-            <td>{{ invoiceDate }}</td>
+            <td>{{ invoiceDate.split('-')[2] }}.{{ invoiceDate.split('-')[1] }}.</td>
             <td>{{ bookingDate }}</td>
             <td>{{ description }}</td>
             <td>{{ accountCodeFrom }} -> {{ accountCodeTo }}</td>
