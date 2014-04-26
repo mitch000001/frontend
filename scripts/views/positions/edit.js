@@ -47,7 +47,7 @@ define([
       };
 
       var ractive = new Ractive({
-        template: PositionsTemplate  ,
+        template: PositionsTemplate,
         adapt: [ Ractive.adaptors.Backbone ],
 
         el: 'content',

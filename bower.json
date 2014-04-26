@@ -10,7 +10,7 @@
     "underscore-amd": "~1.4.4",
     "modernizr": "~2.6.2",
     "backbone.marionette": "latest",
-    "backbone.wreqr": "latest",
+    "backbone.wreqr": "1.2.0",
     "backbone.babysitter": "~0.0.6",
     "foundation": "~5.0.3",
     "backbone-relational": "~0.8.7",
