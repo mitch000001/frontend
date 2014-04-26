@@ -16,7 +16,6 @@ define(['accounting'], function ( accounting ) {
     if (options.cents != null) {
       amount /= options.cents;
     }
-    console.log( options.currency );
 
     return accounting.formatMoney(amount, {
       symbol: symbols[options.currency],
