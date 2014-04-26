@@ -10,8 +10,18 @@ define([
     'use strict';
 
     return function(fiscalYear) {
+      var MonthComponent = Ractive.extend({
+        template: '{{ month }}',
+        init: function() {
+          if (this.data.month !== null) {
+            this.set({ month: I18n.t('date.month_abbrs.' + parseInt(this.data.month, 10)) });
+          }
+        },
+        lazy: true
+      });
+
       var ractive = new Ractive({
-        template: PositionsTemplate  ,
+        template: PositionsTemplate,
         adapt: [ 'Backbone' ],
 
         el: 'content',
@@ -20,6 +30,10 @@ define([
           fiscalYear: fiscalYear,
           positions: fiscalYear.get('positions'),
           t: I18n.t
+        },
+
+        components: {
+          month: MonthComponent
         },
 
         computed: {

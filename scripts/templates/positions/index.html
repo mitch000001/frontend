@@ -1,16 +1,19 @@
 <div class="row">
   <div class="large-12 columns">
-    <h2>{{ t('fiscalPeriods.headline', { year: fiscalYear.year }) }}</h2>
+    <div class="month">
+      <h2>{{ t('fiscalPeriods.headline', { year: fiscalYear.year }) }}</h2>
 
-    <ul class="button-group small">
-      <li>
-        <a href="/#/years/{{ fiscalYear.year }}/positions/new" class="tiny button">{{ t('positions.actions.new') }}</a>
-      </li>
-    </ul>
+      <ul class="button-group small">
+        <li>
+          <a href="/#/years/{{ fiscalYear.year }}/positions/new" class="tiny button">{{ t('positions.actions.new') }}</a>
+        </li>
+      </ul>
+    </div>
 
     <table class="{{ fiscalYear.year }} positions large-12">
       <thead>
         <tr>
+          <th width="50" class="cleared month"></th>
           <th width="100">{{ t('positions.listing.invoiceDate') }}</th>
           <th width="100">{{ t('positions.listing.bookingDate') }}</th>
           <th>{{ t('positions.listing.description') }}</th>
@@ -21,8 +24,9 @@
       </thead>
 
       <tbody>
-        {{#positions}}
+        {{#positions:index}}
           <tr>
+            <td class="cleared month"><month month="{{ positions.monthForPosition(index) }}"></month></td>
             <td>{{ invoiceDate }}</td>
             <td>{{ bookingDate }}</td>
             <td>{{ description }}</td>
@@ -42,6 +46,8 @@
 
       <tfoot>
         <tr>
+          <td class="cleared month">
+          </td>
           <td colspan="2">
             {{ t('positions.listing.income') }}: <currency amountCents='{{ totalIncome }}'/>
           </td>

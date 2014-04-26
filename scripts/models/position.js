@@ -29,6 +29,10 @@ define([
         accountCodeTo: ''
       },
 
+      invoiceMonth: function() {
+        return this.get('invoiceDate').split('-')[1];
+      },
+
       isIncome: function() {
         return this.get('type') == 'income';
       },

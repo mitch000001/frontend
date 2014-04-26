@@ -4,4 +4,34 @@ table tr th, table tr td {
 
 table {
   border-spacing: 0;
+  border: none;
+}
+
+$border-color: #ddd;
+
+th.cleared, td.cleared {
+  background: white;
+}
+
+.positions {
+  border-right: 1px solid $border-color;
+  th {
+    border-top: 1px solid $border-color;
+    &.month {
+      border-top: none;
+      border-right: 1px solid $border-color;
+    }
+  }
+  tfoot td {
+    border-bottom: 1px solid $border-color;
+  }
+  td.month {
+    border-top: none;
+    border-bottom: none;
+    border-right: 1px solid $border-color;
+  }
+}
+
+div.month {
+  margin-left: 50px;
 }
