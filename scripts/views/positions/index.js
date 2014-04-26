@@ -17,7 +17,8 @@ define([
             this.set({ month: I18n.t('date.month_abbrs.' + parseInt(this.data.month, 10)) });
           }
         },
-        lazy: true
+        lazy: true,
+        twoway: false
       });
 
       var ractive = new Ractive({
