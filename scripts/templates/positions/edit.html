@@ -1,6 +1,5 @@
 <form class="fiscal-item" on-submit="save">
 
-  {{#position}}
   <div class="row">
     <div class="large-12 columns">
       <h2>Buchung</h2>
@@ -9,27 +8,33 @@
 
   <div class="row">
     <div class="large-4 columns">
-      <label>Art *</label>
-      <input type="radio" name="{{ type }}" value="expense" id="typeExpense">
+      <label for="typeExpense">Art *</label>
+      <input type="radio" name="{{ position.type }}" value="expense" id="typeExpense">
       <label for="typeExpense">Ausgabe</label>
-      <input type="radio" name="{{ type }}" value="income" id="typeIncome">
+      <input type="radio" name="{{ position.type }}" value="income" id="typeIncome">
       <label for="typeIncome">Einnahme</label>
     </div>
 
     <div class="large-8 columns">
       <div class="row collapsed">
-        <div class="large-5 columns">
+        <div class="large-5 columns {{#position.hasErrorOn('accountCodeFrom')}}error{{/position}}">
           <label>Konto von</label>
-          <account-picker account="{{ accountCodeFrom }}" label="{{ accountLabelFrom }}"></account-picker>
+          <account-picker account="{{ position.accountCodeFrom }}" label="{{ accountLabelFrom }}"></account-picker>
+          {{#position.hasErrorOn('accountCodeFrom')}}
+          <small class="error">{{ position.errors.accountCodeFrom }}</small>
+          {{/position}}
         </div>
         <div class="large-2 columns">
           <span class="account-direction">
             ->
           </span>
         </div>
-        <div class="large-5 columns">
+        <div class="large-5 columns {{#position.hasErrorOn('accountCodeTo')}}error{{/position}}">
           <label>Konto nach</label>
-          <account-picker account="{{ accountCodeTo }}" label="{{ accountLabelTo }}"></account-picker>
+          <account-picker account="{{ position.accountCodeTo }}" label="{{ accountLabelTo }}"></account-picker>
+          {{#position.hasErrorOn('accountCodeTo')}}
+          <small class="error">{{ position.errors.accountCodeTo }}</small>
+          {{/position}}
         </div>
       </div>
     </div>
@@ -38,22 +43,22 @@
   <div class="row">
     <div class="large-4 columns">
       <label for="invoiceNumber">Rechnungsnummer</label>
-      <input type="text" id="invoiceNumber" placeholder="z.b. 2014-01-01" value="{{ invoiceNumber }}">
+      <input type="text" id="invoiceNumber" placeholder="z.b. 2014-01-01" value="{{ position.invoiceNumber }}">
     </div>
     <div class="large-4 columns">
       <label for="invoiceDate">Rechnungsdatum</label>
-      <input type="date" id="invoiceDate" value="{{ invoiceDate }}">
+      <input type="date" id="invoiceDate" value="{{ position.invoiceDate }}">
     </div>
     <div class="large-4 columns">
     <label for="bookingDate">Buchungsdatum</label>
-      <input type="date" id="bookingDate" value="{{ bookingDate }}">
+      <input type="date" id="bookingDate" value="{{ position.bookingDate }}">
     </div>
   </div>
 
   <div class="row">
     <div class="large-12 columns">
       <label for="description">Beschreibung</label>
-      <input type="text" id="description" placeholder="Beschreibung" value="{{ description }}">
+      <input type="text" id="description" placeholder="Beschreibung" value="{{ position.description }}">
       <hr>
     </div>
   </div>
@@ -66,7 +71,7 @@
           <input type="text" id="totalAmount" placeholder="Betrag" value="{{ totalAmount }}">
         </div>
         <div class="small-4 columns">
-          <select class="postfix" value="{{ currency }}">
+          <select class="postfix" value="{{ position.currency }}">
             <option value="EUR">EUR</option>
             <option value="USD">USD</option>
           </select>
@@ -75,11 +80,11 @@
     </div>
     <div class="large-8 columns">
       <label for="noTax">Umsatzsteuer</label>
-      <input type="radio" id="noTax" name="{{ tax }}" value="">
+      <input type="radio" id="noTax" name="{{ position.tax }}" value="">
       <label for="noTax">nicht anwendbar</label>
-      <input type="radio" id="reducedTax" name="{{ tax }}" value="7">
+      <input type="radio" id="reducedTax" name="{{ position.tax }}" value="7">
       <label for="reducedTax">7 %</label>
-      <input type="radio" id="regularTax" name="{{ tax }}" value="19">
+      <input type="radio" id="regularTax" name="{{ position.tax }}" value="19">
       <label for="regularTax">19 %</label>
     </div>
   </div>
@@ -91,17 +96,16 @@
         <div class="large-6 columns">
 
           <label for="attachment">Anhang</label>
-          <input type="file" id="attachment" name="attachment" value="{{ attachment }}">
+          <input type="file" id="attachment" name="attachment" value="{{ position.attachment }}">
         </div>
         <div class="large-6 columns">
-          {{#attachmentPath}}
-          <a href="{{ attachmentPath }}">Download</a>
-          {{/attachmentPath}}
+          {{#position.attachmentPath}}
+          <a href="{{ position.attachmentPath }}">Download</a>
+          {{/position.attachmentPath}}
         </div>
       </div>
     </div>
   </div>
-  {{/position}}
 
   <div class="row">
     <div class="large-12 columns">

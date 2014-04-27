@@ -26,7 +26,12 @@ define([
         description: '',
         attachment: null,
         accountCodeFrom: '',
-        accountCodeTo: ''
+        accountCodeTo: '',
+        errors: {}
+      },
+
+      hasErrorOn: function(attr) {
+        return attr in this.get('errors');
       },
 
       invoiceMonth: function() {

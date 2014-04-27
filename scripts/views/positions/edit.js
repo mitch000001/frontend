@@ -86,9 +86,14 @@ define([
               if (attachmentPath != null) {
                 model.set('attachmentPath', attachmentPath);
               }
-              model.save().always(function() {
-                this.fire('fiscalItem:put');
-              }.bind(this));
+              model.save()
+                .then(function() {
+                  model.set({ errors: {}});
+                  this.fire('fiscalItem:put');
+                }.bind(this))
+                .fail(function(response) {
+                  position.set({ errors: response.responseJSON.errors });
+                }.bind(this));
             }.bind(this)
           );
 
