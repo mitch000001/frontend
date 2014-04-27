@@ -30,7 +30,15 @@ define([
         data: {
           fiscalYear: fiscalYear,
           positions: fiscalYear.get('positions'),
-          t: I18n.t
+          t: I18n.t,
+          shortDate: function(content) {
+            var parts = content.split('-');
+
+            if (parts.length === 3) {
+              return [parts[2], parts[1], ''].join('.');
+            }
+            return '';
+          }
         },
 
         components: {
