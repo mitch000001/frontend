@@ -4,6 +4,17 @@
   display: inline-block;
 }
 
+.account-picker input {
+  margin-bottom: 0;
+}
+
+.account-picker {
+  margin: 0 0 1em 0;
+}
+.error .account-picker {
+  margin: 0;
+}
+
 .account-picker > .twitter-typeahead {
   width: 80px;
 }
