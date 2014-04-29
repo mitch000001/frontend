@@ -33,8 +33,10 @@ define(
     };
 
     var AccountPicker = Ractive.extend({
-        template: '<div class="account-picker"><input name="accountLabel{{suffix}}" type="text" value="{{label}}">' +
-          '<input name="accountCode{{suffix}}" type="text" placeholder="Identifikation" value="{{account}}"/></div>',
+        template: '<div class="account-picker">' +
+          '<input name="accountCode{{suffix}}" type="text" placeholder="Identifikation" value="{{account}}"/>' +
+          '<input name="accountLabel{{suffix}}" type="text" value="{{label}}">' +
+          '</div>',
         complete: function () {
           setupAutocompletion.bind(this).call();
         },
