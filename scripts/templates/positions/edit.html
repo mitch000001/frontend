@@ -41,13 +41,19 @@
   </div>
 
   <div class="row">
-    <div class="large-4 columns">
+    <div class="large-4 columns {{#position.hasErrorOn('invoiceNumber')}}error{{/position}}">
       <label for="invoiceNumber">Rechnungsnummer</label>
       <input type="text" id="invoiceNumber" placeholder="z.b. 2014-01-01" value="{{ position.invoiceNumber }}">
+      {{#position.hasErrorOn('invoiceNumber')}}
+      <small class="error">{{ position.errors.invoiceNumber }}</small>
+      {{/position}}
     </div>
-    <div class="large-4 columns">
+    <div class="large-4 columns {{#position.hasErrorOn('invoiceDate')}}error{{/position}}">
       <label for="invoiceDate">Rechnungsdatum</label>
       <input type="date" id="invoiceDate" value="{{ position.invoiceDate }}">
+      {{#position.hasErrorOn('invoiceDate')}}
+      <small class="error">{{ position.errors.invoiceDate }}</small>
+      {{/position}}
     </div>
     <div class="large-4 columns">
     <label for="bookingDate">Buchungsdatum</label>

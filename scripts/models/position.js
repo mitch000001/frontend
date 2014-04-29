@@ -15,19 +15,22 @@ define([
         return Settings.apiUrl('/fiscalPeriods/' + this.get('fiscalPeriod').get('year') + '/positions/' + this.get('id') );
       },
 
-      defaults: {
-        type: 'expense',
-        invoiceDate: '2014-01-01',
-        invoiceNumber: '20140101',
-        totalAmountCents: 0,
-        currency: 'EUR',
-        tax: 19,
-        fiscalPeriodId: null,
-        description: '',
-        attachment: null,
-        accountCodeFrom: '',
-        accountCodeTo: '',
-        errors: {}
+      defaults: function() {
+        var now = new Date();
+        return {
+          type: 'expense',
+          invoiceDate: now.getFullYear() + '-' + (now.getMonth() < 10 ? '0' : '') + now.getMonth()  + '-' + (now.getDate() < 10 ? '0' : '') +now.getDate(),
+          invoiceNumber: '',
+          totalAmountCents: 0,
+          currency: 'EUR',
+          tax: 19,
+          fiscalPeriodId: null,
+          description: '',
+          attachment: null,
+          accountCodeFrom: '',
+          accountCodeTo: '',
+          errors: {}
+        }
       },
 
       hasErrorOn: function(attr) {
