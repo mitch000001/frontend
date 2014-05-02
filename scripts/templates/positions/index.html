@@ -3,11 +3,26 @@
     <div class="month">
       <h2>{{ t('fiscalPeriods.headline', { year: fiscalYear.year }) }}</h2>
 
-      <ul class="button-group small">
-        <li>
-          <a href="/#/years/{{ fiscalYear.year }}/positions/new" class="tiny button">{{ t('positions.actions.new') }}</a>
-        </li>
-      </ul>
+      <div class="row">
+        <div class="large-12 columns">
+          <div class="row collapse">
+            <div class="small-3 columns">
+              <a href="/#/years/{{ fiscalYear.year }}/positions/new" class="tiny button">{{ t('positions.actions.new') }}</a>
+            </div>
+            <div class="small-1 columns">
+              {{#searchQuery}}
+              <a href="#" class="button prefix alert" on-click="clearSearch">
+                <i class="fi-minus"></i>
+              </a>
+              {{/searchQuery}}
+              &nbsp;
+            </div>
+            <div class="small-8 columns">
+              <input type="text" placeholder="Suche" value="{{ searchQuery }}">
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <table class="{{ fiscalYear.year }} positions large-12">
@@ -24,7 +39,7 @@
       </thead>
 
       <tbody>
-        {{#positions:index}}
+        {{# filter( positions, searchQuery ):index}}
           <tr>
             <td class="cleared month"><month month="{{ positions.monthForPosition(index) }}"></month></td>
             <td>{{ shortDate(invoiceDate) }}</td>
@@ -49,12 +64,12 @@
           <td class="cleared month">
           </td>
           <td colspan="2">
-            {{ t('positions.listing.income') }}: <currency amountCents='{{ totalIncome }}'/>
+            {{ t('positions.listing.income') }}: <currency amountCents='{{ totalIncome( filter( positions, searchQuery ) ) }}'/>
           </td>
           <td colspan="2">
-            {{ t('positions.listing.expenses') }}: <currency amountCents='{{ totalExpense }}'/>
+            {{ t('positions.listing.expenses') }}: <currency amountCents='{{ totalExpense( filter( positions, searchQuery ) ) }}'/>
           </td>
-          <td colspan="2"><currency amountCents='{{ totalAmount }}'/></td>
+          <td colspan="2"><currency amountCents='{{ totalAmount( filter( positions, searchQuery ) ) }}'/></td>
         </tr>
       </tfoot>
     </table>

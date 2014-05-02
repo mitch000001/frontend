@@ -38,46 +38,54 @@ define([
               return [parts[2], parts[1], ''].join('.');
             }
             return '';
+          },
+          filter: function( collection, query ) {
+            if (query === undefined) {
+              query = '';
+            }
+            if (query === '') {
+              return collection;
+            }
+            var regexp = new RegExp( query );
+            return collection.select(function(position) {
+              return regexp.test(position.get('description')) || regexp.test(position.get('invoiceNumber'));
+            });
+          },
+          totalIncome: function( positions ) {
+            var total = 0;
+            positions.filter(function(position) { return position.isIncome() }).forEach(function(position) {
+              total += position.signedTotalAmountCents();
+            });
+            return total;
+          },
+          totalExpense: function( positions ) {
+            var total = 0;
+            positions.filter(function(position) { return !position.isIncome() }).forEach(function(position) {
+              total += position.signedTotalAmountCents();
+            });
+            return total;
+          },
+          totalAmount: function( positions ) {
+            var total = 0;
+            positions.forEach(function(position) {
+              total += position.signedTotalAmountCents();
+            });
+            return total;
           }
         },
 
         components: {
           month: MonthComponent
-        },
-
-        computed: {
-          totalAmount: {
-            get: function() {
-              var total = 0;
-              this.get('positions').forEach(function(position) {
-                total += position.signedTotalAmountCents();
-              });
-              return total;
-            }
-          },
-          totalIncome: {
-            get: function() {
-              var total = 0;
-              this.get('positions').filter(function(position) { return position.isIncome() }).forEach(function(position) {
-                total += position.signedTotalAmountCents();
-              });
-              return total;
-            }
-          },
-          totalExpense: {
-            get: function() {
-              var total = 0;
-              this.get('positions').filter(function(position) { return !position.isIncome() }).forEach(function(position) {
-                total += position.signedTotalAmountCents();
-              });
-              return total;
-            }
-          }
         }
       });
 
       ractive.on( 'delete', function ( event ) {
         event.context.destroy();
+      });
+      ractive.on( 'clearSearch', function( event ) {
+        event.original.preventDefault();
+        event.original.stopPropagation();
+        this.set({ searchQuery: '' });
       });
 
       return ractive;
