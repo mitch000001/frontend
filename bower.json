@@ -23,5 +23,8 @@
     "accounting": "0.3.2"
   },
   "devDependencies": {},
-  "directory": "bower_components"
+  "directory": "bower_components",
+  "resolutions": {
+    "jquery": ">= 2.0.0"
+  }
 }
