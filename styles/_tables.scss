@@ -30,7 +30,7 @@ th.cleared, td.cleared {
     border-bottom: none;
     border-right: 1px solid $border-color;
   }
-  tr:hover {
+  tbody tr:hover {
     background-color: #cdcdcd;
   }
 }
