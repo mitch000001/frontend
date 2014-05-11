@@ -45,6 +45,10 @@ define([
         return this.get('type') == 'income';
       },
 
+      totalVatAmountCents: function() {
+        return this.get('totalAmountCents') - (this.get('totalAmountCents') / (this.get('tax') / 100 + 1));
+      },
+
       signedTotalAmountCents: function() {
         if (this.get('type') === 'expense') {
           return this.get('totalAmountCents') * -1;

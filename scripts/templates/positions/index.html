@@ -34,7 +34,9 @@
           <th width="100">{{ t('positions.listing.invoiceNumber') }}</th>
           <th>{{ t('positions.listing.description') }}</th>
           <th width="125">{{ t('positions.listing.account') }}</th>
-          <th width="100">{{ t('positions.listing.totalAmount') }}</th>
+          <th width="130">{{ t('positions.listing.totalAmount') }}</th>
+          <th width="130">{{ t('positions.listing.totalVatAmount') }}</th>
+          <th width="70"></th>
           <th width="50"></th>
         </tr>
       </thead>
@@ -49,6 +51,8 @@
             <td>{{ description }}</td>
             <td>{{ accountCodeFrom }} -> {{ accountCodeTo }}</td>
             <td><currency amountCents="{{ totalAmountCents }}" type="{{ type }}" currency="{{ currency }}"/></td>
+            <td><currency amountCents="{{ this.totalVatAmountCents() }}" type="{{ vatType }}" currency="{{ currency }}"/></td>
+            <td>{{tax}} %</td>
             <td>
               <a href="#/years/{{ fiscalYear.year }}/positions/{{ id }}" data-method="show">
                 <i class="fi-widget"></i>
@@ -71,7 +75,8 @@
           <td colspan="3">
             {{ t('positions.listing.expenses') }}: <currency amountCents='{{ totalExpense( filter( positions, searchQuery ) ) }}'/>
           </td>
-          <td colspan="2"><currency amountCents='{{ totalAmount( filter( positions, searchQuery ) ) }}'/></td>
+          <td colspan="1"><currency amountCents='{{ totalAmount( filter( positions, searchQuery ) ) }}'/></td>
+          <td colspan="3"><currency amountCents='{{ totalVatAmount( filter( positions, searchQuery ) ) }}'/></td>
         </tr>
       </tfoot>
     </table>

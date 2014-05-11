@@ -51,6 +51,9 @@ define([
               return regexp.test(position.get('description')) || regexp.test(position.get('invoiceNumber'));
             });
           },
+          vat: function( amountCents, tax ) {
+            return amountCents - (amountCents / (tax / 100 + 1));
+          },
           totalIncome: function( positions ) {
             var total = 0;
             positions.filter(function(position) { return position.isIncome() }).forEach(function(position) {
@@ -69,6 +72,14 @@ define([
             var total = 0;
             positions.forEach(function(position) {
               total += position.signedTotalAmountCents();
+            });
+            return total;
+          },
+          totalVatAmount: function( positions ) {
+            var total = 0;
+            console.log(positions.length);
+            positions.forEach(function(position) {
+              total += position.totalVatAmountCents();
             });
             return total;
           },

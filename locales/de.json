@@ -13,6 +13,7 @@
       "description": "Beschreibung",
       "account":     "Buchungskonto",
       "totalAmount": "Betrag",
+      "totalVatAmount": "MwSt.",
       "income": "Einnahmen",
       "expenses": "Ausgaben"
     },
