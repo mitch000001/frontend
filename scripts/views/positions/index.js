@@ -71,6 +71,17 @@ define([
               total += position.signedTotalAmountCents();
             });
             return total;
+          },
+          monthForPosition: function(positions, index) {
+            var pos = positions.at(index);
+            if (index === 0) {
+              return pos.invoiceMonth();
+            }
+            var prev = positions.at(index - 1);
+            if (prev.invoiceMonth() != pos.invoiceMonth()) {
+              return pos.invoiceMonth();
+            }
+            return null;
           }
         },
 

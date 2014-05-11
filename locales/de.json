@@ -9,6 +9,7 @@
     "listing": {
       "invoiceDate": "Rechnungsdatum",
       "bookingDate": "Buchungsdatum",
+      "invoiceNumber": "Rechnungsnummer",
       "description": "Beschreibung",
       "account":     "Buchungskonto",
       "totalAmount": "Betrag",

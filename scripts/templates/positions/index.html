@@ -31,6 +31,7 @@
           <th width="50" class="cleared month"></th>
           <th width="100">{{ t('positions.listing.invoiceDate') }}</th>
           <th width="100">{{ t('positions.listing.bookingDate') }}</th>
+          <th width="100">{{ t('positions.listing.invoiceNumber') }}</th>
           <th>{{ t('positions.listing.description') }}</th>
           <th width="125">{{ t('positions.listing.account') }}</th>
           <th width="100">{{ t('positions.listing.totalAmount') }}</th>
@@ -41,9 +42,10 @@
       <tbody>
         {{# filter( positions, searchQuery ):index}}
           <tr>
-            <td class="cleared month"><month month="{{ positions.monthForPosition(index) }}"></month></td>
+            <td class="cleared month"><month month="{{ monthForPosition(positions, index) }}"></month></td>
             <td>{{ shortDate(invoiceDate) }}</td>
             <td>{{ shortDate(bookingDate) }}</td>
+            <td>{{ invoiceNumber }}</td>
             <td>{{ description }}</td>
             <td>{{ accountCodeFrom }} -> {{ accountCodeTo }}</td>
             <td><currency amountCents="{{ totalAmountCents }}" type="{{ type }}" currency="{{ currency }}"/></td>
