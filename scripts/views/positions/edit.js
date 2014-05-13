@@ -55,7 +55,8 @@ define([
         data: {
           position: position,
           year: position.get('fiscalPeriod').get('year'),
-          t: I18n.t
+          t: I18n.t,
+          convertedTotalAmountCents: 0
         },
 
         computed: {
@@ -72,6 +73,22 @@ define([
           }
         }
       });
+
+      var refreshExchangeInfos = function() {
+        var promise = new $.Deferred();
+        $.get('/rates/' + position.get('invoiceDate') + '/' + position.get('currency'))
+          .done(function(exchangeInfos) {
+            ractive.set('exchangeRate', (1 / exchangeInfos.rate).toFixed(4));
+            ractive.set('convertedTotalAmountCents', position.get('totalAmountCents') / exchangeInfos.rate)
+          })
+          .fail(function() {
+            promise.fail();
+          });
+        return promise;
+      }
+      ractive.observe('position.invoiceDate', refreshExchangeInfos.bind(this));
+      ractive.observe('position.currency', refreshExchangeInfos.bind(this));
+      ractive.observe('position.totalAmountCents', refreshExchangeInfos.bind(this));
 
       ractive.on({
         save: function( event ) {
