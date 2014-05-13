@@ -71,15 +71,6 @@
 
   <div class="row">
     <div class="large-3 columns">
-      <label for="noTax">Umsatzsteuer</label>
-      <input type="radio" id="noTax" name="{{ position.tax }}" value="0">
-      <label for="noTax">nicht anwendbar</label>
-      <input type="radio" id="reducedTax" name="{{ position.tax }}" value="7">
-      <label for="reducedTax">7 %</label>
-      <input type="radio" id="regularTax" name="{{ position.tax }}" value="19">
-      <label for="regularTax">19 %</label>
-    </div>
-    <div class="large-3 columns">
       <div class="row collapse">
         <label for="totalAmount">Betrag</label>
         <div class="small-8 columns">
@@ -97,10 +88,19 @@
     {{#position.currency != 'EUR'}}
       <label>Umrechnungskurs</label>
       <span>
-        {{ exchangeRate }} {{ position.currency }} ≈
+        {{ exchangeRate }} ≈
         <currency amountCents="{{ convertedTotalAmountCents }}" currency="EUR"/>
       </span>
     {{/position}}
+    </div>
+    <div class="large-3 columns">
+      <label for="noTax">Umsatzsteuer</label>
+      <input type="radio" id="noTax" name="{{ position.tax }}" value="0">
+      <label for="noTax">nicht anwendbar</label>
+      <input type="radio" id="reducedTax" name="{{ position.tax }}" value="7">
+      <label for="reducedTax">7 %</label>
+      <input type="radio" id="regularTax" name="{{ position.tax }}" value="19">
+      <label for="regularTax">19 %</label>
     </div>
     <div class="large-4 columns">
     </div>
