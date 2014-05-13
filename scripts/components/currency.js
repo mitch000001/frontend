@@ -6,8 +6,6 @@ define(
     var CurrencyWidget = Ractive.extend({
         template: '<span class="{{ type }}">{{ amount }}</span>',
         init: function () {
-          var cents = this.data.amountCents || 1;
-
           this.setAmount();
         },
         setAmount: function() {
