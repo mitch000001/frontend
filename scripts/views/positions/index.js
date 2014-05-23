@@ -77,7 +77,6 @@ define([
           },
           totalVatAmount: function( positions ) {
             var total = 0;
-            console.log(positions.length);
             positions.forEach(function(position) {
               total += position.totalVatAmountCents();
             });

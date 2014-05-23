@@ -9,7 +9,6 @@ define([
 
     return Backbone.Collection.extend({
       model: Account,
-      url: Settings.apiUrl('/accounts'),
 
       labelForCode: function( code ) {
         var account;

@@ -9,6 +9,5 @@ define([
 
     return Backbone.Collection.extend({
       model: FiscalPeriod,
-      url: function() { return Settings.apiUrl('/fiscalPeriods'); }
     });
   });
