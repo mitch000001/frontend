@@ -46,9 +46,9 @@ define([
             if (query === '') {
               return collection;
             }
-            var regexp = new RegExp( query );
+            var regexp = new RegExp( query.toLowerCase() );
             return collection.select(function(position) {
-              return regexp.test(position.get('description')) || regexp.test(position.get('invoiceNumber'));
+              return regexp.test(position.get('description').toLowerCase()) || regexp.test(position.get('invoiceNumber').toLowerCase());
             });
           },
           vat: function( amountCents, tax ) {
