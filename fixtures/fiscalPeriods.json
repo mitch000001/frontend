@@ -17,7 +17,6 @@
         "totalAmountCents": 3750.0,
         "currency": "EUR",
         "tax": 19,
-        "fiscalPeriodId": 2,
         "description": "Abrechung Dezember 2013"
       }
     ]
@@ -35,7 +34,6 @@
       "totalAmountCents": 73350.0,
       "currency": "EUR",
       "tax": 19,
-      "fiscalPeriodId": 3,
       "description": "Kunde A Januar 2014"
     }, {
       "id": 2,
@@ -47,7 +45,6 @@
       "totalAmountCents": 12570.0,
       "currency": "EUR",
       "tax": 19,
-      "fiscalPeriodId": 3,
       "description": "Kunde A Februar 2014"
     },{
       "id": 3,
@@ -59,7 +56,6 @@
       "totalAmountCents": 4900.0,
       "currency": "EUR",
       "tax": 19,
-      "fiscalPeriodId": 3,
       "description": "Hetzner 01.2014"
     } ]
   }

@@ -24,7 +24,6 @@ define([
           totalAmountCents: 0,
           currency: 'EUR',
           tax: 19,
-          fiscalPeriodId: null,
           description: '',
           attachment: null,
           accountCodeFrom: '',
