@@ -10,5 +10,9 @@ define([
       url: function() {
         return Settings.apiUrl('/backups' + (this.isNew() ? '' : '/' + this.get('id')));
       },
+
+      restore: function() {
+        //...
+      }
     });
   });

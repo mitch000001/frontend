@@ -3,7 +3,10 @@
     "headline": "Buchungen im Jahr %{year}"
   },
   "backups": {
-    "headline": "Backups"
+    "headline": "Backups",
+    "listing": {
+      "name": "Backup"
+    }
   },
   "positions": {
     "actions": {

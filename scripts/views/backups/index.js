@@ -25,6 +25,9 @@ define([
       ractive.on( 'delete', function ( event ) {
         event.context.destroy();
       });
+      ractive.on( 'restore', function ( event ) {
+        event.context.restore();
+      });
 
       return ractive;
     };

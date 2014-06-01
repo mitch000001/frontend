@@ -2,4 +2,30 @@
   <div class="large-12 columns">
     <h2>{{ t('backups.headline') }}</h2>
   </div>
+  <div class="large-12 columns">
+    <table class="{{ fiscalYear.year }} large-12">
+      <thead>
+        <tr>
+          <th width="130">{{ t('backups.listing.name') }}</th>
+          <th width="50"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {{#backups}}
+          <tr>
+            <td>{{ name }}</td>
+            <td>
+              <a on-click="restore">
+                <i class="fi-play"></i>
+              </a>
+              <a on-click="delete" class="alert">
+                <i class="fi-trash"></i>
+              </a>
+            </td>
+          </tr>
+        {{/backups}}
+      </tbody>
+    </table>
+  </div>
 </div>
