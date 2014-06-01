@@ -5,16 +5,19 @@ require([
     'communicator',
     'collections/fiscalPeriods',
     'collections/accounts',
+    'collections/backups',
     'views/navigation',
-    'routers/fiscalPeriods'
+    'routers/fiscalPeriods',
+    'routers/backups'
   ],
 
-  function ( Backbone, App, Settings, Communicator, FiscalPeriods, Accounts, Navigation, FiscalPeriodsRouter ) {
+  function ( Backbone, App, Settings, Communicator, FiscalPeriods, Accounts, Backups, Navigation, FiscalPeriodsRouter, BackupsRouter ) {
     'use strict';
 
     var startApp = function startApp() {
       var fiscalPeriodPromise = App.fiscalPeriods.fetch();
       var accountsPromise = App.accounts.fetch();
+      App.backups.fetch();
 
       Navigation(App.fiscalPeriods);
 
@@ -24,6 +27,7 @@ require([
       });
 
       new FiscalPeriodsRouter();
+      new BackupsRouter();
 
       Backbone.history.start();
     }
@@ -32,10 +36,12 @@ require([
     App.addInitializer(function() {
       App.fiscalPeriods = new FiscalPeriods();
       App.accounts = new Accounts();
+      App.backups = new Backups();
 
       var routeMapping = {
         'index.accounts': App.accounts,
-        'index.fiscalPeriods': App.fiscalPeriods
+        'index.fiscalPeriods': App.fiscalPeriods,
+        'index.backups': App.backups
       };
 
       $.get(Settings.apiUrl('/'))

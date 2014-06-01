@@ -2,6 +2,9 @@
   "fiscalPeriods": {
     "headline": "Buchungen im Jahr %{year}"
   },
+  "backups": {
+    "headline": "Backups"
+  },
   "positions": {
     "actions": {
       "new": "Neue Buchung anlegen"
